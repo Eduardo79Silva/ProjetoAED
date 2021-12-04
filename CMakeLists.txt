@@ -3,4 +3,4 @@ project(ProjetoAED)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ProjetoAED main.cpp Voo.h Aviao.h Aviao.cpp Voo.cpp CarrinhoTransporte.h Bagagem.h)
+add_executable(ProjetoAED main.cpp Voo.h Aviao.h Aviao.cpp Voo.cpp CarrinhoTransporte.h Bagagem.h Passageiro.cpp Passageiro.h Bilhete.cpp Bilhete.h)
