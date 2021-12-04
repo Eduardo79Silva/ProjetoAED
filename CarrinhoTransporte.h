@@ -15,9 +15,9 @@ public:
     int getCarruagens();
     int getPilhas();
     int getMalas();
-    void setCarruagens();
-    void setPilhas();
-    void setMalas();
+    void setCarruagens(int c);
+    void setPilhas(int p);
+    void setMalas(int m);
 };
 
 
