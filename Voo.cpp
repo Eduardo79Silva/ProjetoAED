@@ -2,7 +2,7 @@
 // Created by eduar on 03/12/2021.
 //
 
-#include "../Header Files/Voo.h"
+#include "Voo.h"
 
 Voo::Voo(int nrVoo) {
     this->nrVoo = nrVoo;

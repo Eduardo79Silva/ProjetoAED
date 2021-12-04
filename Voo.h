@@ -8,20 +8,20 @@
 
 class Voo{
     int nrVoo{};
-    string dataPartida; //Restingir ao tipo: DD/MM/YYYY (ou outros)
-    string duracao; //restringir: hh:mm
+    std::string dataPartida; //Restingir ao tipo: DD/MM/YYYY (ou outros)
+    std::string duracao; //restringir: hh:mm
     Aeroporto aeroportoOrigem{};
     Aeroporto aeroportoDestino{};
 public:
     Voo();
     Voo(int nrVoo);
     int getNrVoo() const;
-    string getData() const;
-    string getDuracao() const;
+    std::string getData() const;
+    std::string getDuracao() const;
     Aeroporto getOrigem() const;
     Aeroporto getDestino() const;
-    void setData(string data);
-    void setDuracao(string duracao);
+    void setData(std::string data);
+    void setDuracao(std::string duracao);
     void setOrigem(Aeroporto origem);
     void setDestino(Aeroporto destino);
 

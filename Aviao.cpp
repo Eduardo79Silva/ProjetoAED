@@ -2,7 +2,7 @@
 // Created by eduar on 03/12/2021.
 //
 
-#include "../Header Files/Aviao.h"
+#include "Aviao.h"
 
 std::string Aviao::getMatricula() const {
     return nullptr;
@@ -20,7 +20,7 @@ int Aviao::getCapacidade() const {
     return this->capacidade;
 }
 
-int Aviao::getVoos() const {
+Voo Aviao::getVoos() const {
 
 }
 
