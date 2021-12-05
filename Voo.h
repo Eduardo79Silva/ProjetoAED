@@ -5,9 +5,10 @@
 
 #include "string"
 #include "Aviao.h"
+#include "Aeroporto.h"
 
 class Voo{
-    int nrVoo{};
+    int nrVoo;
     std::string dataPartida; //Restingir ao tipo: DD/MM/YYYY (ou outros)
     std::string duracao; //restringir: hh:mm
     Aeroporto aeroportoOrigem{};
@@ -20,10 +21,10 @@ public:
     std::string getDuracao() const;
     Aeroporto getOrigem() const;
     Aeroporto getDestino() const;
-    void setData(std::string data);
+    void setData(std::string &data);
     void setDuracao(std::string duracao);
-    void setOrigem(Aeroporto origem);
-    void setDestino(Aeroporto destino);
+    void setOrigem(Aeroporto &origem);
+    void setDestino(Aeroporto &destino);
 
 
 };

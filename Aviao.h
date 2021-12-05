@@ -4,10 +4,10 @@
 #define PROJETOAED_AVIAO_H
 
 
+#include "Voo.h"
 #include <string>
 #include "iostream"
 #include "list"
-#include "Voo.h"
 
 class Aviao{
     std::string matricula;
