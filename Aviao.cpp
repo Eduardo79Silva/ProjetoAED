@@ -20,8 +20,8 @@ int Aviao::getCapacidade() const {
     return this->capacidade;
 }
 
-Voo Aviao::getVoos() const {
-
+std::list<Voo> Aviao::getVoos() const {
+    return this->listaVoos;
 }
 
 
