@@ -11,15 +11,12 @@ class Aeroporto {
     std::string nome;
     std::string cidade;
     std::string pais;
-private:
+public:
+    Aeroporto();
     Aeroporto(std::string n, std::string c, std::string p);
     std::string getNome() const;
     std::string getCidade() const;
     std::string getPais() const;
-
-
-public:
-    Aeroporto();
 };
 
 
