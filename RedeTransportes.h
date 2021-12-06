@@ -18,6 +18,11 @@ public:
     std::vector<std::string> getTransporte() const;
     float getDistancia() const;
     std::queue<std::string> getHorarios() const;
+    void setTransporte(std::vector<std::string> tipoTransporte);
+    void setDistancia(float distancia);
+    void setHorarios(std::queue<std::string> horarios);
+    void addTransporte(std::string transporte);
+    void addhorario(std::string horario);
 
 };
 
