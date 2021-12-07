@@ -4,15 +4,14 @@
 #define PROJETOAED_VOO_H
 
 #include "string"
-#include "Aviao.h"
 #include "Aeroporto.h"
 
 class Voo{
     int nrVoo;
     std::string dataPartida; //Restingir ao tipo: DD/MM/YYYY (ou outros)
     std::string duracao; //restringir: hh:mm
-    Aeroporto aeroportoOrigem{};
-    Aeroporto aeroportoDestino{};
+    Aeroporto aeroportoOrigem;
+    Aeroporto aeroportoDestino;
 public:
     Voo();
     Voo(int nrVoo);
