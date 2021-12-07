@@ -3,7 +3,7 @@
 //
 
 #include "Voo.h"
-
+/*
 Voo::Voo(int nrVoo) {
     this->nrVoo = nrVoo;
 }
@@ -46,3 +46,4 @@ void Voo::setDestino(Aeroporto destino) {
 
 Voo::Voo() = default;
 
+*/

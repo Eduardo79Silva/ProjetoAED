@@ -3,7 +3,7 @@
 //
 
 #include "Aviao.h"
-
+/*
 std::string Aviao::getMatricula() const {
     return nullptr;
 }
@@ -24,6 +24,6 @@ Voo Aviao::getVoos() const {
 
 }
 
-
+*/
 
 

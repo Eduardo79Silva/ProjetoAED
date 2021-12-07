@@ -8,7 +8,7 @@
 #include "iostream"
 #include "list"
 #include "Voo.h"
-
+/*
 class Aviao{
     std::string matricula;
     std::string tipo;
@@ -22,5 +22,5 @@ public:
     Voo getVoos() const;
 
 };
-
+*/
 #endif //PROJETOAED_AVIAO_H
