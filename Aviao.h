@@ -4,12 +4,15 @@
 #define PROJETOAED_AVIAO_H
 
 
+#include "Voo.h"
 #include <string>
 #include "iostream"
 #include "list"
 #include "Voo.h"
+
 /*
 class Aviao{
+    Voo voo;
     std::string matricula;
     std::string tipo;
     int capacidade;
@@ -19,7 +22,7 @@ public:
     std::string getMatricula() const;
     std::string getTipo() const;
     int getCapacidade() const;
-    Voo getVoos() const;
+    std::list<Voo> getVoos() const;
 
 };
 */

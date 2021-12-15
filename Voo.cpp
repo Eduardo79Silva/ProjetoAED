@@ -3,7 +3,11 @@
 //
 
 #include "Voo.h"
+#include "Aeroporto.h"
 /*
+Voo::Voo():nrVoo(0), dataPartida(""), duracao(""), aeroportoOrigem(Aeroporto()), aeroportoDestino(Aeroporto())   {}
+
+
 Voo::Voo(int nrVoo) {
     this->nrVoo = nrVoo;
 }
@@ -28,7 +32,7 @@ Aeroporto Voo::getDestino() const {
     return this->aeroportoDestino;
 }
 
-void Voo::setData(std::string data) {
+void Voo::setData(std::string &data) {
     this->dataPartida = data;
 }
 
@@ -36,14 +40,14 @@ void Voo::setDuracao(std::string duracao) {
     this->duracao = duracao;
 }
 
-void Voo::setOrigem(Aeroporto origem) {
+void Voo::setOrigem(Aeroporto &origem) {
     this->aeroportoOrigem = origem;
 }
 
-void Voo::setDestino(Aeroporto destino) {
+void Voo::setDestino(Aeroporto &destino) {
     this->aeroportoDestino = destino;
 }
 
 Voo::Voo() = default;
-
 */
+
