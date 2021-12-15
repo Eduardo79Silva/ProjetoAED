@@ -3,12 +3,14 @@
 //
 
 #include "Aviao.h"
-/*
+
 std::string Aviao::getMatricula() const {
     return nullptr;
 }
 
 Aviao::Aviao(std::string m, std::string t) {
+    this->matricula=m;
+    this->tipo = t;
 
 }
 
@@ -24,6 +26,6 @@ std::list<Voo> Aviao::getVoos() const {
     return this->listaVoos;
 }
 
-*/
+
 
 

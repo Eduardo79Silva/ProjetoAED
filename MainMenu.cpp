@@ -3,6 +3,10 @@
 //
 
 #include "MainMenu.h"
+#include "Voo.h"
+#include "Aeroporto.h"
+#include "Aviao.h"
+#include "string"
 
 void MainMenu::menu() {
     char c;
@@ -31,7 +35,7 @@ void MainMenu::menu() {
 void MainMenu::pagFuncionarios() {
     char c, type;
     while (true) {
-        system("CLS");
+        //system("CLS");
         std::cout << "[Menu funcionarios]\n"
                   << "\n[1] Ver lista de voos"  //ler de ficheiros?
                   << "\n[2] Ver servicos"  //ler de ficheiros?
@@ -40,6 +44,11 @@ void MainMenu::pagFuncionarios() {
         std::cin >> c;
         switch (c) {
             case '1':
+                for(Voo voo :listaVoos){
+                    std::cout<<voo.getNrVoo() << "; ";
+                }
+                std::cout << "\n";
+
                 //do things
                 break;
             case '2':
@@ -48,7 +57,7 @@ void MainMenu::pagFuncionarios() {
             case '0':
                 return;
             default:
-                std::cout << "Invalid Option\n";
+                std::cout << "Opção inválida\n";
         }
     }
 }
@@ -56,7 +65,7 @@ void MainMenu::pagFuncionarios() {
 void MainMenu::pagClientes() {
     char c, type;
     while (true) {
-        system("CLS");
+        //system("CLS");
         std::cout << "[Menu clientes]\n"
                   << "\n[1] Ver lista de voos"  //ler de ficheiros?
                   << "\n[2] Adquirir bilhete"

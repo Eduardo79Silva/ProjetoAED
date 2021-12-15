@@ -31,7 +31,7 @@ Aeroporto Voo::getDestino() const {
     return this->aeroportoDestino;
 }
 
-void Voo::setData(std::string &data) {
+void Voo::setData(std::string data) {
     this->dataPartida = data;
 }
 
@@ -46,4 +46,13 @@ void Voo::setOrigem(Aeroporto &origem) {
 void Voo::setDestino(Aeroporto &destino) {
     this->aeroportoDestino = destino;
 }
+
+/*Voo::Voo(int nrVoo, std::string dataPartida, std::string duracao,Aeroporto aeroportoOrigem,Aeroporto aeroportoDestino) {
+    this->nrVoo = nrVoo;
+    this->dataPartida = dataPartida;
+    this->duracao = duracao;
+    this->aeroportoOrigem = aeroportoOrigem;
+    this->aeroportoDestino = aeroportoDestino;
+
+}*/
 
