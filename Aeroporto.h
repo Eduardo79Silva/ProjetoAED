@@ -6,6 +6,10 @@
 #define PROJETOAED_AEROPORTO_H
 #include "string"
 
+/**
+     * Classe que representa os aeroportos entre os quais a companhia aérea faz voos.
+     * Implementa getters.
+     */
 
 class Aeroporto {
     std::string nome;
@@ -14,8 +18,17 @@ class Aeroporto {
 public:
     Aeroporto();
     Aeroporto(std::string n, std::string c, std::string p);
+    /**
+     * @return Retorna o nome do aeroporto.
+     */
     std::string getNome() const;
+    /**
+      * @return Retorna a cidade do aeroporto.
+      */
     std::string getCidade() const;
+    /**
+     * @return Retorna o país do aeroporto.
+     */
     std::string getPais() const;
 };
 

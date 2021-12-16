@@ -5,12 +5,21 @@
 #ifndef PROJETOAED_BAGAGEM_H
 #define PROJETOAED_BAGAGEM_H
 
-
+/**
+     * Classe que representa a bagagem de um passageiro (o seu número de malas).
+     * Implementa getter e setter.
+     */
 class Bagagem {
     int malas;
 public:
+    /**
+     * @return Retorna o número de malas na bagagem do passageiro.
+     */
     int getMalas();
-    void setMalas();
+    /**
+     * Atribui o número de malas à bagagem do passageiro.
+     */
+    void setMalas(int m);
 
 };
 

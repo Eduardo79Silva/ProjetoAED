@@ -9,6 +9,11 @@
 
 using namespace std;
 
+/**
+     * Classe que representa o bilhete de um passageiro.
+     * Implementa getters e setters.
+     */
+
 class Bilhete {
     int numVoo;
     string lugar;
@@ -16,11 +21,29 @@ class Bilhete {
 public:
     Bilhete();
     Bilhete(int numVoo, string lugar, bool bagagem);
+    /**
+     * Atribui o número de voo nVoo ao bilhete.
+     */
     void setNumVoo(int numVoo);
+    /**
+     * Atribui o número de lugar lugar ao bilhete..
+     */
     void setLugar(string lugar);
+    /**
+     * Atribui ao booleano bagagem o valor de bagagem (true/false), conforme o passageiro queira incluir a bagagem no bilhete ou não.
+     */
     void setbagagem(bool bagagem);
+    /**
+     * @return Retorna o número de voo do bilhete.
+     */
     int getNumVoo();
+    /**
+     * @return Retorna o número de lugar do bilhete.
+     */
     string getLugar();
+    /**
+     * @return Retorna true se a bagagem estiver incluída no bilhete e falso se não estiver..
+     */
     bool getBagagem();
 };
 

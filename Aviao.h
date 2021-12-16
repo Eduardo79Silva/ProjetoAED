@@ -11,8 +11,9 @@
 #include "Voo.h"
 
 /*
+
 class Aviao{
-    Voo voo;
+    Voo voo();
     std::string matricula;
     std::string tipo;
     int capacidade;
