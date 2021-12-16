@@ -26,6 +26,3 @@ std::list<Voo> Aviao::getVoos() const {
     return this->listaVoos;
 }
 
-
-
-

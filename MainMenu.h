@@ -9,6 +9,7 @@
 #include<ctime>
 #include "list"
 #include "Voo.h"
+#include "TextTable.h"
 
 class MainMenu {
     std::queue<Voo> filaVoo;
@@ -17,6 +18,11 @@ public:
     void menu();
     void pagFuncionarios();
     void pagClientes();
+
+    void listaVoos();  //tanto para funcionário como para passageiro
+    void listaServicos();  //para funcionarios
+
+    void comprarBilhete();
 };
 
 
