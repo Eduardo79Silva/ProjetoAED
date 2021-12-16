@@ -7,7 +7,6 @@
 #include "string"
 #include "vector"
 #include "queue"
-#include "bst.h"
 #include "Transporte.h"
 
 /**
@@ -16,10 +15,7 @@
 
 
 class RedeTransportes {
-    BST<Transporte> mapaTransportes;
-public:
-    RedeTransportes();
-    
+
 };
 
 

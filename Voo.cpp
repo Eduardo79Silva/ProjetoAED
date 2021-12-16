@@ -4,7 +4,7 @@
 
 #include "Voo.h"
 #include "Aeroporto.h"
-/*
+
 Voo::Voo():nrVoo(0), dataPartida(""), duracao(""), aeroportoOrigem(Aeroporto()), aeroportoDestino(Aeroporto())   {}
 
 
@@ -48,6 +48,4 @@ void Voo::setDestino(Aeroporto &destino) {
     this->aeroportoDestino = destino;
 }
 
-Voo::Voo() = default;
-*/
 

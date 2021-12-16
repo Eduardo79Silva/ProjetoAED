@@ -7,29 +7,18 @@
 #include "string"
 #include "RedeTransportes.h"
 
-/**
-     * Classe que representa os aeroportos entre os quais a companhia aérea faz voos.
-     * Implementa getters.
-     */
-
 class Aeroporto {
     std::string nome;
     std::string cidade;
     std::string pais;
+    RedeTransportes transportes;
+
 public:
     Aeroporto();
+    Aeroporto(std::string c);
     Aeroporto(std::string n, std::string c, std::string p);
-    /**
-     * @return Retorna o nome do aeroporto.
-     */
     std::string getNome() const;
-    /**
-      * @return Retorna a cidade do aeroporto.
-      */
     std::string getCidade() const;
-    /**
-     * @return Retorna o país do aeroporto.
-     */
     std::string getPais() const;
 };
 
