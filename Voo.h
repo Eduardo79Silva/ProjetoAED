@@ -3,7 +3,7 @@
 #ifndef PROJETOAED_VOO_H
 #define PROJETOAED_VOO_H
 
-#include "string
+#include "string"
 #include "Aeroporto.h"
 
 class Voo{

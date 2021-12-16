@@ -12,7 +12,7 @@
 #include "TextTable.h"
 
 class MainMenu {
-    std::queue<Voo> filaVoo;
+    std::list<Voo> listaVoo;
 
 public:
     void menu();

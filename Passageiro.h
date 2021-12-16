@@ -13,7 +13,6 @@ using namespace std;
 class Passageiro {
     string nome;
     int idade;
-    char sexo;
     int id;
     Bilhete bilhete;
 public:
@@ -23,8 +22,6 @@ public:
     string getNome();
     void setIdade(int idade);
     int getIdade();
-    void setSexo(char sexo);
-    char getSexo();
     void setId(int id);
     int getId();
     void setBilhete(Bilhete bilhete);

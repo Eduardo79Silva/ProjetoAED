@@ -11,16 +11,16 @@ using namespace std;
 
 class Bilhete {
     int numVoo;
-    string lugar;
+    std::string lugar;
     bool bagagem;
 public:
     Bilhete();
-    Bilhete(int numVoo, string lugar, bool bagagem);
+    Bilhete(int numVoo, std::string lugar, bool bagagem);
     void setNumVoo(int numVoo);
-    void setLugar(string lugar);
+    void setLugar(std::string lugar);
     void setbagagem(bool bagagem);
     int getNumVoo();
-    string getLugar();
+    std::string getLugar();
     bool getBagagem();
 };
 
