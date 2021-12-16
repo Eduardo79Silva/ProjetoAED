@@ -9,6 +9,7 @@
 #include "string"
 
 void MainMenu::menu() {
+    
     char c;
     while (true) {
         std::cout << "[FEUP AIRLINES]\n";
