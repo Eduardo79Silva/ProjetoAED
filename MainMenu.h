@@ -8,6 +8,8 @@
 #include<iostream>
 #include<ctime>
 #include "TextTable.h"
+#include <list>
+#include "Voo.h"
 
 /**
      * Classe que implementa os menus da aplicação, que são representados e conectados através de funcões-membro.

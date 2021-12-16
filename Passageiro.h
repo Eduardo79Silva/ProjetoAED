@@ -40,14 +40,6 @@ public:
      */
     int getIdade();
     /**
-     * Atribui o sexo ao passageiro.
-     */
-    void setSexo(char sexo);
-    /**
-     * @return Retorna o sexo do passageiro.
-     */
-    char getSexo();
-    /**
      * Atribui o ID ao passageiro.
      */
     void setId(int id);

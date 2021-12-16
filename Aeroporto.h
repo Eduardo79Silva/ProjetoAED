@@ -5,6 +5,7 @@
 #ifndef PROJETOAED_AEROPORTO_H
 #define PROJETOAED_AEROPORTO_H
 #include "string"
+#include "RedeTransportes.h"
 
 /**
      * Classe que representa os aeroportos entre os quais a companhia aérea faz voos.

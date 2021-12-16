@@ -8,9 +8,7 @@
 #include <string>
 #include "iostream"
 #include "list"
-#include "Voo.h"
 
-/*
 
 class Aviao{
     Voo voo();
@@ -26,5 +24,5 @@ public:
     std::list<Voo> getVoos() const;
 
 };
-*/
+
 #endif //PROJETOAED_AVIAO_H
