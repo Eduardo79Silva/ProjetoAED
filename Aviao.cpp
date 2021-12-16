@@ -3,7 +3,7 @@
 //
 
 #include "Aviao.h"
-/*
+
 std::string Aviao::getMatricula() const {
     return nullptr;
 }
@@ -23,5 +23,8 @@ int Aviao::getCapacidade() const {
 std::list<Voo> Aviao::getVoos() const {
     return this->listaVoos;
 }
-*/
+
+
+
+
 

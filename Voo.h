@@ -6,7 +6,7 @@
 #include "string"
 #include "Aviao.h"
 #include "Aeroporto.h"
-/*
+
 class Voo{
     int nrVoo;
     std::string dataPartida; //Restingir ao tipo: DD/MM/YYYY (ou outros)
@@ -28,5 +28,5 @@ public:
 
 
 };
-*/
+
 #endif //PROJETOAED_VOO_H

@@ -3,9 +3,11 @@
 //
 
 #include "RedeTransportes.h"
+/*
+void RedeTransportes::lerFicheiro(std::string filepath) {
 
-void RedeTransportes::lerFicheiro(std::fstream &in) {
+
 
 }
 
-
+*/
