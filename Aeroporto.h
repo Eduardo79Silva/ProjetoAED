@@ -15,6 +15,7 @@ class Aeroporto {
 
 public:
     Aeroporto();
+    Aeroporto(std::string c);
     Aeroporto(std::string n, std::string c, std::string p);
     std::string getNome() const;
     std::string getCidade() const;

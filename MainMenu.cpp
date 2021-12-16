@@ -1,26 +1,31 @@
 //
 // Created by Afonso Martins on 04/12/2021.
 //
-
+using namespace std;
+#include "fstream"
 #include "MainMenu.h"
 #include "Voo.h"
 #include "Aeroporto.h"
 #include "Aviao.h"
 #include "string"
 #include "TextTable.h"
-#include "MACROS.h"
+//#include "MACROS.h"
+#include "iostream"
+#include <cstdio>
 
 
 void MainMenu::listaVoos() {
+
+
 
     TextTable t( '-', '|', '+' );
     int c;
 
     t.add( "NumeroVoo" );
-    t.add( "Partida" );
-    t.add( "Duracao" );
     t.add( "Origem" );
     t.add( "Destino" );
+    t.add( "Duracao" );
+    t.add( "Data" );
     t.endOfRow();
     t.add("");
     t.add("");
@@ -28,20 +33,17 @@ void MainMenu::listaVoos() {
     t.add( "" );
     t.add( "" );
     t.endOfRow();
+    for(Voo voo : listaVoo){
+        t.add(to_string(voo.getNrVoo()));
+        t.add(voo.getOrigem().getCidade());
+        t.add( voo.getDestino().getCidade());
+        t.add( voo.getDuracao());
+        t.add( voo.getData());
+        t.endOfRow();
+        t.setAlignment( 2, TextTable::Alignment::RIGHT );
+    }
 
-    t.add("FA1111");
-    t.add("14/12/2021, 17:15");
-    t.add( "1:00" );
-    t.add( "Porto (LPPR)" );
-    t.add( "Lisboa (LPPT)" );
-    t.endOfRow();
-    t.add("FA1112");
-    t.add("14/12/2021, 19:15");
-    t.add( "1:00" );
-    t.add( "Lisboa (LPPT)" );
-    t.add( "Porto (LPPR)" );
-    t.endOfRow();
-    t.setAlignment( 2, TextTable::Alignment::RIGHT );
+
 
     while (true) {
         system("CLS");
@@ -60,7 +62,7 @@ void MainMenu::listaVoos() {
 }
 void MainMenu::menu() {
 
-    
+    povoarVoo(listaVoo);
     char c;
     while (true) {
         system("CLS");
@@ -69,6 +71,8 @@ void MainMenu::menu() {
                   << "\n[2] Cliente"
                   << "\n[0] Sair\n"
                   << "\n>";
+
+
         std::cin >> c;
         switch (c) {
             case '1':
@@ -80,7 +84,7 @@ void MainMenu::menu() {
             case '0':
                 return;
             default:
-                std::cout << "Opção inválida\n";
+                std::cout << "Opcao invalida\n";
         }
     }
 }
@@ -185,6 +189,35 @@ void MainMenu::comprarBilhete() {
 
 
         //criar passageiro, bilhete e atribuir bilhete
+
+    }
+}
+
+void MainMenu::povoarVoo(list<Voo> &list1) {
+    string number;
+    string origem;
+    string destino;
+    string duracao;
+    string data;
+    ifstream voos;
+    voos.open("..\\.\\Voos.csv");
+    voos.ignore(1000, '\n');
+    while (getline(voos, number, ';')) {
+        Voo voo = Voo(stoi(number));
+
+        getline(voos, origem, ';');
+        getline(voos, destino, ';');
+        getline(voos, duracao, ';');
+        getline(voos, data);
+
+        Aeroporto aeroportoOrigem = Aeroporto(origem);
+        Aeroporto aeroportoDestino = Aeroporto(destino);
+
+        voo.setData(data);
+        voo.setDuracao(duracao);
+        voo.setOrigem(aeroportoOrigem);
+        voo.setDestino(aeroportoDestino);
+        list1.push_back(voo);
 
     }
 }
