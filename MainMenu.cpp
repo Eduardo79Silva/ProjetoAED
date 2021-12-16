@@ -64,6 +64,7 @@ void MainMenu::listaVoos() {
 void MainMenu::menu() {
 
     povoarVoo(listaVoo);
+    povoarAeroporto(listaAeroporto);
     char c;
     while (true) {
         system("CLS");
@@ -228,8 +229,7 @@ void MainMenu::povoarAeroporto(list<Aeroporto> &list) {
     ifstream aeroportos;
     aeroportos.open(AEROPORTO);
     aeroportos.ignore(1000, '\n');
-    while (getline(aeroportos, cidade, ';')) {
-
+    while (getline(aeroportos, cidade)) {
         Aeroporto aeroporto = Aeroporto(cidade);
 
         list.push_back(aeroporto);
