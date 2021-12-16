@@ -9,6 +9,8 @@ std::string Aviao::getMatricula() const {
 }
 
 Aviao::Aviao(std::string m, std::string t) {
+    this->matricula=m;
+    this->tipo = t;
 
 }
 
@@ -23,7 +25,4 @@ int Aviao::getCapacidade() const {
 std::list<Voo> Aviao::getVoos() const {
     return this->listaVoos;
 }
-
-
-
 
