@@ -9,6 +9,7 @@
 #include "queue"
 #include "bst.h"
 #include "Transporte.h"
+#include <fstream>
 
 /**
      * Classe que representa a rede de transportes nas imediacões de um aeroporto através de uma BST.
@@ -18,8 +19,8 @@
 class RedeTransportes {
     BST<Transporte> mapaTransportes;
 public:
-    RedeTransportes();
-    
+    void lerFicheiro(fstream &in);
+    //ler de ficheiro e passar para a bst
 };
 
 

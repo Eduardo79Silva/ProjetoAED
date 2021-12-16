@@ -17,7 +17,6 @@ using namespace std;
 class Passageiro {
     string nome;
     int idade;
-    char sexo;
     int id;
     Bilhete bilhete;
 public:
@@ -39,14 +38,6 @@ public:
      * @return Retorna a idade do passageiro.
      */
     int getIdade();
-    /**
-     * Atribui o sexo ao passageiro.
-     */
-    void setSexo(char sexo);
-    /**
-     * @return Retorna o sexo do passageiro.
-     */
-    char getSexo();
     /**
      * Atribui o ID ao passageiro.
      */

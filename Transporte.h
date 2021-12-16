@@ -18,6 +18,10 @@ class Transporte {
     float distancia;
     std::queue<std::string> horarios;
 public:
+    Transporte(std::string tipo, float dist) {
+        tipoTransporte = tipo;
+        distancia = dist;
+    };
     Transporte(std::string tipo, float dist, std::queue<std::string> h);
     /**
      * @return Retorna o tipo de transporte.
@@ -47,6 +51,7 @@ public:
      * Adiciona um novo horário ao transporte.
      */
     void addhorario(std::string h);
+    bool operator<(Transporte &t);
 };
 
 

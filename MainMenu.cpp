@@ -149,12 +149,11 @@ void MainMenu::listaServicos() {
 
 void MainMenu::comprarBilhete() {
 
-    int nv;
+    std::string nv;
     std::string nome;
     char b;
     bool bagagem = false;
     int idade;
-    char sexo;
     int id;
 
     while (true) {
@@ -165,7 +164,7 @@ void MainMenu::comprarBilhete() {
         std::cout << "\nDigite 0 para voltar ao menu\n"
                   << "\n>";
         std::cin >> nv;
-        if (nv == 0) {
+        if (nv == "0") {
             return;
         }
 
@@ -180,9 +179,6 @@ void MainMenu::comprarBilhete() {
 
         std::cout << "\nIntroduza a sua idade:";
         std::cin >> idade;
-
-        std::cout << "\nIntroduza o seu sexo (M/F):";
-        std::cin >> nome;
 
         //criar passageiro, bilhete e atribuir bilhete
 

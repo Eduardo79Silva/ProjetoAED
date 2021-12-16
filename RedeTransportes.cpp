@@ -4,5 +4,8 @@
 
 #include "RedeTransportes.h"
 
+void RedeTransportes::lerFicheiro(std::fstream &in) {
+
+}
 
 

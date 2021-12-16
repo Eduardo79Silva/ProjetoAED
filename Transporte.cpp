@@ -39,3 +39,7 @@ void Transporte::setHorarios(std::queue<std::string> h) {
 void Transporte::addhorario(std::string h) {
     this->horarios.push(h);
 }
+
+bool Transporte::operator<(Transporte &t) { {
+    return this->distancia<t.getDistancia();
+}}
