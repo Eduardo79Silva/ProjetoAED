@@ -47,8 +47,3 @@ void Voo::setOrigem(Aeroporto &origem) {
 void Voo::setDestino(Aeroporto &destino) {
     this->aeroportoDestino = destino;
 }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> master
