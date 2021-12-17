@@ -94,7 +94,7 @@ void MainMenu::menu() {
 void MainMenu::pagFuncionarios() {
     char c;
     while (true) {
-        //system("CLS");
+        system("CLS");
         std::cout << "[Menu funcionarios]\n"
                   << "\n[1] Ver lista de voos"
                   << "\n[2] Ver servicos"
@@ -121,7 +121,7 @@ void MainMenu::pagFuncionarios() {
 void MainMenu::pagClientes() {
     char c;
     while (true) {
-        //system("CLS");
+        system("CLS");
         std::cout << "[Menu clientes]\n"
                   << "\n[1] Ver lista de voos"
                   << "\n[2] Adquirir bilhete"
@@ -189,10 +189,6 @@ void MainMenu::comprarBilhete() {
         std::cout << "\nIntroduza a sua idade:";
         std::cin >> idade;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2019b9ab94ade98285ba82a2d682123e08b2b87f
         //criar passageiro, bilhete e atribuir bilhete
 
     }
@@ -240,3 +236,5 @@ void MainMenu::povoarAeroporto(list<Aeroporto> &list) {
     }
 
 }
+
+

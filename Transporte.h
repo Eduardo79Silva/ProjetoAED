@@ -51,7 +51,9 @@ public:
      * Adiciona um novo horário ao transporte.
      */
     void addhorario(std::string h);
-    bool operator<(Transporte &t);
+    bool operator<(const Transporte &t) const;
+    bool operator==(const Transporte &t) const;
+    bool operator>(const Transporte &t) const;
 };
 
 
