@@ -4,7 +4,6 @@
 #define PROJETOAED_VOO_H
 
 #include "string"
-#include "Aviao.h"
 #include "Aeroporto.h"
 
 class Voo{
@@ -16,17 +15,21 @@ class Voo{
 public:
     Voo();
     Voo(int nrVoo);
+    //Voo(int nrVoo, std::string dataPartida, std::string duracao,Aeroporto aeroportoOrigem,Aeroporto aeroportoDestino);
     int getNrVoo() const;
     std::string getData() const;
     std::string getDuracao() const;
     Aeroporto getOrigem() const;
     Aeroporto getDestino() const;
-    void setData(std::string &data);
+    void setData(std::string data);
     void setDuracao(std::string duracao);
     void setOrigem(Aeroporto &origem);
     void setDestino(Aeroporto &destino);
 
 
 };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2019b9ab94ade98285ba82a2d682123e08b2b87f
 #endif //PROJETOAED_VOO_H

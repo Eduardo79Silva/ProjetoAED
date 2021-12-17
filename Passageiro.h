@@ -38,9 +38,12 @@ public:
      * @return Retorna a idade do passageiro.
      */
     int getIdade();
+<<<<<<< HEAD
     /**
      * Atribui o ID ao passageiro.
      */
+=======
+>>>>>>> 2019b9ab94ade98285ba82a2d682123e08b2b87f
     void setId(int id);
     /**
      * @return Retorna o ID do passageiro.
