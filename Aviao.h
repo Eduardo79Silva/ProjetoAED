@@ -9,12 +9,8 @@
 #include "iostream"
 #include "list"
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2019b9ab94ade98285ba82a2d682123e08b2b87f
 class Aviao{
-    Voo voo();
+    Voo voo;
     std::string matricula;
     std::string tipo;
     int capacidade;

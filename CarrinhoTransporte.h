@@ -5,6 +5,12 @@
 #ifndef PROJETOAED_CARRINHOTRANSPORTE_H
 #define PROJETOAED_CARRINHOTRANSPORTE_H
 
+#include <stack>
+#include <queue>
+#include "Bagagem.h"
+
+using namespace std;
+
 /**
      * Classe que representa o carrinho que transporta as malas até ao avião.
      * Implementa getters e setters.
@@ -14,6 +20,7 @@ class CarrinhoTransporte {
     int carruagens;
     int pilhas;
     int malas;
+    vector<vector<stack<Bagagem>>> bagagens;
 public:
     CarrinhoTransporte(int c, int p, int m);
     /**
@@ -40,6 +47,14 @@ public:
      * Atribui ao número de malas o valor m.
      */
     void setMalas(int m);
+    /**
+     *
+     * @param bagagem
+     * Adiciona ao carrinho uma bagagem.
+     */
+     vector<vector<stack<Bagagem>>> getBagagens();
+    void addBagagem(Bagagem bagagem);
+
 };
 
 

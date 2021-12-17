@@ -12,14 +12,21 @@
 class Bagagem {
     int malas;
 public:
+    Bagagem(){
+        this->malas = 0;
+    }
     /**
      * @return Retorna o número de malas na bagagem do passageiro.
      */
-    int getMalas();
+    int getMalas(){
+        return malas;
+    }
     /**
      * Atribui o número de malas à bagagem do passageiro.
      */
-    void setMalas(int m);
+    void setMalas(int m){
+        this->malas = m;
+    }
 
 };
 

@@ -25,11 +25,3 @@ int Aviao::getCapacidade() const {
 std::list<Voo> Aviao::getVoos() const {
     return this->listaVoos;
 }
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 2019b9ab94ade98285ba82a2d682123e08b2b87f
-
