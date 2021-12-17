@@ -16,7 +16,7 @@ class Passageiro {
     int id;
     Bilhete bilhete;
 public:
-    Passageiro(string nome, int idade, char sexo, int id);
+    Passageiro(string nome, int idade, int id);
     void adquirirBilhete(int numVoo, bool bagagem, string lugar);
     void setNome(string nome);
     string getNome();
