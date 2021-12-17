@@ -55,8 +55,8 @@ list<Transporte> lfT() {
 }
 
 int main() {
-    //MainMenu menu;
-    //menu.menu();
+    MainMenu menu;
+    menu.menu();
 
     list<Transporte> transportes = lfT();
     for (auto et = transportes.begin(); et != transportes.end(); et++) {
@@ -71,6 +71,7 @@ int main() {
             h.pop();
         }
         cout << endl;
+
     }
 
 

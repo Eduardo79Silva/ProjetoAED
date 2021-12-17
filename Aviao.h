@@ -17,9 +17,21 @@ class Aviao{
     std::list<Voo> listaVoos;
 public:
     Aviao(std::string m, std::string t);
+    /**
+     * @return Matrícula que identifica o avião
+     */
     std::string getMatricula() const;
+    /**
+     * @return Tipo do avião
+     */
     std::string getTipo() const;
+    /**
+     * @return Capacidade do avião
+     */
     int getCapacidade() const;
+    /**
+     * @return Lista de voos que o avião faz
+     */
     std::list<Voo> getVoos() const;
 
 };
