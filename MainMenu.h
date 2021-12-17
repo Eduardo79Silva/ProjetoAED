@@ -21,6 +21,19 @@ public:
     void pagFuncionarios();
     void pagClientes();
 
+    /**
+     * Mostra a lista de voos planeados, tanto para os clientes como para os funcionários.
+     */
+    void listaVoos();  //tanto para funcionário como para passageiro
+    /**
+     * Mostra aos funcionários a lista de serviços a realizar.
+     */
+    void listaServicos();  //para funcionarios
+    /**
+     * Mostra o menu de compra de bilhete para os clientes.
+     */
+
+
     void listaVoos();  //Tanto para funcionário como para passageiro
     void listaServicos();  //Para funcionarios
     void povoarVoo(std::list<Voo> &list1); //Função que lê o ficheiro com todos os dados sobre os voos existentes e os adiciona à lista de voos

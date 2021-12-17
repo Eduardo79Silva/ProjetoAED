@@ -22,6 +22,9 @@ public:
     string getNome();
     void setIdade(int idade);
     int getIdade();
+    /**
+     * Atribui o ID ao passageiro.
+     */
     void setId(int id);
     int getId();
     void setBilhete(Bilhete bilhete);

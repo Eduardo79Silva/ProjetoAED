@@ -4,5 +4,10 @@
 
 #include "RedeTransportes.h"
 
+void RedeTransportes::lerFicheiro(std::string filepath) {
+
+
+
+}
 
 

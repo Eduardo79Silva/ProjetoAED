@@ -8,6 +8,7 @@
 #include "vector"
 #include "queue"
 #include "Transporte.h"
+#include <fstream>
 
 /**
      * Classe que representa a rede de transportes nas imediacões de um aeroporto através de uma BST.
@@ -15,8 +16,12 @@
 
 
 class RedeTransportes {
+<<<<<<< HEAD
+    BST<Transporte> mapaTransportes;
+public:
+    void lerFicheiro(std::string filepath);
+    //ler de ficheiro e passar para a bst
 
 };
-
 
 #endif //PROJETOAED_REDETRANSPORTES_H
