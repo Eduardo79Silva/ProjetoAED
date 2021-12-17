@@ -189,10 +189,6 @@ void MainMenu::comprarBilhete() {
         std::cout << "\nIntroduza a sua idade:";
         std::cin >> idade;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2019b9ab94ade98285ba82a2d682123e08b2b87f
         //criar passageiro, bilhete e atribuir bilhete
 
     }
