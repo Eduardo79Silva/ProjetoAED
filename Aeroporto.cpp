@@ -23,3 +23,7 @@ std::string Aeroporto::getCidade() const {
 std::string Aeroporto::getPais() const {
     return this->pais;
 }
+
+Aeroporto::Aeroporto(std::string c) {
+    this->cidade = c;
+}

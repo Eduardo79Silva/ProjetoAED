@@ -7,7 +7,6 @@
 Passageiro::Passageiro(string nome, int idade, char sexo, int id) {
     this->nome = nome;
     this->idade = idade;
-    this->sexo = sexo;
     this->id = id;
     Bilhete b1;
     this->bilhete = b1;
@@ -33,14 +32,6 @@ void Passageiro::setIdade(int idade) {
 
 int Passageiro::getIdade() {
     return idade;
-}
-
-void Passageiro::setSexo(char sexo) {
-    this->sexo = sexo;
-}
-
-char Passageiro::getSexo() {
-    return sexo;
 }
 
 void Passageiro::setId(int id) {
