@@ -30,3 +30,12 @@ void Aviao::setCapacidade(int c) {
     this->capacidade = c;
 }
 
+std::vector<std::string> Aviao::getLugares() const {
+    return this->lugares;
+}
+
+void Aviao::setLugares(std::string l) {
+    this->lugares.push_back(l);
+
+}
+

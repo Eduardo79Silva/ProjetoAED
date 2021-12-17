@@ -14,6 +14,7 @@ class Aviao{
     std::string matricula;
     std::string tipo;
     int capacidade;
+    std::vector<std::string> lugares;
     std::list<Voo> planoVoo;
 public:
     Aviao(std::string m, std::string t);
@@ -21,6 +22,8 @@ public:
     std::string getTipo() const;
     int getCapacidade() const;
     void setCapacidade(int c);
+    std::vector<std::string> getLugares() const;
+    void setLugares(std::string l);
     std::list<Voo> getVoos() const;
 
 };
