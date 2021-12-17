@@ -4,7 +4,7 @@
 
 #include "Passageiro.h"
 
-Passageiro::Passageiro(string nome, int idade, char sexo, int id) {
+Passageiro::Passageiro(string nome, int idade, int id) {
     this->nome = nome;
     this->idade = idade;
     this->id = id;

@@ -45,26 +45,27 @@ void CarrinhoTransporte::setMalas(int m) {
     this->malas = m;
 }
 
+vector<vector<stack<Bagagem>>> CarrinhoTransporte::getBagagens() {
+    return bagagens;
+}
+
 void CarrinhoTransporte::addBagagem(Bagagem bagagem){
-    for (int i = 0; i < bagagens.size(); i++){
-        for (stack<Bagagem> bag : bagagens[i]){
-            int numMala = bagagem.getMalas();
-            if (bag.size() == malas){
-                continue;
-            }
-            if (numMala + bag.size() <= malas){
-                bag.push(bagagem);
-                return;
-            }
-            else {
-                while (bag.size() != malas){
-                    Bagagem b;
-                    b.setMalas(1);
-                    bag.push(b);
-                    bagagem.setMalas(numMala - 1);
+    if (bagagem.getMalas() == 1){
+        for (int i = 0; i < bagagens.size(); i++){
+            for (int j = 0; j < bagagens[i].size(); j++){
+                if (bagagens[i][j].size() < malas){
+                    bagagens[i][j].push(bagagem);
+                    return;
                 }
                 continue;
             }
+        }
+    }
+    if (bagagem.getMalas() > 1){
+        for (int k = 0; k < bagagem.getMalas(); k++){
+            Bagagem b;
+            b.setMalas(1);
+            addBagagem(b);
         }
     }
 }

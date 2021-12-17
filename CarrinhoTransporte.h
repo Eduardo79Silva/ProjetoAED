@@ -52,6 +52,7 @@ public:
      * @param bagagem
      * Adiciona ao carrinho uma bagagem.
      */
+     vector<vector<stack<Bagagem>>> getBagagens();
     void addBagagem(Bagagem bagagem);
 
 };
