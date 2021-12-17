@@ -5,7 +5,7 @@
 #include "Aviao.h"
 
 std::string Aviao::getMatricula() const {
-    return nullptr;
+    return matricula;
 }
 
 Aviao::Aviao(std::string m, std::string t) {
@@ -23,6 +23,10 @@ int Aviao::getCapacidade() const {
 }
 
 std::list<Voo> Aviao::getVoos() const {
-    return this->listaVoos;
+    return this->planoVoo;
+}
+
+void Aviao::setCapacidade(int c) {
+    this->capacidade = c;
 }
 

@@ -62,9 +62,8 @@ void MainMenu::listaVoos() {
 
 }
 void MainMenu::menu() {
-
-    povoarVoo(listaVoo);
-    povoarAeroporto(listaAeroporto);
+    povoarSistema();
+    cout << listaAviao.front().getCapacidade();
     char c;
     while (true) {
         system("CLS");
@@ -233,6 +232,31 @@ void MainMenu::povoarAeroporto(list<Aeroporto> &list) {
         Aeroporto aeroporto = Aeroporto(cidade);
 
         list.push_back(aeroporto);
+
+    }
+
+}
+
+void MainMenu::povoarSistema() {
+    povoarVoo(listaVoo);
+    povoarAeroporto(listaAeroporto);
+    povoarAvioes(listaAviao);
+}
+
+void MainMenu::povoarAvioes(list<Aviao> &list) {
+    string matricula;
+    string tipo;
+    string capacidade;
+    ifstream avioes;
+    avioes.open(AVIOES);
+    avioes.ignore(1000, '\n');
+    while (getline(avioes, matricula, ';')) {
+        getline(avioes, tipo, ';');
+        getline(avioes, capacidade);
+        Aviao aviao = Aviao(matricula, tipo);
+        aviao.setCapacidade(stoi(capacidade));
+
+        list.push_back(aviao);
 
     }
 
