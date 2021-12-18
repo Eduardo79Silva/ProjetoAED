@@ -1,0 +1,4 @@
+transporte;distancia(km);horario
+Autocarro;0.5;13:10, 13:15, 14:25
+Metro;0.3;16:10, 16:15, 17:25
+Comboio;0.6;10:10, 11:15, 12:25

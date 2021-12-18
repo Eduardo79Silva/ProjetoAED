@@ -19,6 +19,10 @@ class Aeroporto {
 public:
     Aeroporto();
     Aeroporto(std::string c);
+    /**
+     * Retorna a cidade que identifica o aeroporto
+     * @return Cidade do aeroporto
+     */
     std::string getCidade() const;
 };
 

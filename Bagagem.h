@@ -9,6 +9,7 @@
      * Classe que representa a bagagem de um passageiro (o seu número de malas).
      * Implementa getter e setter.
      */
+
 class Bagagem {
     int malas;
 public:
@@ -23,6 +24,7 @@ public:
     }
     /**
      * Atribui o número de malas à bagagem do passageiro.
+     * @param m Número de malas na bagagem do passageiro
      */
     void setMalas(int m){
         this->malas = m;

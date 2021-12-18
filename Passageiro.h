@@ -18,17 +18,44 @@ class Passageiro {
 public:
     Passageiro(string nome, int idade, int id);
     void adquirirBilhete(int numVoo, bool bagagem, string lugar);
+    /**
+     * Atribui o nome ao passageiro.
+     * @param nome nome a atribuir.
+     */
     void setNome(string nome);
+    /**
+     * @return O nome do passageiro.
+     */
     string getNome();
+    /**
+     * Atribui a idade ao passageiro.
+     * @param idade idade a atribuir.
+     */
     void setIdade(int idade);
+    /**
+     * @return A idade do passageiro.
+     */
     int getIdade();
     /**
      * Atribui o ID ao passageiro.
+     * @param id ID a atribuir.
      */
     void setId(int id);
+    /**
+     * @return O ID do passageiro.
+     */
     int getId();
+    /**
+     * Atribui um bilhete passageiro.
+     * @param bilhete bilhete a atribuir.
+     */
     void setBilhete(Bilhete bilhete);
+    /**
+     * @return O bilhete do passageiro.
+     */
     Bilhete getBilhete();
+
+
 };
 
 #endif //PROJETOAED_PASSAGEIRO_H

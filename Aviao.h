@@ -18,14 +18,27 @@ class Aviao{
     std::list<Voo> planoVoo;
 public:
     Aviao(std::string m, std::string t);
+    /**
+     * @return Matrícula que identifica o avião
+     */
     std::string getMatricula() const;
+    /**
+     * @return Tipo do avião
+     */
     std::string getTipo() const;
+    /**
+     * @return Capacidade do avião
+     */
     int getCapacidade() const;
+    /**
+     * @return Lista de voos que o avião faz
+     */
+    std::list<Voo> getVoos() const;
+    void removerLugar(std::string l);
+  
     void setCapacidade(int c);
     std::vector<std::string> getLugares() const;
     void setLugares(std::string l);
-    std::list<Voo> getVoos() const;
-    void removerLugar(std::string l);
 
 };
 

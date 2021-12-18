@@ -40,6 +40,12 @@ void Transporte::addhorario(std::string h) {
     this->horarios.push(h);
 }
 
-bool Transporte::operator<(Transporte &t) { {
+bool Transporte::operator<(const Transporte &t) const {
     return this->distancia<t.getDistancia();
-}}
+}
+bool Transporte::operator==(const Transporte &t) const{
+    return this->distancia==t.getDistancia();
+}
+bool Transporte::operator>(const Transporte &t) const {
+    return this->distancia>t.getDistancia();
+}

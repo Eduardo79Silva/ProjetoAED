@@ -334,6 +334,5 @@ void MainMenu::removerDados() {
                 std::cout << "Opção inválida\n";
         }
     }
-}
 
 

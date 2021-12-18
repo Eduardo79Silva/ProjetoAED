@@ -7,7 +7,7 @@
 using namespace std;
 
 /**
-     * Classe que implementa uma árvore binária de pesquisa. Criada pelos docentes de AED:
+     * Classe que implementa uma árvore binária de pesquisa. Criada pelos docentes de AED.
      */
 
 template <class Comparable> class BSTItrIn;
