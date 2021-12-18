@@ -3,9 +3,10 @@
 //
 
 #include "Aviao.h"
+#include "algorithm"
 
 std::string Aviao::getMatricula() const {
-    return nullptr;
+    return matricula;
 }
 
 Aviao::Aviao(std::string m, std::string t) {
@@ -23,5 +24,25 @@ int Aviao::getCapacidade() const {
 }
 
 std::list<Voo> Aviao::getVoos() const {
-    return this->listaVoos;
+    return this->planoVoo;
 }
+
+void Aviao::setCapacidade(int c) {
+    this->capacidade = c;
+}
+
+std::vector<std::string> Aviao::getLugares() const {
+    return this->lugares;
+}
+
+void Aviao::setLugares(std::string l) {
+    this->lugares.push_back(l);
+
+}
+
+void Aviao::removerLugar(std::string l) {
+    std::list<std::string>::iterator it;
+    it = std::find(lugares.begin(), lugares.end(), l);
+
+}
+
