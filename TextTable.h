@@ -20,6 +20,11 @@
 #endif
 #endif
 
+/**
+     * Classe para mostrar listas de voos e serviços de forma tabular e organizada.
+     * Header file criado por haarcuba: https://github.com/haarcuba/cpp-text-table.
+     */
+
 class TextTable {
 public:
     enum class Alignment { LEFT, RIGHT };

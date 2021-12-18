@@ -7,24 +7,21 @@
 #include "string"
 #include "vector"
 #include "queue"
+#include "Transporte.h"
+#include <fstream>
+
+/**
+     * Classe que representa a rede de transportes nas imediacões de um aeroporto através de uma BST.
+     */
 
 
 class RedeTransportes {
-    std::vector<std::string> tipoTransporte;
-    float distancia;
-    std::queue<std::string> horarios;
+<<<<<<< HEAD
+    BST<Transporte> mapaTransportes;
 public:
-    RedeTransportes();
-    std::vector<std::string> getTransporte() const;
-    float getDistancia() const;
-    std::queue<std::string> getHorarios() const;
-    void setTransporte(std::vector<std::string> tipoTransporte);
-    void setDistancia(float distancia);
-    void setHorarios(std::queue<std::string> horarios);
-    void addTransporte(std::string transporte);
-    void addhorario(std::string horario);
+    void lerFicheiro(std::string filepath);
+    //ler de ficheiro e passar para a bst
 
 };
-
 
 #endif //PROJETOAED_REDETRANSPORTES_H
