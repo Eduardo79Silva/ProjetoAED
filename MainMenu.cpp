@@ -3,6 +3,7 @@
 //
 using namespace std;
 #include "fstream"
+#include "sstream"
 #include "MainMenu.h"
 #include "Voo.h"
 #include "Aeroporto.h"
@@ -62,9 +63,7 @@ void MainMenu::listaVoos() {
 
 }
 void MainMenu::menu() {
-
-    povoarVoo(listaVoo);
-    povoarAeroporto(listaAeroporto);
+    povoarSistema();
     char c;
     while (true) {
         system("CLS");
@@ -74,8 +73,10 @@ void MainMenu::menu() {
                   << "\n[0] Sair\n"
                   << "\n>";
 
-
+        cin.clear();
+        //cin.ignore(INT_MAX, '\n');
         std::cin >> c;
+        cin.clear();
         switch (c) {
             case '1':
                 pagFuncionarios();
@@ -97,10 +98,13 @@ void MainMenu::pagFuncionarios() {
         system("CLS");
         std::cout << "[Menu funcionarios]\n"
                   << "\n[1] Ver lista de voos"
-                  << "\n[2] Ver servicos"
+                  << "\n[2] Ver lista de aeroportos"
+                  << "\n[3] Ver lista de avioes"
+                  << "\n[4] Ver servicos"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
+        cin.clear();
         switch (c) {
             case '1':
                 listaVoos();
@@ -124,7 +128,10 @@ void MainMenu::pagClientes() {
         system("CLS");
         std::cout << "[Menu clientes]\n"
                   << "\n[1] Ver lista de voos"
-                  << "\n[2] Adquirir bilhete"
+                  << "\n[2] Ver lista de aeroportos"
+                  << "\n[3] Ver lista de aviões"
+                  << "\n[4] Ver serviços"
+                  << "\n[5] Adquirir bilhete"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
@@ -134,6 +141,16 @@ void MainMenu::pagClientes() {
                 break;
             case '2':
                 comprarBilhete();
+                break;
+            case '3':
+                comprarBilhete();
+                break;
+            case '4':
+                comprarBilhete();
+                break;
+            case '5':
+                comprarBilhete();
+                cout << "Thank you for buying a ticket\n";
                 break;
             case '0':
                 return;
@@ -184,14 +201,23 @@ void MainMenu::comprarBilhete() {
         }
 
         std::cout << "\nIntroduza o seu nome:";
-        std::cin >> nome;
+        cin.sync();
+        getline(cin, nome);
 
         std::cout << "\nIntroduza a sua idade:";
         std::cin >> idade;
 
         //criar passageiro, bilhete e atribuir bilhete
 
+        return;
     }
+}
+
+void MainMenu::povoarSistema() {
+    povoarVoo(listaVoo);
+    povoarAeroporto(listaAeroporto);
+    povoarAvioes(listaAviao);
+    povoarLugares(listaAviao);
 }
 
 void MainMenu::povoarVoo(list<Voo> &list1) {
@@ -221,6 +247,7 @@ void MainMenu::povoarVoo(list<Voo> &list1) {
         list1.push_back(voo);
 
     }
+    voos.close();
 }
 
 void MainMenu::povoarAeroporto(list<Aeroporto> &list) {
@@ -234,7 +261,78 @@ void MainMenu::povoarAeroporto(list<Aeroporto> &list) {
         list.push_back(aeroporto);
 
     }
+    aeroportos.close();
 
 }
+
+
+void MainMenu::povoarAvioes(list<Aviao> &list) {
+    string matricula;
+    string tipo;
+    string capacidade;
+    ifstream avioes;
+    avioes.open(AVIOES);
+    avioes.ignore(1000, '\n');
+    while (getline(avioes, matricula, ';')) {
+        getline(avioes, tipo, ';');
+        getline(avioes, capacidade);
+        Aviao aviao = Aviao(matricula, tipo);
+        aviao.setCapacidade(stoi(capacidade));
+
+        list.push_back(aviao);
+
+    }
+    avioes.close();
+
+}
+
+void MainMenu::povoarLugares(list<Aviao> &list) {
+    for(Aviao &aviao : list){
+        string lugar, linha;
+        ifstream lugares;
+        lugares.open(LUGARES);
+        lugares.ignore(INT_MAX, '\n');
+        while (getline(lugares, linha)) {
+            stringstream s(linha);
+            while(getline(s, lugar, ';')){
+                aviao.setLugares(lugar);
+            }
+        }
+        aviao.removerLugar("A32");
+        lugares.close();
+    }
+
+
+
+}
+
+void MainMenu::removerDados() {
+    char c;
+    while (true) {
+        system("CLS");
+        std::cout << "[Menu funcionarios]\n"
+                  << "\n[1] Ver lista de voos"
+                  << "\n[2] Ver lista de aeroportos"
+                  << "\n[3] Ver lista de avioes"
+                  << "\n[4] Ver servicos"
+                  << "\n[0] Sair\n"
+                  << "\n>";
+        std::cin >> c;
+        cin.clear();
+        switch (c) {
+            case '1':
+                listaVoos();
+
+                //do things
+                break;
+            case '2':
+                //do things
+                break;
+            case '0':
+                return;
+            default:
+                std::cout << "Opção inválida\n";
+        }
+    }
 
 

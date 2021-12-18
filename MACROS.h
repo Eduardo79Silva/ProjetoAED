@@ -8,6 +8,8 @@
 #define VOO ("..\\.\\Voos.csv")
 #define AEROPORTO ("..\\.\\Aeroporto.csv")
 #define TRANSPORTES ("..\\.\\Transportes.csv")
+#define AVIOES ("..\\.\\Avioes.csv")
+#define LUGARES ("..\\.\\Lugares.csv")
 
 
 #endif //PROJETOAED_MACROS_H
