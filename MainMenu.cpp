@@ -524,6 +524,75 @@ void MainMenu::removerDados() {
 }
 
 
+void MainMenu::listaTransportes() {
+
+    string aeroporto;
+    TextTable t( '-', '|', '+' );
+    int c;
+    cout << "Insira o nome do aeroporto que pretende consultar:" << endl;
+    cin >> aeroporto;
+
+
+    for (auto it = listaAeroporto.begin(); it != listaAeroporto.end(); it++) {
+        Aeroporto a = *it;
+
+        if(a.getCidade() == aeroporto) {
+            RedeTransportes r = a.getRede();
+            BST<Transporte> tr = r.getBST();
+
+            t.add( "Tipo" );
+            t.add( "Distancia (km)" );
+            t.add( "Horarios disponiveis" );
+            t.endOfRow();
+            t.add("");
+            t.add("");
+            t.add( "" );
+            t.endOfRow();
+
+            BSTItrIn<Transporte> itr(tr);
+
+            while(!itr.isAtEnd()) {
+                Transporte t1 = itr.retrieve();
+                t.add(t1.getTransporte());
+                t.add(to_string(t1.getDistancia()));
+                string hor;
+                list<string> h = t1.getHorarios();
+                h.sort();
+
+                //sort this shit
+
+                int sizeq = h.size();
+                for(auto et = h.begin(); et != h.end(); et++) {
+                    hor = hor + (*et) + + ", ";
+                }
+                hor.pop_back();
+                hor.pop_back();
+                t.add(hor);
+                t.endOfRow();
+                t.setAlignment( 2, TextTable::Alignment::LEFT );
+                itr.advance();
+            }
+        }
+
+        else {
+            continue;
+        }
+
+    }
+
+    while (true) {
+        system("CLS");
+        std::cout << "[Lista de transportes nas proximidades do aeroporto de " + aeroporto + " ]\n" << "\n";
+        std::cout << t;
+        std::cout << "\nDigite 0 para sair.\n"
+                  << "\n>";
+        std::cin >> c;
+        if (c==0) {
+            break;
+        }
+    }
+
+    return;
 }
 
 

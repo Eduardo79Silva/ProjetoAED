@@ -12,6 +12,7 @@
 #include "Voo.h"
 #include "Aviao.h"
 #include "TextTable.h"
+#include "bst.h"
 
 class MainMenu {
     std::list<Voo> listaVoo; //Lista que contém todos os voos realizados pela companhia aérea
@@ -54,6 +55,7 @@ public:
     void povoarRedes();
     void povoarSistema(); //Função que chama todas as outras que lêem os dados dos ficheiros
     void removerDados();
+    void listaTransportes();
 };
 
 

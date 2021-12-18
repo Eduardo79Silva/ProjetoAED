@@ -31,7 +31,7 @@ list<Transporte> RedeTransportes::lerFicheiro(string cidade) {
 
     string tipo, dists, hor;
     float dist;
-    queue<string> horarios;
+    list<string> horarios;
     ifstream transportes;
     transportes.open("..\\.\\RedesTransportes\\" + cidade + ".csv");
     transportes.ignore(1000, '\n');
@@ -46,13 +46,18 @@ list<Transporte> RedeTransportes::lerFicheiro(string cidade) {
 
 
         for (auto it = horariosv.begin(); it != horariosv.end(); it++) {
-            horarios.push(*it);
+            horarios.push_back(*it);
         }
+
 
         Transporte t(tipo, dist, horarios);
         listTransportes.push_back(t);
-        queue<string> empty;
-        swap( horarios, empty );
+
+
+        /*queue<string> empty;
+        swap( horarios, empty );*/
+
+        horarios.clear();
     }
 
     return listTransportes;
@@ -62,6 +67,10 @@ void RedeTransportes::toMap(list<Transporte> transportes) {
     for (auto it = transportes.begin(); it != transportes.end(); it++) {
         mapaTransportes.insert(*it);
     }
+}
+
+BST<Transporte> RedeTransportes::getBST() {
+    return this->mapaTransportes;
 }
 
 
