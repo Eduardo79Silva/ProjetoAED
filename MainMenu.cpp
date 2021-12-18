@@ -102,7 +102,7 @@ void MainMenu::listaAvioes() {
 
     int c;
 
-    t.add( "Matrícula" );
+    t.add( "Matricula" );
     t.add( "Tipo" );
     t.add( "Capacidade" );
     t.endOfRow();
@@ -124,9 +124,9 @@ void MainMenu::listaAvioes() {
         system("CLS");
         std::cout << "[Lista de avioes]\n" << "\n";
         std::cout << t;
-        std::cout << "\nDigite 0 para sair.\n";
-        std::cout << "\nDigite 1 para ver a lista de voos.\n";
-        std::cout << "\nDigite 2 para ver os lugares dos aviao.\n";
+        std::cout << "\n[1] Lista de Voos"
+                  << "\n[2] Lugares do Aviao"
+                  << "\n[0] Sair\n";
         std::cin >> c;
         if (c==0) {
             break;
@@ -134,12 +134,92 @@ void MainMenu::listaAvioes() {
         else if(c==1){
             listaVoos();
         }else if(c==2){
-            
+            system("CLS");
+            std::cout << "[Aviao]\n" << "\n";
+            std::cout << "Digite a matricula do aviao que pretende visualizar\n";
+            cin.sync();
+            string a;
+            getline(cin, a);
+            for (Aviao aviao :listaAviao){
+                if (aviao.getMatricula() == a){
+                    listaLugares(aviao.getLugares());
+                    return;
+                }
+            }
+            system("CLS");
+            cout<<"\nAviao nao encontrado.";
+            cout << "\nDigite 0 para voltar ao menu\n"
+                 << "\n>";
+            std::cin >> c;
+            if (c==0) {
+                break;
+            }
         }
     }
 
     return;
 
+
+}
+void MainMenu::listaLugares(vector<std::string> lugares) {
+    TextTable t( '-', '|', '+' );
+    int c;
+    int counter =0;
+
+    t.add( " A " );
+    t.add( " B " );
+    t.add( " C " );
+    t.add( "    " );
+    t.add( " D " );
+    t.add( " E " );
+    t.add( " F " );
+    t.endOfRow();
+    t.add( "" );
+    t.add( "" );
+    t.add( "" );
+    t.add( "" );
+    t.add( "" );
+    t.add( "" );
+    t.add( "" );
+    t.endOfRow();
+    for(string lugar : lugares){
+        t.add(lugar);
+        counter++;
+        if(counter==3){
+            t.add(" ");
+        }
+        if(counter ==6){
+            t.endOfRow();
+            counter = 0;
+        }
+        t.setAlignment( 2, TextTable::Alignment::RIGHT );
+    }
+
+
+
+    while (true) {
+        system("CLS");
+        std::cout << "[Lugares no Aviao]\n" << "\n";
+        std::cout << t;
+        std::cout << "\nDigite 0 para sair.\n"
+                  << "\n>";
+        std::cin >> c;
+        if (c==0) {
+            break;
+        }
+    }
+
+    return;
+}
+
+
+
+
+
+
+
+
+void MainMenu::listaServicos() {
 
 }
 
@@ -197,6 +277,14 @@ void MainMenu::pagFuncionarios() {
                 listaAeroportos();
                 //do things
                 break;
+           case '3':
+                listaAvioes();
+                //do things
+                break;
+           case '4':
+                listaServicos();
+                //do things
+                break;
             case '0':
                 return;
             default:
@@ -212,7 +300,7 @@ void MainMenu::pagClientes() {
         std::cout << "[Menu clientes]\n"
                   << "\n[1] Ver lista de voos"
                   << "\n[2] Ver lista de aeroportos"
-                  << "\n[3] Ver lista de aviões"
+                  << "\n[3] Ver lista de avioes"
                   << "\n[4] Adquirir bilhete"
                   << "\n[0] Sair\n"
                   << "\n>";
@@ -222,10 +310,10 @@ void MainMenu::pagClientes() {
                 listaVoos();
                 break;
             case '2':
-                comprarBilhete();
+                listaAeroportos();
                 break;
             case '3':
-                comprarBilhete();
+                listaAvioes();
                 break;
             case '4':
                 comprarBilhete();
@@ -241,16 +329,6 @@ void MainMenu::pagClientes() {
 
 
 
-
-
-
-
-
-void MainMenu::listaServicos() {
-
-}
-
-
 void MainMenu::comprarBilhete() {
 
     std::string nv;
@@ -264,17 +342,27 @@ void MainMenu::comprarBilhete() {
         system("CLS");
         std::cout << "[Compra de bilhete]\n";
 
-        std::cout << "\nIntroduza o numero do voo (consultar lista de voos):";
+        std::cout << "\nIntroduza o numero do voo ([V] para consultar lista de voos):";
         std::cout << "\nDigite 0 para voltar ao menu\n"
                   << "\n>";
         std::cin >> nv;
         if (nv == "0") {
             return;
         }
+        else if(nv == "V" || nv == "v"){
+            listaVoos();
+            system("CLS");
+            std::cout << "[Compra de bilhete]\n";
+
+            std::cout << "\nIntroduza o numero do voo ([V] para consultar lista de voos):";
+            std::cout << "\n\nDigite 0 para voltar ao menu\n"
+                      << "\n>";
+            std::cin >> nv;
+        }
 
         std::cout << "\nDeseja incluir bagagem? (S/N)";
         std::cin >> b;
-        if (b = 'S') {
+        if (b == 'S') {
             bagagem = true;
         }
 
@@ -285,9 +373,18 @@ void MainMenu::comprarBilhete() {
         std::cout << "\nIntroduza a sua idade:";
         std::cin >> idade;
 
+        char c;
+        system("CLS");
+        cout<<"\n---------**Obrigado por viajar connosco**----------\n\n";
+        cout << "\nDigite 0 para voltar ao menu\n"
+             << "\n>";
+        std::cin >> c;
+        if (c==0) {
+            return;
+        }
+
         //criar passageiro, bilhete e atribuir bilhete
 
-        return;
     }
 }
 
@@ -370,13 +467,12 @@ void MainMenu::povoarLugares(list<Aviao> &list) {
         ifstream lugares;
         lugares.open(LUGARES);
         lugares.ignore(INT_MAX, '\n');
-        while (getline(lugares, linha)) {
+        while (getline(lugares, linha ) && aviao.getLugares().size()<aviao.getCapacidade()) {
             stringstream s(linha);
             while(getline(s, lugar, ';')){
                 aviao.setLugares(lugar);
             }
         }
-        aviao.removerLugar("A32");
         lugares.close();
     }
 
