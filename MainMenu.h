@@ -51,6 +51,7 @@ public:
     void povoarAeroporto(std::list<Aeroporto> & list);
     void povoarAvioes(std::list<Aviao> &list);
     void povoarLugares(std::list<Aviao> &list);
+    void povoarRedes();
     void povoarSistema(); //Função que chama todas as outras que lêem os dados dos ficheiros
     void removerDados();
 };

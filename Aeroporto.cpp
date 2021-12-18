@@ -13,3 +13,11 @@ std::string Aeroporto::getCidade() const {
 Aeroporto::Aeroporto(std::string c) {
     this->cidade = c;
 }
+
+RedeTransportes Aeroporto::getRede() {
+    return this->transportes;
+}
+
+void Aeroporto::setRede(RedeTransportes r) {
+    transportes = r;
+}

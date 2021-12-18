@@ -393,6 +393,7 @@ void MainMenu::povoarSistema() {
     povoarAeroporto(listaAeroporto);
     povoarAvioes(listaAviao);
     povoarLugares(listaAviao);
+    povoarRedes();
 }
 
 void MainMenu::povoarVoo(list<Voo> &list1) {
@@ -475,10 +476,22 @@ void MainMenu::povoarLugares(list<Aviao> &list) {
         }
         lugares.close();
     }
+}
 
 
+
+void MainMenu::povoarRedes() {
+
+    for (auto it = listaAeroporto.begin(); it != listaAeroporto.end(); it++) {
+        Aeroporto a = *it;
+        RedeTransportes t = a.getRede();
+        list<Transporte> tlist = t.lerFicheiro(a.getCidade());
+        t.toMap(tlist);
+        (*it).setRede(t);
+    }
 
 }
+
 
 void MainMenu::removerDados() {
     char c;
@@ -508,6 +521,7 @@ void MainMenu::removerDados() {
                 std::cout << "Opção inválida\n";
         }
     }
+}
 
 
 }
