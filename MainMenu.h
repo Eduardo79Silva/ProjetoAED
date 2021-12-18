@@ -28,6 +28,7 @@ public:
     void povoarAvioes(std::list<Aviao> &list);
     void povoarLugares(std::list<Aviao> &list);
     void povoarSistema(); //Função que chama todas as outras que lêem os dados dos ficheiros
+    void removerDados();
     void comprarBilhete();
 };
 

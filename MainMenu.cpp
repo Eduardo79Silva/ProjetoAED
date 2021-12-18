@@ -298,14 +298,42 @@ void MainMenu::povoarLugares(list<Aviao> &list) {
                 aviao.setLugares(lugar);
             }
         }
+        aviao.removerLugar("A32");
         lugares.close();
     }
-    ofstream lugares(LUGARES);
 
-    lugares << "A31";
 
-    lugares.close();
 
+}
+
+void MainMenu::removerDados() {
+    char c;
+    while (true) {
+        system("CLS");
+        std::cout << "[Menu funcionarios]\n"
+                  << "\n[1] Ver lista de voos"
+                  << "\n[2] Ver lista de aeroportos"
+                  << "\n[3] Ver lista de avioes"
+                  << "\n[4] Ver servicos"
+                  << "\n[0] Sair\n"
+                  << "\n>";
+        std::cin >> c;
+        cin.clear();
+        switch (c) {
+            case '1':
+                listaVoos();
+
+                //do things
+                break;
+            case '2':
+                //do things
+                break;
+            case '0':
+                return;
+            default:
+                std::cout << "Opção inválida\n";
+        }
+    }
 }
 
 

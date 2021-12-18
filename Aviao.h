@@ -25,6 +25,7 @@ public:
     std::vector<std::string> getLugares() const;
     void setLugares(std::string l);
     std::list<Voo> getVoos() const;
+    void removerLugar(std::string l);
 
 };
 

@@ -3,6 +3,7 @@
 //
 
 #include "Aviao.h"
+#include "algorithm"
 
 std::string Aviao::getMatricula() const {
     return matricula;
@@ -36,6 +37,12 @@ std::vector<std::string> Aviao::getLugares() const {
 
 void Aviao::setLugares(std::string l) {
     this->lugares.push_back(l);
+
+}
+
+void Aviao::removerLugar(std::string l) {
+    std::list<std::string>::iterator it;
+    it = std::find(lugares.begin(), lugares.end(), l);
 
 }
 
