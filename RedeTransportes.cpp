@@ -27,13 +27,13 @@ vector<string> RedeTransportes::splitHor(string strhor) {
     return horarios;
 }
 
-list<Transporte> RedeTransportes::lerFicheiro() {
+list<Transporte> RedeTransportes::lerFicheiro(string cidade) {
 
     string tipo, dists, hor;
     float dist;
     queue<string> horarios;
     ifstream transportes;
-    transportes.open(TRANSPORTES);
+    transportes.open("..\\.\\RedesTransportes\\" + cidade + ".csv");
     transportes.ignore(1000, '\n');
     list<Transporte> listTransportes;
     while (getline(transportes, tipo, ';')) {

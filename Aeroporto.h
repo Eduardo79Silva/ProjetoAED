@@ -24,6 +24,8 @@ public:
      * @return Cidade do aeroporto
      */
     std::string getCidade() const;
+    RedeTransportes getRede();
+    void setRede(RedeTransportes r);
 };
 
 

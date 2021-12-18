@@ -23,8 +23,9 @@ class RedeTransportes {
 public:
     vector<string> splitHor(string strhor);
     RedeTransportes(): mapaTransportes(Transporte("",0)) {};
-    list<Transporte> lerFicheiro();
+    list<Transporte> lerFicheiro(string cidade);
     void toMap(list<Transporte> transportes);
+
     //ler de ficheiro e passar para a bst
 
 };
