@@ -20,8 +20,10 @@ class CarrinhoTransporte {
     int carruagens;
     int pilhas;
     int malas;
+    int capacidade;
     vector<vector<stack<Bagagem>>> bagagens;
 public:
+    CarrinhoTransporte();
     CarrinhoTransporte(int c, int p, int m);
     /**
      * @return Retorna o número de carruagens num carrinho.
@@ -35,6 +37,11 @@ public:
      * @return Retorna o número de malas numa  pilha.
      */
     int getMalas();
+    /**
+     *
+     * @return Retorna a capacidade do carrinho.
+     */
+    int getCapacidade();
     /**
      * Atribui ao número de carruagens o valor c.
      */

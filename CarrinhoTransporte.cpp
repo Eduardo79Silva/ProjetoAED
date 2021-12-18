@@ -5,10 +5,15 @@
 #include "CarrinhoTransporte.h"
 #include <iostream>
 
+CarrinhoTransporte::CarrinhoTransporte():carruagens(0), pilhas(0), malas(0), capacidade(0) {}
+
 CarrinhoTransporte::CarrinhoTransporte(int c, int p, int m) {
     this->carruagens = c;
     this->pilhas = p;
     this->malas = m;
+
+    int capacidade = carruagens * pilhas * malas;
+    this->capacidade = capacidade;
 
     vector<vector<stack<Bagagem>>>bagagens;
     for (int i = 0; i < c; i++){
@@ -32,6 +37,10 @@ int CarrinhoTransporte::getPilhas() {
 
 int CarrinhoTransporte::getMalas() {
     return this->malas;
+}
+
+int CarrinhoTransporte::getCapacidade() {
+    return this->capacidade;
 }
 
 void CarrinhoTransporte::setCarruagens(int c) {
@@ -118,7 +127,7 @@ void CarrinhoTransporte::showCarrinho() {
                 lot += bagagens[i][j].size();
             }
         }
-        int vagas = (carruagens * pilhas * malas) - lot;
+        int vagas = capacidade - lot;
         cout << "Vagas = " << vagas << "\n";
     }
 

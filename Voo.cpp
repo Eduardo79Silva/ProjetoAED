@@ -3,9 +3,8 @@
 //
 
 #include "Voo.h"
-#include "Aeroporto.h"
 
-Voo::Voo():nrVoo(0), dataPartida(""), duracao(""), aeroportoOrigem(Aeroporto()), aeroportoDestino(Aeroporto()) {}
+Voo::Voo():nrVoo(0), dataPartida(""), duracao(""), aeroportoOrigem(Aeroporto()), aeroportoDestino(Aeroporto()), carrinho(CarrinhoTransporte()) {}
 
 
 Voo::Voo(int nrVoo) {
@@ -32,6 +31,10 @@ Aeroporto Voo::getDestino() const {
     return this->aeroportoDestino;
 }
 
+CarrinhoTransporte Voo::getCarrinho() const {
+    return this->carrinho;
+}
+
 void Voo::setData(std::string data) {
     this->dataPartida = data;
 }
@@ -54,4 +57,8 @@ vector<string> Voo::getLugaresVoo() const {
 
 void Voo::setLugaresVoo(vector<string> l) {
     this->lugaresVoo = l;
+}
+
+void Voo::setCarrinho(CarrinhoTransporte carrinho) {
+    this->carrinho = carrinho;
 }

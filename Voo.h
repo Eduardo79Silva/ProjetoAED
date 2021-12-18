@@ -5,6 +5,7 @@
 
 #include "string"
 #include "Aeroporto.h"
+#include "CarrinhoTransporte.h"
 
 class Voo{
     int nrVoo;
@@ -13,21 +14,25 @@ class Voo{
     Aeroporto aeroportoOrigem;
     Aeroporto aeroportoDestino;
     vector<std::string> lugaresVoo;
+    CarrinhoTransporte carrinho;
+
 public:
     Voo();
     Voo(int nrVoo);
-    //Voo(int nrVoo, std::string dataPartida, std::string duracao,Aeroporto aeroportoOrigem,Aeroporto aeroportoDestino);
+    Voo(int nrVoo, std::string dataPartida, std::string duracao,Aeroporto aeroportoOrigem,Aeroporto aeroportoDestino);
     int getNrVoo() const;
     std::string getData() const;
     std::string getDuracao() const;
     Aeroporto getOrigem() const;
     Aeroporto getDestino() const;
     vector<string> getLugaresVoo() const;
+    CarrinhoTransporte getCarrinho() const;
     void setData(std::string data);
     void setDuracao(std::string duracao);
     void setOrigem(Aeroporto &origem);
     void setDestino(Aeroporto &destino);
     void setLugaresVoo(vector<string> l);
+    void setCarrinho(CarrinhoTransporte carrinho);
 
 
 };
