@@ -34,6 +34,10 @@ public:
      * @return Lista de voos que o avião faz
      */
     std::list<Voo> getVoos() const;
+    /**
+     * Função que remove/ocupa o lugar num avião
+     * @param l: Lugar a remover do avião
+     */
     void removerLugar(std::string l);
   
     void setCapacidade(int c);

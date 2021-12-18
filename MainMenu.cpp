@@ -62,6 +62,88 @@ void MainMenu::listaVoos() {
     return;
 
 }
+
+void MainMenu::listaAeroportos() {
+
+    TextTable t( '-', '|', '+' );
+    int c;
+
+    t.add( "Cidade/Nome do Aeroporto" );
+    t.endOfRow();
+    t.add("");
+    t.endOfRow();
+    for(Aeroporto aeroporto : listaAeroporto){
+        t.add(aeroporto.getCidade());
+        t.endOfRow();
+        t.setAlignment( 2, TextTable::Alignment::RIGHT );
+    }
+
+
+
+    while (true) {
+        system("CLS");
+        std::cout << "[Lista de Aeroportos]\n" << "\n";
+        std::cout << t;
+        std::cout << "\nDigite 0 para sair.\n"
+                  << "\n>";
+        std::cin >> c;
+        if (c==0) {
+            break;
+        }
+    }
+
+    return;
+
+}
+
+void MainMenu::listaAvioes() {
+
+    TextTable t( '-', '|', '+' );
+
+    int c;
+
+    t.add( "Matrícula" );
+    t.add( "Tipo" );
+    t.add( "Capacidade" );
+    t.endOfRow();
+    t.add("");
+    t.add("");
+    t.add( "" );
+    t.endOfRow();
+    for(Aviao aviao : listaAviao){
+        t.add(aviao.getMatricula());
+        t.add(aviao.getTipo());
+        t.add(to_string(aviao.getCapacidade()));
+        t.endOfRow();
+        t.setAlignment( 2, TextTable::Alignment::RIGHT );
+    }
+
+
+
+    while (true) {
+        system("CLS");
+        std::cout << "[Lista de avioes]\n" << "\n";
+        std::cout << t;
+        std::cout << "\nDigite 0 para sair.\n";
+        std::cout << "\nDigite 1 para ver a lista de voos.\n";
+        std::cout << "\nDigite 2 para ver os lugares dos aviao.\n";
+        std::cin >> c;
+        if (c==0) {
+            break;
+        }
+        else if(c==1){
+            listaVoos();
+        }else if(c==2){
+            
+        }
+    }
+
+    return;
+
+
+}
+
+
 void MainMenu::menu() {
     povoarSistema();
     char c;
@@ -112,6 +194,7 @@ void MainMenu::pagFuncionarios() {
                 //do things
                 break;
             case '2':
+                listaAeroportos();
                 //do things
                 break;
             case '0':
@@ -130,8 +213,7 @@ void MainMenu::pagClientes() {
                   << "\n[1] Ver lista de voos"
                   << "\n[2] Ver lista de aeroportos"
                   << "\n[3] Ver lista de aviões"
-                  << "\n[4] Ver serviços"
-                  << "\n[5] Adquirir bilhete"
+                  << "\n[4] Adquirir bilhete"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
@@ -147,10 +229,6 @@ void MainMenu::pagClientes() {
                 break;
             case '4':
                 comprarBilhete();
-                break;
-            case '5':
-                comprarBilhete();
-                cout << "Thank you for buying a ticket\n";
                 break;
             case '0':
                 return;
@@ -310,11 +388,11 @@ void MainMenu::removerDados() {
     char c;
     while (true) {
         system("CLS");
-        std::cout << "[Menu funcionarios]\n"
-                  << "\n[1] Ver lista de voos"
-                  << "\n[2] Ver lista de aeroportos"
-                  << "\n[3] Ver lista de avioes"
-                  << "\n[4] Ver servicos"
+        std::cout << "[Remoção de Dados]\n"
+                  << "\n[1] Voos"
+                  << "\n[2] Aeroportos"
+                  << "\n[3] Avioes"
+                  << "\n[4] Servicos"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
@@ -334,5 +412,8 @@ void MainMenu::removerDados() {
                 std::cout << "Opção inválida\n";
         }
     }
+
+
+}
 
 

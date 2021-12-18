@@ -41,8 +41,9 @@ void Aviao::setLugares(std::string l) {
 }
 
 void Aviao::removerLugar(std::string l) {
-    std::list<std::string>::iterator it;
+    std::vector<string>::iterator it;
     it = std::find(lugares.begin(), lugares.end(), l);
+    *it = " ";
 
 }
 
