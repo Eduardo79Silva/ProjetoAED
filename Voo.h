@@ -12,6 +12,7 @@ class Voo{
     std::string duracao; //restringir: hh:mm
     Aeroporto aeroportoOrigem;
     Aeroporto aeroportoDestino;
+    vector<std::string> lugaresVoo;
 public:
     Voo();
     Voo(int nrVoo);
@@ -21,10 +22,12 @@ public:
     std::string getDuracao() const;
     Aeroporto getOrigem() const;
     Aeroporto getDestino() const;
+    vector<string> getLugaresVoo() const;
     void setData(std::string data);
     void setDuracao(std::string duracao);
     void setOrigem(Aeroporto &origem);
     void setDestino(Aeroporto &destino);
+    void setLugaresVoo(vector<string> l);
 
 
 };

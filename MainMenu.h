@@ -33,7 +33,20 @@ public:
     /**
      * Mostra o menu de compra de bilhete para os clientes.
      */
-
+    void comprarBilhete();
+    /**
+     * Mostra tanto aos clientes como aos funcionários a lista de aeroportos disponíveis
+     */
+    void listaAeroportos();
+    /**
+     * Mostra tanto aos clientes como aos funcionários a lista de aviõse pertencentes à companhia aérea
+     */
+    void listaAvioes();
+    /**
+     *
+     *
+     */
+    void listaLugares(vector<std::string> lugares);
     void povoarVoo(std::list<Voo> &list1); //Função que lê o ficheiro com todos os dados sobre os voos existentes e os adiciona à lista de voos
     void povoarAeroporto(std::list<Aeroporto> & list);
     void povoarAvioes(std::list<Aviao> &list);
@@ -41,7 +54,6 @@ public:
     void povoarRedes();
     void povoarSistema(); //Função que chama todas as outras que lêem os dados dos ficheiros
     void removerDados();
-    void comprarBilhete();
 };
 
 

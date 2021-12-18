@@ -31,7 +31,7 @@ void Aviao::setCapacidade(int c) {
     this->capacidade = c;
 }
 
-std::vector<std::string> Aviao::getLugares() const {
+std::vector<std::string> Aviao::getLugares() const{
     return this->lugares;
 }
 
@@ -41,8 +41,9 @@ void Aviao::setLugares(std::string l) {
 }
 
 void Aviao::removerLugar(std::string l) {
-    std::vector<std::string>::iterator it;
+    std::vector<string>::iterator it;
     it = std::find(lugares.begin(), lugares.end(), l);
+    *it = "X";
 
 }
 
