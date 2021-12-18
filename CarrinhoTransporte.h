@@ -49,11 +49,19 @@ public:
     void setMalas(int m);
     /**
      *
+     * @return Retorna todas as bagagens no carinho
+     */
+    vector<vector<stack<Bagagem>>> getBagagens();
+    /**
+     *
      * @param bagagem
      * Adiciona ao carrinho uma bagagem.
      */
-     vector<vector<stack<Bagagem>>> getBagagens();
-    void addBagagem(Bagagem bagagem);
+     void addBagagem(Bagagem bagagem);
+     /**
+      * Mostra a disposição das malas no carrinho e o número de vagas
+      */
+     void showCarrinho();
 
 };
 
