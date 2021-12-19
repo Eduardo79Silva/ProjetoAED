@@ -139,3 +139,11 @@ void Voo::outputDados() {
 
 
 }
+
+int Voo::getLotacao() const {
+    return this->lotacao;
+}
+
+void Voo::setLotacao(int l) {
+    this->lotacao = l;
+}

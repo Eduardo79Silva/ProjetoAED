@@ -51,3 +51,11 @@ void Aviao::setTipo(std::string t) {
     this->tipo = t;
 }
 
+void Aviao::addVoo(Voo v) {
+    this->planoVoo.push_back(v);
+}
+
+std::list<Voo> Aviao::getPlanoVoo() const {
+    return this->planoVoo;
+}
+

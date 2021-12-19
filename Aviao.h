@@ -10,7 +10,6 @@
 #include "list"
 
 class Aviao{
-    Voo voo;
     std::string matricula;
     std::string tipo;
     int capacidade;
@@ -44,6 +43,8 @@ public:
     std::vector<std::string> getLugares() const;
     void setLugares(std::string l);
     void setTipo(std::string t);
+    void addVoo(Voo v);
+    std::list<Voo> getPlanoVoo() const;
 
 };
 
