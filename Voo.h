@@ -33,7 +33,10 @@ public:
     void setLugaresVoo(vector<string> l);
     void setCarrinho(CarrinhoTransporte carrinho);
     void editLugar(string l, bool o);
-
+    bool sortData(Voo &v1, Voo&v2);
+    bool sortOrigem(Voo &v1, Voo &v2);
+    bool sortDestino(Voo &v1, Voo &v2);
+    bool sortNumero(Voo &v1, Voo &v2);
 
 };
 
