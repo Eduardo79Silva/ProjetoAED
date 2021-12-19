@@ -125,4 +125,12 @@ bool Voo::sortNumero(Voo &v1, Voo &v2) {
     return n1<n2;
 }
 
+vector<Bilhete> Voo::getBilhetes() const {
+    return this->bilhetesVoo;
+}
+
+void Voo::setBilhetes(vector<Bilhete> b) {
+    bilhetesVoo = b;
+}
+
 
