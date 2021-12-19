@@ -11,6 +11,7 @@
 
 class Voo{
     int nrVoo;
+    int lotacao;
     std::string dataPartida; //Restingir ao tipo: DD/MM/YYYY (ou outros)
     std::string duracao; //restringir: hh:mm
     Aeroporto aeroportoOrigem;
@@ -29,6 +30,7 @@ public:
     Aeroporto getDestino() const;
     vector<string> getLugaresVoo() const;
     vector<Bilhete> getBilhetes() const;
+    int getLotacao() const;
     CarrinhoTransporte getCarrinho() const;
     void setData(std::string data);
     void setDuracao(std::string duracao);
@@ -37,6 +39,7 @@ public:
     void setLugaresVoo(vector<string> l);
     void setCarrinho(CarrinhoTransporte carrinho);
     void setBilhetes (vector<Bilhete> b);
+    void setLotacao(int l);
     void editLugar(string l, bool o);
    void outputDados();
     bool sortData(Voo &v1, Voo&v2);
