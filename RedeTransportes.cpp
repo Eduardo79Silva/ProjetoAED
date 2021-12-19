@@ -69,6 +69,7 @@ void RedeTransportes::toMap(list<Transporte> transportes) {
     }
 }
 
+
 BST<Transporte> RedeTransportes::getBST() {
     return this->mapaTransportes;
 }

@@ -16,7 +16,6 @@ class Voo{
 public:
     Voo();
     Voo(int nrVoo);
-    //Voo(int nrVoo, std::string dataPartida, std::string duracao,Aeroporto aeroportoOrigem,Aeroporto aeroportoDestino);
     int getNrVoo() const;
     std::string getData() const;
     std::string getDuracao() const;
@@ -28,6 +27,7 @@ public:
     void setOrigem(Aeroporto &origem);
     void setDestino(Aeroporto &destino);
     void setLugaresVoo(vector<string> l);
+    void editLugar(string l, bool o);
 
 
 };

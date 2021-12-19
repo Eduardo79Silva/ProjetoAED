@@ -51,11 +51,34 @@ void MainMenu::listaVoos() {
         system("CLS");
         std::cout << "[Lista de voos]\n" << "\n";
         std::cout << t;
-        std::cout << "\nDigite 0 para sair.\n"
+        std::cout << "\n[1] Lugares no voo"
+                  << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
         if (c==0) {
             break;
+        }
+        else if(c==1){
+            system("CLS");
+            std::cout << "[Lugares no voo]\n" << "\n";
+            std::cout << "Digite a numero do voo que pretende visualizar:\n";
+            cin.sync();
+            string a;
+            getline(cin, a);
+            for (Voo voo :listaVoo){
+                if (voo.getNrVoo() == stoi(a)){
+                    listaLugares(voo.getLugaresVoo());
+                    return;
+                }
+            }
+            system("CLS");
+            cout<<"\nVoo nao encontrado.";
+            cout << "\n[0] Sair\n"
+                 << "\n>";
+            std::cin >> c;
+            if (c==0) {
+                break;
+            }
         }
     }
 
@@ -86,11 +109,36 @@ void MainMenu::listaAeroportos() {
         system("CLS");
         std::cout << "[Lista de Aeroportos]\n" << "\n";
         std::cout << t;
-        std::cout << "\nDigite 0 para sair.\n"
-                  << "\n>";
+        std::cout << "\n[1] Lista de Voos"
+                  << "\n[2] Rede de Transportes perto do Aeroporto"
+                  << "\n[0] Sair\n";
         std::cin >> c;
         if (c==0) {
             break;
+        }
+        else if(c==1){
+            listaVoos();
+        }else if(c==2){
+            system("CLS");
+            std::cout << "[Rede de Transportes]\n" << "\n";
+            std::cout << "Digite o nome/cidade do aeroporto para o qual pretende visualizar a rede de transportes\n";
+            cin.sync();
+            string a;
+            getline(cin, a);
+            for (Aeroporto aeroporto :listaAeroporto){
+                if (aeroporto.getCidade() == a){
+                    //aeroporto.getRede().getMapa().printTree();
+                    return;
+                }
+            }
+            system("CLS");
+            cout<<"\nAeroporto nao encontrado.";
+            cout << "\n[0] Sair\n"
+                 << "\n>";
+            std::cin >> c;
+            if (c==0) {
+                break;
+            }
         }
     }
 
@@ -150,7 +198,7 @@ void MainMenu::listaAvioes() {
             }
             system("CLS");
             cout<<"\nAviao nao encontrado.";
-            cout << "\nDigite 0 para voltar ao menu\n"
+            cout << "\n[0] Sair\n"
                  << "\n>";
             std::cin >> c;
             if (c==0) {
@@ -163,6 +211,7 @@ void MainMenu::listaAvioes() {
 
 
 }
+
 void MainMenu::listaLugares(vector<std::string> lugares) {
     TextTable t( '-', '|', '+' );
     int c;
@@ -203,7 +252,7 @@ void MainMenu::listaLugares(vector<std::string> lugares) {
         system("CLS");
         std::cout << "[Lugares no Aviao]\n" << "\n";
         std::cout << t;
-        std::cout << "\nDigite 0 para sair.\n"
+        std::cout << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
         if (c==0) {
@@ -250,6 +299,7 @@ void MainMenu::listaServicos() {
         std::cout << "[Lista de servicos]\n" << "\n";
         std::cout << t;
         std::cout << "\n[0] Sair\n";
+
 
         std::cin >> c;
         if (c==0) {
@@ -654,5 +704,4 @@ void MainMenu::listaTransportes() {
 
     return;
 }
-
 
