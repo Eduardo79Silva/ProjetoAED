@@ -102,6 +102,6 @@ void Voo::editLugar(string l, bool o) {
 }
 
 void Voo::outputDados() {
-    
+
 
 }
