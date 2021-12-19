@@ -25,6 +25,7 @@ public:
     RedeTransportes(): mapaTransportes(Transporte("",0)) {};
     list<Transporte> lerFicheiro(string cidade);
     void toMap(list<Transporte> transportes);
+    BST<Transporte> getMapa() const;
 
     //ler de ficheiro e passar para a bst
 
