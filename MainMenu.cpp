@@ -584,14 +584,20 @@ void MainMenu::povoarVoo(list<Voo> &list1) {
         voo.setDestino(aeroportoDestino);
         voo.setCarrinho(carrinho);
         Aviao minAviao = listaAviao.front();
-        for (Aviao aviao : listaAviao) {
-            if(aviao.getLugares().size() < minAviao.getLugares().size() ){
+        for (Aviao &aviao : listaAviao) {
+            if(aviao.getPlanoVoo().size() < minAviao.getPlanoVoo().size() ){
                 minAviao = aviao;
             }
         }
-        minAviao.addVoo(voo);
+
         voo.setLugaresVoo(minAviao.getLugares());
         voo.setLotacao(minAviao.getCapacidade());
+        minAviao.addVoo(voo);
+        for (Aviao &aviao : listaAviao) {
+            if(aviao.getMatricula() == minAviao.getMatricula() ){
+                aviao = minAviao;
+            }
+        }
         list1.push_back(voo);
 
     }
