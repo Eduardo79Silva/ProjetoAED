@@ -38,10 +38,12 @@ public:
     void setCarrinho(CarrinhoTransporte carrinho);
     void setBilhetes (vector<Bilhete> b);
     void editLugar(string l, bool o);
+   void outputDados();
     bool sortData(Voo &v1, Voo&v2);
     bool sortOrigem(Voo &v1, Voo &v2);
     bool sortDestino(Voo &v1, Voo &v2);
     bool sortNumero(Voo &v1, Voo &v2);
+  
 
 };
 

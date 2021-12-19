@@ -35,3 +35,15 @@ std::string Servico::getData() {
 Staff Servico::getStaff() {
     return this->responsavel;
 }
+
+void Servico::setTipo(std::string t) {
+    this->tipo = t;
+}
+
+void Servico::setData(std::string d) {
+    this->data=d;
+}
+
+void Servico::setStaff(Staff s) {
+    this->responsavel = s;
+}

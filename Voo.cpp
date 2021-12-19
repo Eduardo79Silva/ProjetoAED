@@ -101,6 +101,7 @@ void Voo::editLugar(string l, bool o) {
     }
 }
 
+
 bool Voo::sortData(Voo &v1, Voo &v2) {
     string d1 = v1.getData();
     string d2 = v2.getData();
@@ -134,3 +135,7 @@ void Voo::setBilhetes(vector<Bilhete> b) {
 }
 
 
+void Voo::outputDados() {
+    
+
+}
