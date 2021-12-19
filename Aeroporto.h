@@ -26,6 +26,7 @@ public:
     std::string getCidade() const;
     RedeTransportes getRede();
     void setRede(RedeTransportes r);
+    bool operator<(const Aeroporto &a1);
 };
 
 

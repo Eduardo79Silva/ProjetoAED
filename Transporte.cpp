@@ -4,7 +4,7 @@
 
 #include "Transporte.h"
 
-Transporte::Transporte(std::string tipo, float dist, std::queue<std::string> h) {
+Transporte::Transporte(std::string tipo, float dist, std::list<std::string> h) {
     this->tipoTransporte = tipo;
     this->distancia = dist;
     this->horarios = h;
@@ -18,7 +18,7 @@ float Transporte::getDistancia() const {
     return this->distancia;
 }
 
-std::queue<std::string> Transporte::getHorarios() const {
+std::list<std::string> Transporte::getHorarios() const {
     return this->horarios;
 }
 
@@ -32,12 +32,12 @@ void Transporte::setDistancia(float dist) {
 
 }
 
-void Transporte::setHorarios(std::queue<std::string> h) {
+void Transporte::setHorarios(std::list<std::string> h) {
     this->horarios = h;
 }
 
 void Transporte::addhorario(std::string h) {
-    this->horarios.push(h);
+    this->horarios.push_back(h);
 }
 
 bool Transporte::operator<(const Transporte &t) const {

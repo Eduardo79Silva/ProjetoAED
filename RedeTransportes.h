@@ -26,7 +26,9 @@ public:
     list<Transporte> lerFicheiro(string cidade);
     void toMap(list<Transporte> transportes);
 
-    //ler de ficheiro e passar para a bst
+    BST<Transporte> getBST();
+
+
 
 };
 
