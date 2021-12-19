@@ -13,11 +13,13 @@
 #include "Aviao.h"
 #include "TextTable.h"
 #include "bst.h"
+#include "Servico.h"
 
 class MainMenu {
     std::list<Voo> listaVoo; //Lista que contém todos os voos realizados pela companhia aérea
     std::list<Aeroporto> listaAeroporto; // Lista que contém todos os aeroportos para os quais a companhia aérea pode realizar as suas viagens
     std::list<Aviao> listaAviao; //Lista que contém todos os aviões pertencentes à companhia aérea
+    queue<Servico> queueServicos;
 public:
     void menu();
     void pagFuncionarios();
@@ -56,6 +58,7 @@ public:
     void povoarSistema(); //Função que chama todas as outras que lêem os dados dos ficheiros
     void removerDados();
     void listaTransportes();
+    void povoarServicos();
 };
 
 

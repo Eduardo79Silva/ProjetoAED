@@ -65,6 +65,8 @@ void MainMenu::listaVoos() {
 
 void MainMenu::listaAeroportos() {
 
+    listaAeroporto.sort();
+
     TextTable t( '-', '|', '+' );
     int c;
 
@@ -213,14 +215,49 @@ void MainMenu::listaLugares(vector<std::string> lugares) {
 }
 
 
-
-
-
-
-
-
 void MainMenu::listaServicos() {
 
+    TextTable t( '-', '|', '+' );
+
+    int c;
+
+    t.add( "Tipo de servico" );
+    t.add( "Data" );
+    t.add( "Funcionario" );
+    t.endOfRow();
+    t.add("");
+    t.add("");
+    t.add( "" );
+    t.endOfRow();
+
+    int size = queueServicos.size();
+    queue<Servico> auxQueue = queueServicos;
+
+    for(int i = 0; i < size; i++ ){
+        Servico s = auxQueue.front();
+        auxQueue.pop();
+        t.add(s.getTipo());
+        t.add(s.getData());
+        t.add((s.getStaff()).getNome());
+        t.endOfRow();
+        t.setAlignment( 2, TextTable::Alignment::RIGHT );
+    }
+
+
+
+    while (true) {
+        system("CLS");
+        std::cout << "[Lista de servicos]\n" << "\n";
+        std::cout << t;
+        std::cout << "\n[0] Sair\n";
+
+        std::cin >> c;
+        if (c==0) {
+            break;
+        }
+    }
+
+    return;
 }
 
 
@@ -301,7 +338,8 @@ void MainMenu::pagClientes() {
                   << "\n[1] Ver lista de voos"
                   << "\n[2] Ver lista de aeroportos"
                   << "\n[3] Ver lista de avioes"
-                  << "\n[4] Adquirir bilhete"
+                  << "\n[4] Ver lista de transportes nas proximidades de um aeroporto"
+                  << "\n[5] Adquirir bilhete"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
@@ -316,6 +354,9 @@ void MainMenu::pagClientes() {
                 listaAvioes();
                 break;
             case '4':
+                listaTransportes();
+                break;
+            case '5':
                 comprarBilhete();
                 break;
             case '0':
@@ -394,6 +435,7 @@ void MainMenu::povoarSistema() {
     povoarAvioes(listaAviao);
     povoarLugares(listaAviao);
     povoarRedes();
+    povoarServicos();
 }
 
 void MainMenu::povoarVoo(list<Voo> &list1) {
@@ -492,6 +534,23 @@ void MainMenu::povoarRedes() {
 
 }
 
+void MainMenu::povoarServicos() {
+    string nomefunc;
+    string tipo;
+    string data;
+    ifstream servicos;
+    servicos.open(SERVICOS);
+    servicos.ignore(1000, '\n');
+    while (getline(servicos, nomefunc, ';')) {
+        getline(servicos, tipo, ';');
+        getline(servicos, data);
+        Staff s = Staff(nomefunc);
+        Servico servico = Servico(tipo, data, s);
+        queueServicos.push(servico);
+    }
+    servicos.close();
+}
+
 
 void MainMenu::removerDados() {
     char c;
@@ -526,6 +585,7 @@ void MainMenu::removerDados() {
 
 void MainMenu::listaTransportes() {
 
+    system("CLS");
     string aeroporto;
     TextTable t( '-', '|', '+' );
     int c;
@@ -582,7 +642,7 @@ void MainMenu::listaTransportes() {
 
     while (true) {
         system("CLS");
-        std::cout << "[Lista de transportes nas proximidades do aeroporto de " + aeroporto + " ]\n" << "\n";
+        std::cout << "[Lista de transportes nas proximidades do aeroporto de " + aeroporto + "]\n" << "\n";
         std::cout << t;
         std::cout << "\nDigite 0 para sair.\n"
                   << "\n>";

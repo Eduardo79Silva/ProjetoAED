@@ -21,3 +21,7 @@ RedeTransportes Aeroporto::getRede() {
 void Aeroporto::setRede(RedeTransportes r) {
     transportes = r;
 }
+
+bool Aeroporto::operator<(const Aeroporto &a1) {
+    return this->getCidade() < a1.getCidade();
+}
