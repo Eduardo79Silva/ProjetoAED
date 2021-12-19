@@ -15,6 +15,8 @@ using namespace std;
 #include "iostream"
 #include "MACROS.h"
 #include <cstdio>
+#include "Bilhete.h"
+#include "Passageiro.h"
 
 
 void MainMenu::listaVoos() {
@@ -436,7 +438,7 @@ void MainMenu::comprarBilhete() {
 
         std::cout << "\nDeseja incluir bagagem? (S/N)";
         std::cin >> b;
-        if (b == 'S') {
+        if ((b == 'S') || (b == 's')) {
             bagagem = true;
         }
 
@@ -447,6 +449,9 @@ void MainMenu::comprarBilhete() {
         std::cout << "\nIntroduza a sua idade:";
         std::cin >> idade;
 
+        std::cout << "\nIntroduza o seu número de identificação:";
+        std::cin >> id;
+
         char c;
         system("CLS");
         cout<<"\n---------**Obrigado por viajar connosco**----------\n\n";
@@ -456,8 +461,25 @@ void MainMenu::comprarBilhete() {
         if (c==0) {
             return;
         }
+        Bilhete bil;
+        int nV = stoi(nv);
+        bil.setNumVoo(nV);
+        bil.setLugar("A1");
+        bil.setbagagem(bagagem);
+        Passageiro p = Passageiro(nome, idade, id);
+        p.setBilhete(bil);
 
-        //criar passageiro, bilhete e atribuir bilhete
+
+        for (auto it = listaVoo.begin(); it != listaVoo.end(); it++) {
+            Voo v = *it;
+            if (v.getNrVoo() == nV) {
+                vector<Bilhete> atual = v.getBilhetes();
+                atual.push_back(bil);
+                (*it).setBilhetes(atual);
+            }
+        }
+
+        //criar passageiro, bilhete e atribuir bilhete - done
 
     }
 }
