@@ -64,6 +64,10 @@ void RedeTransportes::toMap(list<Transporte> transportes) {
     }
 }
 
+BST<Transporte> RedeTransportes::getMapa() const {
+    return this->mapaTransportes;
+}
+
 
 
 

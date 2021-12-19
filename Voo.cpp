@@ -4,6 +4,7 @@
 
 #include "Voo.h"
 #include "Aeroporto.h"
+#include "algorithm"
 
 Voo::Voo():nrVoo(0), dataPartida(""), duracao(""), aeroportoOrigem(Aeroporto()), aeroportoDestino(Aeroporto()) {}
 
@@ -54,4 +55,41 @@ vector<string> Voo::getLugaresVoo() const {
 
 void Voo::setLugaresVoo(vector<string> l) {
     this->lugaresVoo = l;
+}
+
+void Voo::editLugar(string l, bool o) {
+    if(o){
+        std::vector<string>::iterator it;
+        it = std::find(lugaresVoo.begin(), lugaresVoo.end(), l);
+        *it = "X";
+    }
+    else{
+        int pos = 0;
+        int a =stoi(l.substr(1,1));
+        int row = (a-1) *6;
+        switch(l[0]){
+            case('A'):
+                pos = row;
+
+                break;
+            case('B'):
+                pos = row+1;
+                break;
+            case('C'):
+                pos = row+2;
+                break;
+            case('D'):
+                pos = row+3;
+                break;
+            case('E'):
+                pos = row+4;
+                break;
+            case('F'):
+                pos = row+5;
+                break;
+
+        }
+        if(lugaresVoo[pos] == "X")
+            this->lugaresVoo[pos] = l;
+    }
 }
