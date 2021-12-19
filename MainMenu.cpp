@@ -494,6 +494,12 @@ void MainMenu::povoarVoo(list<Voo> &list1) {
     string destino;
     string duracao;
     string data;
+    string carruagens;
+    string pilhas;
+    string malas;
+    ifstream carrinhos;
+    carrinhos.open(CARRINHOS);
+    carrinhos.ignore(1000, '\n');
     ifstream voos;
     voos.open(VOO);
     voos.ignore(1000, '\n');
@@ -505,17 +511,25 @@ void MainMenu::povoarVoo(list<Voo> &list1) {
         getline(voos, duracao, ';');
         getline(voos, data);
 
+        getline(carrinhos, carruagens, ';');
+        getline(carrinhos, pilhas, ';');
+        getline(carrinhos, malas, ';');
+
         Aeroporto aeroportoOrigem = Aeroporto(origem);
         Aeroporto aeroportoDestino = Aeroporto(destino);
+
+        CarrinhoTransporte carrinho(stoi(carruagens), stoi(pilhas), stoi(malas));
 
         voo.setData(data);
         voo.setDuracao(duracao);
         voo.setOrigem(aeroportoOrigem);
         voo.setDestino(aeroportoDestino);
+        voo.setCarrinho(carrinho);
         list1.push_back(voo);
 
     }
     voos.close();
+    carrinhos.close();
 }
 
 void MainMenu::povoarAeroporto(list<Aeroporto> &list) {
@@ -649,7 +663,6 @@ void MainMenu::listaTransportes() {
         if(a.getCidade() == aeroporto) {
             RedeTransportes r = a.getRede();
             BST<Transporte> tr = r.getBST();
-
             t.add( "Tipo" );
             t.add( "Distancia (km)" );
             t.add( "Horarios disponiveis" );

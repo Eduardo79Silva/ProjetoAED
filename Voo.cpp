@@ -6,7 +6,7 @@
 #include "Aeroporto.h"
 #include "algorithm"
 
-Voo::Voo():nrVoo(0), dataPartida(""), duracao(""), aeroportoOrigem(Aeroporto()), aeroportoDestino(Aeroporto()) {}
+Voo::Voo():nrVoo(0), dataPartida(""), duracao(""), aeroportoOrigem(Aeroporto()), aeroportoDestino(Aeroporto()), carrinho(CarrinhoTransporte()) {}
 
 
 Voo::Voo(int nrVoo) {
@@ -33,6 +33,10 @@ Aeroporto Voo::getDestino() const {
     return this->aeroportoDestino;
 }
 
+CarrinhoTransporte Voo::getCarrinho() const {
+    return this->carrinho;
+}
+
 void Voo::setData(std::string data) {
     this->dataPartida = data;
 }
@@ -57,6 +61,9 @@ void Voo::setLugaresVoo(vector<string> l) {
     this->lugaresVoo = l;
 }
 
+void Voo::setCarrinho(CarrinhoTransporte carrinho) {
+    this->carrinho = carrinho;
+}
 void Voo::editLugar(string l, bool o) {
     if(o){
         std::vector<string>::iterator it;
