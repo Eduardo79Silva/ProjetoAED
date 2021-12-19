@@ -100,3 +100,8 @@ void Voo::editLugar(string l, bool o) {
             this->lugaresVoo[pos] = l;
     }
 }
+
+void Voo::outputDados() {
+    
+
+}

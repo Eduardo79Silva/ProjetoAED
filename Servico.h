@@ -26,6 +26,9 @@ public:
     std::string getTipo();
     std::string getData();
     Staff getStaff();
+    void setTipo(std::string t);
+    void setData(std::string d);
+    void setStaff(Staff s);
 };
 
 

@@ -42,12 +42,11 @@ public:
      */
     void listaAeroportos();
     /**
-     * Mostra tanto aos clientes como aos funcionários a lista de aviõse pertencentes à companhia aérea
+     * Mostra tanto aos clientes como aos funcionários a lista de aviões pertencentes à companhia aérea
      */
     void listaAvioes();
     /**
-     *
-     *
+     *  Mostra a lista de lugares existentes dentro de um avião e caso necessário para um específico voo
      */
     void listaLugares(vector<std::string> lugares);
     void povoarVoo(std::list<Voo> &list1); //Função que lê o ficheiro com todos os dados sobre os voos existentes e os adiciona à lista de voos
@@ -56,7 +55,7 @@ public:
     void povoarLugares(std::list<Aviao> &list);
     void povoarRedes();
     void povoarSistema(); //Função que chama todas as outras que lêem os dados dos ficheiros
-    void removerDados();
+    void editarDados();
     void listaTransportes();
     void povoarServicos();
 };

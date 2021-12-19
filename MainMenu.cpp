@@ -3,6 +3,7 @@
 //
 using namespace std;
 #include "fstream"
+#include "algorithm"
 #include "sstream"
 #include "MainMenu.h"
 #include "Voo.h"
@@ -86,7 +87,8 @@ void MainMenu::listaVoos() {
 
 }
 
-void MainMenu::listaAeroportos() {
+void MainMenu::listaAeroportos()
+{
 
     listaAeroporto.sort();
 
@@ -119,26 +121,7 @@ void MainMenu::listaAeroportos() {
         else if(c==1){
             listaVoos();
         }else if(c==2){
-            system("CLS");
-            std::cout << "[Rede de Transportes]\n" << "\n";
-            std::cout << "Digite o nome/cidade do aeroporto para o qual pretende visualizar a rede de transportes\n";
-            cin.sync();
-            string a;
-            getline(cin, a);
-            for (Aeroporto aeroporto :listaAeroporto){
-                if (aeroporto.getCidade() == a){
-                    //aeroporto.getRede().getMapa().printTree();
-                    return;
-                }
-            }
-            system("CLS");
-            cout<<"\nAeroporto nao encontrado.";
-            cout << "\n[0] Sair\n"
-                 << "\n>";
-            std::cin >> c;
-            if (c==0) {
-                break;
-            }
+            listaTransportes();
         }
     }
 
@@ -350,6 +333,7 @@ void MainMenu::pagFuncionarios() {
                   << "\n[2] Ver lista de aeroportos"
                   << "\n[3] Ver lista de avioes"
                   << "\n[4] Ver servicos"
+                  << "\n[5] Editar dados"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
@@ -372,6 +356,9 @@ void MainMenu::pagFuncionarios() {
                 listaServicos();
                 //do things
                 break;
+            case '5':
+                editarDados();
+                break;
             case '0':
                 return;
             default:
@@ -388,8 +375,7 @@ void MainMenu::pagClientes() {
                   << "\n[1] Ver lista de voos"
                   << "\n[2] Ver lista de aeroportos"
                   << "\n[3] Ver lista de avioes"
-                  << "\n[4] Ver lista de transportes nas proximidades de um aeroporto"
-                  << "\n[5] Adquirir bilhete"
+                  << "\n[4] Adquirir bilhete"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
@@ -404,9 +390,6 @@ void MainMenu::pagClientes() {
                 listaAvioes();
                 break;
             case '4':
-                listaTransportes();
-                break;
-            case '5':
                 comprarBilhete();
                 break;
             case '0':
@@ -616,11 +599,11 @@ void MainMenu::povoarServicos() {
 }
 
 
-void MainMenu::removerDados() {
+void MainMenu::editarDados() {
     char c;
     while (true) {
         system("CLS");
-        std::cout << "[Remoção de Dados]\n"
+        std::cout << "[Editar Dados]\n"
                   << "\n[1] Voos"
                   << "\n[2] Aeroportos"
                   << "\n[3] Avioes"
@@ -629,17 +612,271 @@ void MainMenu::removerDados() {
                   << "\n>";
         std::cin >> c;
         cin.clear();
+        string a;
+        string b;
+        string d;
+        string data;
+        string nome;
+        string tipo;
+        queue<Servico> novoServicos;
+        TextTable t( '-', '|', '+' );
+        TextTable t1( '-', '|', '+' );
+
         switch (c) {
             case '1':
-                listaVoos();
 
-                //do things
+                t.add( "NumeroVoo" );
+                t.add( "Origem" );
+                t.add( "Destino" );
+                t.add( "Duracao" );
+                t.add( "Data" );
+                t.endOfRow();
+                t.add("");
+                t.add("");
+                t.add( "" );
+                t.add( "" );
+                t.add( "" );
+                t.endOfRow();
+                for(Voo voo : listaVoo){
+                    t.add(to_string(voo.getNrVoo()));
+                    t.add(voo.getOrigem().getCidade());
+                    t.add( voo.getDestino().getCidade());
+                    t.add( voo.getDuracao());
+                    t.add( voo.getData());
+                    t.endOfRow();
+                    t.setAlignment( 2, TextTable::Alignment::RIGHT );
+                }
+                 cout << t;
+
+                std::cout << "\n\nPretender Editar ou Remover voos (E/R):\n";
+                cin.sync();
+                getline(cin, b);
+                if(b == "R"){
+                    cin.sync();
+                    std::cout << "[Numero do voo]:\n";
+                    getline(cin, a);
+                    bool foundVoo = std::find_if(listaVoo.begin(), listaVoo.end(), [&a](const Voo& voo){return voo.getNrVoo() == stoi(a);}) != listaVoo.end();
+                    while(foundVoo == false){
+                        cout << "Voo não encontrado";
+                        getline(cin, a);
+                        foundVoo = std::find_if(listaVoo.begin(), listaVoo.end(), [&a](const Voo& voo){return voo.getNrVoo() == stoi(a);}) != listaVoo.end();
+                    }
+                    listaVoo.erase( std::find_if(listaVoo.begin(), listaVoo.end(), [&a](const Voo& voo){return voo.getNrVoo() == stoi(a);}));
+
+                }
+                else if(b == "E"){
+                    cin.sync();
+                    cout << "\n[Numero do voo]:\n";
+                    getline(cin, a);
+                    bool foundVoo = std::find_if(listaVoo.begin(), listaVoo.end(), [&a](const Voo& voo){return voo.getNrVoo() == stoi(a);}) != listaVoo.end();
+                    while(foundVoo == false){
+                        cout << "Voo não encontrado";
+                        getline(cin, a);
+                        foundVoo = std::find_if(listaVoo.begin(), listaVoo.end(), [&a](const Voo& voo){return voo.getNrVoo() == stoi(a);}) != listaVoo.end();
+                    }
+                    cin.sync();
+                    cout << "\nQue campo pretende editar (Origem (O)/Destino (Des)/Duracao(D)/Data de partida (Data))?:\n";
+                    getline(cin, b);
+                    if(b == "O"){
+                        cin.sync();
+                        cout << "Nova origem de voo:\n";
+                        getline(cin, b);
+                        list<Voo>::iterator it;
+                        list<Aeroporto>::iterator it2;
+                        it = std::find_if(listaVoo.begin(), listaVoo.end(), [&a](const Voo& voo){return voo.getNrVoo() == stoi(a);});
+                        it2 = std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&b](const Aeroporto& aeroporto){return aeroporto.getCidade() == b;});
+                        bool found = std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&b](const Aeroporto& aeroporto){return aeroporto.getCidade() == b;}) != listaAeroporto.end();
+                        if(found && it2->getCidade()!= it->getDestino().getCidade()){
+                            it->setOrigem(*it2);
+                        }
+                        else{
+                            cout << "\nAeroporto nao encontrado ou escolheu uma origem igual ao destino atual";
+                        }
+
+                    }
+                    else if(b == "Des"){
+                        cin.sync();
+                        cout << "\nNovo destino de voo:\n";
+                        getline(cin, b);
+                        list<Voo>::iterator it;
+                        list<Aeroporto>::iterator it2;
+                        it = std::find_if(listaVoo.begin(), listaVoo.end(), [&a](const Voo& voo){return voo.getNrVoo() == stoi(a);});
+                        it2 = std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&b](const Aeroporto& aeroporto){return aeroporto.getCidade() == b;});
+                        bool found = std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&b](const Aeroporto& aeroporto){return aeroporto.getCidade() == b;}) != listaAeroporto.end();
+                        if(found && it2->getCidade()!= it->getOrigem().getCidade()){
+                            it->setDestino(*it2);
+                        }
+                        else{
+                            cout << "\nAeroporto nao encontrado ou escolheu um destino igual a origem atual";
+                            cout << "\n[0] Sair";
+                            cin.sync();
+                            getline(cin, b);
+                            if(b == "0"){
+                                break;
+                            }
+
+                        }
+
+                    }
+                    else if(b == "D"){
+                        cin.sync();
+                        cout << "\nNova duracao do voo:\n";
+                        getline(cin, b);
+                        list<Voo>::iterator it;
+                        it = std::find_if(listaVoo.begin(), listaVoo.end(), [&a](const Voo& voo){return voo.getNrVoo() == stoi(a);});
+                        it->setDuracao(b);
+
+                    }
+                    else if(b == "Data"){
+                        cin.sync();
+                        cout << "\nNova data de partida do voo:\n";
+                        getline(cin, b);
+                        list<Voo>::iterator it;
+                        it = std::find_if(listaVoo.begin(), listaVoo.end(), [&a](const Voo& voo){return voo.getNrVoo() == stoi(a);});
+                        it->setData(b);
+
+                    }
+
+
+
+                }
                 break;
             case '2':
-                //do things
+                    cin.sync();
+                    std::cout << "\n[Aeroporto que pretende remover]:\n";
+                    getline(cin, a);
+                    listaAeroporto.erase( std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&a](const Aeroporto& aeroporto){return aeroporto.getCidade() == a;}));
+                    for (Voo voo : listaVoo){
+                        list<Aeroporto>::iterator it2;
+                        it2 = std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&a](const Aeroporto& aeroporto){return aeroporto.getCidade() == a;});
+                        bool found = std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&a](const Aeroporto& aeroporto){return aeroporto.getCidade() == a;}) != listaAeroporto.end();
+                        if(found && (it2->getCidade() == voo.getOrigem().getCidade() || it2->getCidade()== voo.getDestino().getCidade())){
+                            listaVoo.erase( std::find_if(listaVoo.begin(), listaVoo.end(), [&voo](const Voo& voo1){return voo1.getNrVoo() == voo.getNrVoo();}));
+                        }
+                    }
                 break;
+            case '3':
+                std::cout << "\nPretender Editar ou Remover avioes (E/R):\n";
+                cin.sync();
+                getline(cin, b);
+
+
+                t1.add( "Matricula" );
+                t1.add( "Tipo" );
+                t1.add( "Capacidade" );
+                t1.endOfRow();
+                t1.add("");
+                t1.add("");
+                t1.add( "" );
+                t1.endOfRow();
+                for(Aviao aviao : listaAviao){
+                    t1.add(aviao.getMatricula());
+                    t1.add(aviao.getTipo());
+                    t1.add(to_string(aviao.getCapacidade()));
+                    t1.endOfRow();
+                    t1.setAlignment( 2, TextTable::Alignment::RIGHT );
+                }
+                cout<<t1;
+                if(b == "R"){
+                    cin.sync();
+                    std::cout << "\n[Matricula do aviao]:\n";
+                    getline(cin, a);
+                    listaAviao.erase( std::find_if(listaAviao.begin(), listaAviao.end(), [&a](const Aviao& aviao){return aviao.getMatricula() == a;}));
+
+                }
+                else if(b == "E"){
+                    cin.sync();
+                    cout << "\n[Matricula do aviao]:\n";
+                    getline(cin, a);
+                    cin.sync();
+                    cout << "\nQue campo pretende editar (Tipo (T)/ Capacidade(C))?:\n";
+                    getline(cin, b);
+                    if(b == "T"){
+                        cin.sync();
+                        cout << "\nNovo tipo do aviao:\n";
+                        getline(cin, b);
+                        list<Aviao>::iterator it;
+                        it = std::find_if(listaAviao.begin(), listaAviao.end(), [&a](const Aviao& aviao){return aviao.getMatricula() == a;});
+                        it->setTipo(b);
+
+                    }
+                    else if(b == "C"){
+                        cin.sync();
+                        cout << "\nNova capaciade do aviao:\n";
+                        getline(cin, b);
+                        list<Aviao>::iterator it;
+                        it = std::find_if(listaAviao.begin(), listaAviao.end(), [&a](const Aviao& aviao){return aviao.getMatricula() == a;});
+                        it->setCapacidade(stoi(b));
+
+                    }
+
+
+
+                }
+                break;
+
+            case '4':
+                std::cout << "\nPretender Editar ou Remover servicos (E/R):\n";
+                cin.sync();
+                getline(cin, b);
+                std::cout << "\nTipo de servico:\n";
+                cin.sync();
+                getline(cin, tipo);
+                std::cout << "\nNome do funcionario:\n";
+                cin.sync();
+                getline(cin, nome);
+                std::cout << "\nData do servico:\n";
+                cin.sync();
+                getline(cin, data);
+                while(!queueServicos.empty()){
+                    if(queueServicos.front().getTipo() == tipo && queueServicos.front().getData() == data && queueServicos.front().getStaff().getNome() == nome){
+                        if(b == "R"){
+                            queueServicos.pop();
+                        }
+                        else if(b== "E"){
+                            cin.sync();
+                            cout << "\nQue campo pretende editar (Tipo (T)/ Data(D)/ Staff (S))?:\n";
+                            getline(cin, d);
+                            if(d == "T"){
+                                cin.sync();
+                                cout << "\nNovo tipo de servico a prestar:\n";
+                                getline(cin, tipo);
+                                queueServicos.front().setTipo(tipo);
+                                novoServicos.push(queueServicos.front());
+                                queueServicos.pop();
+                            }
+                            else if(d == "D"){
+                                cin.sync();
+                                cout << "\nNova data do servico a prestar:\n";
+                                getline(cin, data);
+                                queueServicos.front().setData(data);
+                                novoServicos.push(queueServicos.front());
+                                queueServicos.pop();
+                            }
+                            else if(d == "S"){
+                                cin.sync();
+                                cout << "\nNovo membro da staff que prestara o servico:\n";
+                                getline(cin, nome);
+                                Staff staff = Staff(nome);
+                                queueServicos.front().setStaff(staff);
+                                novoServicos.push(queueServicos.front());
+                                queueServicos.pop();
+                            }
+                        }
+                    }
+                    else{
+                        novoServicos.push(queueServicos.front());
+                        queueServicos.pop();
+                    }
+                }
+                queueServicos = novoServicos;
+
+
+                break;
+
             case '0':
                 return;
+
             default:
                 std::cout << "Opção inválida\n";
         }
@@ -647,20 +884,22 @@ void MainMenu::removerDados() {
 }
 
 
-void MainMenu::listaTransportes() {
 
+void MainMenu::listaTransportes() {
+    bool aeroportoEncontrado = false;
     system("CLS");
     string aeroporto;
     TextTable t( '-', '|', '+' );
     int c;
     cout << "Insira o nome do aeroporto que pretende consultar:" << endl;
-    cin >> aeroporto;
-
+    cin.sync();
+    getline(cin, aeroporto);
 
     for (auto it = listaAeroporto.begin(); it != listaAeroporto.end(); it++) {
         Aeroporto a = *it;
 
         if(a.getCidade() == aeroporto) {
+            aeroportoEncontrado = true;
             RedeTransportes r = a.getRede();
             BST<Transporte> tr = r.getBST();
             t.add( "Tipo" );
@@ -702,19 +941,34 @@ void MainMenu::listaTransportes() {
         }
 
     }
-
-    while (true) {
-        system("CLS");
-        std::cout << "[Lista de transportes nas proximidades do aeroporto de " + aeroporto + "]\n" << "\n";
-        std::cout << t;
-        std::cout << "\nDigite 0 para sair.\n"
-                  << "\n>";
-        std::cin >> c;
-        if (c==0) {
-            break;
+    if(aeroportoEncontrado){
+        while (true) {
+            system("CLS");
+            std::cout << "[Lista de transportes nas proximidades do aeroporto de " + aeroporto + "]\n" << "\n";
+            std::cout << t;
+            std::cout << "\n[0] Sair\n"
+                      << "\n>";
+            std::cin >> c;
+            if (c==0) {
+                break;
+            }
+        }
+}
+    else{
+        while(true) {
+            system("CLS");
+            cout << "\nAeroporto nao encontrado.";
+            cout << "\n\n\n[0] Sair\n"
+                 << "\n>";
+            std::cin >> c;
+            if (c == 0) {
+                break;
+            }
         }
     }
 
     return;
 }
+
+
 

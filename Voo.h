@@ -33,6 +33,7 @@ public:
     void setLugaresVoo(vector<string> l);
     void setCarrinho(CarrinhoTransporte carrinho);
     void editLugar(string l, bool o);
+    void outputDados();
 
 
 };
