@@ -43,6 +43,7 @@ public:
     void setCapacidade(int c);
     std::vector<std::string> getLugares() const;
     void setLugares(std::string l);
+    void setTipo(std::string t);
 
 };
 

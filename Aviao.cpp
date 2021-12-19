@@ -47,3 +47,7 @@ void Aviao::removerLugar(std::string l) {
 
 }
 
+void Aviao::setTipo(std::string t) {
+    this->tipo = t;
+}
+
