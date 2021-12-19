@@ -485,9 +485,9 @@ void MainMenu::comprarBilhete() {
 }
 
 void MainMenu::povoarSistema() {
+    povoarAvioes(listaAviao);
     povoarVoo(listaVoo);
     povoarAeroporto(listaAeroporto);
-    povoarAvioes(listaAviao);
     povoarLugares(listaAviao);
     povoarRedes();
     povoarServicos();

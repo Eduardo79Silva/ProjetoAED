@@ -136,6 +136,6 @@ void Voo::setBilhetes(vector<Bilhete> b) {
 
 
 void Voo::outputDados() {
-    
+
 
 }
