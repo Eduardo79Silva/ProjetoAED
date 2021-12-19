@@ -101,6 +101,40 @@ void Voo::editLugar(string l, bool o) {
     }
 }
 
+
+bool Voo::sortData(Voo &v1, Voo &v2) {
+    string d1 = v1.getData();
+    string d2 = v2.getData();
+    return d1<d2;
+}
+
+bool Voo::sortOrigem(Voo &v1, Voo &v2) {
+    string c1 = v1.getOrigem().getCidade();
+    string c2 = v2.getOrigem().getCidade();
+    return c1<c2;
+}
+
+bool Voo::sortDestino(Voo &v1, Voo &v2) {
+    string c1 = v1.getDestino().getCidade();
+    string c2 = v2.getDestino().getCidade();
+    return c1<c2;
+}
+
+bool Voo::sortNumero(Voo &v1, Voo &v2) {
+    int n1 = v1.getNrVoo();
+    int n2 = v2.getNrVoo();
+    return n1<n2;
+}
+
+vector<Bilhete> Voo::getBilhetes() const {
+    return this->bilhetesVoo;
+}
+
+void Voo::setBilhetes(vector<Bilhete> b) {
+    bilhetesVoo = b;
+}
+
+
 void Voo::outputDados() {
     
 
