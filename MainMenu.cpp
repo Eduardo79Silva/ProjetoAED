@@ -614,6 +614,7 @@ void MainMenu::editarDados() {
         cin.clear();
         string a;
         string b;
+        string d;
         string data;
         string nome;
         string tipo;
@@ -835,25 +836,31 @@ void MainMenu::editarDados() {
                         else if(b== "E"){
                             cin.sync();
                             cout << "\nQue campo pretende editar (Tipo (T)/ Data(D)/ Staff (S))?:\n";
-                            getline(cin, b);
-                            if(b == "T"){
+                            getline(cin, d);
+                            if(d == "T"){
                                 cin.sync();
                                 cout << "\nNovo tipo de servico a prestar:\n";
                                 getline(cin, tipo);
                                 queueServicos.front().setTipo(tipo);
+                                novoServicos.push(queueServicos.front());
+                                queueServicos.pop();
                             }
-                            else if(b == "D"){
+                            else if(d == "D"){
                                 cin.sync();
                                 cout << "\nNova data do servico a prestar:\n";
                                 getline(cin, data);
                                 queueServicos.front().setData(data);
+                                novoServicos.push(queueServicos.front());
+                                queueServicos.pop();
                             }
-                            else if(b == "S"){
+                            else if(d == "S"){
                                 cin.sync();
                                 cout << "\nNovo membro da staff que prestara o servico:\n";
                                 getline(cin, nome);
                                 Staff staff = Staff(nome);
                                 queueServicos.front().setStaff(staff);
+                                novoServicos.push(queueServicos.front());
+                                queueServicos.pop();
                             }
                         }
                     }
@@ -875,6 +882,7 @@ void MainMenu::editarDados() {
         }
     }
 }
+
 
 
 void MainMenu::listaTransportes() {
