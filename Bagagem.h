@@ -7,7 +7,6 @@
 
 /**
      * Classe que representa a bagagem de um passageiro (o seu número de malas).
-     * Implementa getter e setter.
      */
 
 class Bagagem {

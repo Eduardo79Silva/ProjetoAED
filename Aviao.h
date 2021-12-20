@@ -39,9 +39,19 @@ public:
      * @param l: Lugar a remover do avião
      */
     void removerLugar(std::string l);
-  
+    /**
+       * Atribui a capacidade a um avião.
+       * @param c Capacidade do avião
+       */
     void setCapacidade(int c);
+    /**
+       * @return Um vetor de lugares do avião.
+       */
     std::vector<std::string> getLugares() const;
+    /**
+       * Atribui um lugar ao avião.
+       * @param l Lugar a adicionar
+       */
     void setLugares(std::string l);
 
 };
