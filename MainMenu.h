@@ -24,7 +24,7 @@ class MainMenu {
     std::list<Voo> listaVoo; //Lista que contém todos os voos realizados pela companhia aérea
     std::list<Aeroporto> listaAeroporto; // Lista que contém todos os aeroportos para os quais a companhia aérea pode realizar as suas viagens
     std::list<Aviao> listaAviao; //Lista que contém todos os aviões pertencentes à companhia aérea
-    queue<Servico> queueServicos;
+    //queue<Servico> queueServicos;
 public:
     /**
      * Mostra a página principal do menu.

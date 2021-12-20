@@ -51,3 +51,7 @@ void Aviao::setTipo(std::string t) {
     this->tipo = t;
 }
 
+void Aviao::addServico(Servico s) {
+    servicos.push(s);
+}
+

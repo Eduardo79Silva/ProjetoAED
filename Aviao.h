@@ -8,6 +8,7 @@
 #include <string>
 #include "iostream"
 #include "list"
+#include "Servico.h"
 
 class Aviao{
     Voo voo;
@@ -16,6 +17,7 @@ class Aviao{
     int capacidade;
     std::vector<std::string> lugares;
     std::list<Voo> planoVoo;
+    std::queue<Servico> servicos;
 public:
     Aviao(std::string m, std::string t);
     /**
@@ -54,6 +56,7 @@ public:
        */
     void setLugares(std::string l);
     void setTipo(std::string t);
+    void addServico(Servico s);
 
 };
 
