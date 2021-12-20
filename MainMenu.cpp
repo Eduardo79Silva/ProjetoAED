@@ -57,7 +57,7 @@ void MainMenu::listaVoos() {
         std::cout << "\n[1] Lugares no voo"
                   << "\n[2] Ordenar por data"
                   << "\n[3] Ordenar por duracao"
-                  << "\n[3] Ordenar por numero de voo\n"
+                  << "\n[4] Ordenar por numero de voo\n"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
@@ -85,6 +85,26 @@ void MainMenu::listaVoos() {
             if (c==0) {
                 break;
             }
+        }
+        else if(c==2){
+            listaVoos();  //sort com getData e datas ao contrario
+            break;
+        }
+        else if(c==3){
+            listaVoo.sort([](const Voo & v1, const Voo & v2)
+                          {
+                              return v1.getDuracao() < v2.getDuracao();
+                          });
+            listaVoos();
+            break;
+        }
+        else if(c==4){
+            listaVoo.sort([](const Voo & v1, const Voo & v2)
+                          {
+                              return v1.getNrVoo() < v2.getNrVoo();
+                          });
+            listaVoos();
+            break;
         }
     }
 
@@ -164,6 +184,8 @@ void MainMenu::listaAvioes() {
         std::cout << t;
         std::cout << "\n[1] Lista de Voos"
                   << "\n[2] Lugares do Aviao"
+                  << "\n[3] Ordenar por capacidade"
+                  << "\n[4] Ordenar por tipo"
                   << "\n[0] Sair\n";
         std::cin >> c;
         if (c==0) {
@@ -192,6 +214,22 @@ void MainMenu::listaAvioes() {
             if (c==0) {
                 break;
             }
+        }
+        else if(c==3){
+            listaAviao.sort([](const Aviao & a1, const Aviao & a2)
+                          {
+                              return a1.getCapacidade() < a2.getCapacidade();
+                          });
+            listaAvioes();
+            break;
+        }
+        else if(c==4){
+            listaAviao.sort([](const Aviao & a1, const Aviao & a2)
+                            {
+                                return a1.getTipo() < a2.getTipo();
+                            });
+            listaAvioes();
+            break;
         }
     }
 
@@ -1139,7 +1177,7 @@ void MainMenu::outputServicos() {
 
     }
 
-}
+
 
 
 
