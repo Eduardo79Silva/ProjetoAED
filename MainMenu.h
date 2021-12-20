@@ -24,7 +24,7 @@ class MainMenu {
     std::list<Voo> listaVoo; //Lista que contém todos os voos realizados pela companhia aérea
     std::list<Aeroporto> listaAeroporto; // Lista que contém todos os aeroportos para os quais a companhia aérea pode realizar as suas viagens
     std::list<Aviao> listaAviao; //Lista que contém todos os aviões pertencentes à companhia aérea
-    //queue<Servico> queueServicos;
+    queue<Servico> queueServicos;
 public:
     /**
      * Mostra a página principal do menu.
@@ -91,14 +91,15 @@ public:
     /**
      * Função que chama todas as outras que lêem os dados dos ficheiros
      */
-    void povoarSistema();/**
-     * Permite remover dados na aplicação.
+    void povoarSistema();
+    /**
+     * Permite editar e remover dados na aplicação.
      */
-    void removerDados();
+    void editarDados();
+
     /**
      * Mostra ao utilizador a rede de transportes existente nas imediações de um aeroporto.
      */
-    void editarDados();
     void listaTransportes();
     /**
      * Lê o ficheiro com todos os dados sobre os serviços a realizar e o respetivo staff.
@@ -108,7 +109,7 @@ public:
     void outputVoos();
     void outputAvioes();
     void outputAeroportos();
-    void outputServicos(Aviao aviao);
+    void outputServicos();
 };
 
 
