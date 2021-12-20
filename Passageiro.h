@@ -6,6 +6,7 @@
 #define PROJETOAED_PASSAGEIRO_H
 
 #include <string>
+#include "list"
 #include "Bilhete.h"
 
 using namespace std;
@@ -14,10 +15,9 @@ class Passageiro {
     string nome;
     int idade;
     int id;
-    Bilhete bilhete;
+    std::list<Bilhete> bilhetes;
 public:
     Passageiro(string nome, int idade, int id);
-    void adquirirBilhete(int numVoo, bool bagagem, string lugar);
     /**
      * Atribui o nome ao passageiro.
      * @param nome nome a atribuir.
@@ -53,7 +53,7 @@ public:
     /**
      * @return O bilhete do passageiro.
      */
-    Bilhete getBilhete();
+    list<Bilhete> getBilhete();
 
 
 };

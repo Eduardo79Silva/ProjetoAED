@@ -526,6 +526,7 @@ void MainMenu::comprarBilhete() {
                 vector<Bilhete> atual = v.getBilhetes();
                 atual.push_back(bil);
                 (*it).setBilhetes(atual);
+
             }
         }
 

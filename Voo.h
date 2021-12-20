@@ -8,6 +8,7 @@
 #include "CarrinhoTransporte.h"
 #include <vector>
 #include "Bilhete.h"
+#include "Passageiro.h"
 
 class Voo{
     int nrVoo;
@@ -18,7 +19,7 @@ class Voo{
     Aeroporto aeroportoDestino;
     vector<std::string> lugaresVoo;
     CarrinhoTransporte carrinho;
-    vector<Bilhete> bilhetesVoo;
+    vector<Passageiro> passageiroVoo;
 
 public:
     Voo();
@@ -29,7 +30,7 @@ public:
     Aeroporto getOrigem() const;
     Aeroporto getDestino() const;
     vector<string> getLugaresVoo() const;
-    vector<Bilhete> getBilhetes() const;
+    vector<Passageiro> getPassageiro() const;
     int getLotacao() const;
     CarrinhoTransporte getCarrinho() const;
     void setData(std::string data);
@@ -38,7 +39,7 @@ public:
     void setDestino(Aeroporto &destino);
     void setLugaresVoo(vector<string> l);
     void setCarrinho(CarrinhoTransporte carrinho);
-    void setBilhetes (vector<Bilhete> b);
+    void setBilhetes (vector<Passageiro> p);
     void setLotacao(int l);
     void editLugar(string l, bool o);
    void outputDados();

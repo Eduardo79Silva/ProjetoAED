@@ -126,12 +126,12 @@ bool Voo::sortNumero(Voo &v1, Voo &v2) {
     return n1<n2;
 }
 
-vector<Bilhete> Voo::getBilhetes() const {
-    return this->bilhetesVoo;
+vector<Passageiro> Voo::getPassageiro() const {
+    return this->passageiroVoo;
 }
 
-void Voo::setBilhetes(vector<Bilhete> b) {
-    bilhetesVoo = b;
+void Voo::setBilhetes(vector<Passageiro> p) {
+    passageiroVoo = p;
 }
 
 

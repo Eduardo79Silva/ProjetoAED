@@ -8,14 +8,7 @@ Passageiro::Passageiro(string nome, int idade, int id) {
     this->nome = nome;
     this->idade = idade;
     this->id = id;
-    Bilhete b1;
-    this->bilhete = b1;
-}
-
-void Passageiro::adquirirBilhete(int numVoo, bool bagagem, string lugar) {
-    bilhete.setNumVoo(numVoo);
-    bilhete.setbagagem(bagagem);
-    bilhete.setLugar(lugar);
+    this->bilhetes = {};
 }
 
 void Passageiro::setNome(string nome) {
@@ -43,9 +36,9 @@ int Passageiro::getId() {
 }
 
 void Passageiro::setBilhete(Bilhete bilhete) {
-    this->bilhete = bilhete;
+    this->bilhetes.push_back(bilhete);
 }
 
-Bilhete Passageiro::getBilhete() {
-    return bilhete;
+list<Bilhete> Passageiro::getBilhete() {
+    return this->bilhetes;
 }
