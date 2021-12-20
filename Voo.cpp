@@ -130,7 +130,7 @@ vector<Passageiro> Voo::getPassageiro() const {
     return this->passageiroVoo;
 }
 
-void Voo::setBilhetes(vector<Passageiro> p) {
+void Voo::setPassageiros(vector<Passageiro> p) {
     passageiroVoo = p;
 }
 

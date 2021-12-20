@@ -104,6 +104,11 @@ public:
      * Lê o ficheiro com todos os dados sobre os serviços a realizar e o respetivo staff.
      */
     void povoarServicos();
+    void outputDados();
+    void outputVoos();
+    void outputAvioes();
+    void outputAeroportos();
+    void outputServicos(Aviao aviao);
 };
 
 

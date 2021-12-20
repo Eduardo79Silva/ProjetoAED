@@ -94,12 +94,11 @@ public:
      * @param carrinho O carrinho de transporte.
      */
     void setCarrinho(CarrinhoTransporte carrinho);
-
     /**
      * Atribui um vetor de passageiros para o voo.
      * @param p O vetor de passageiros que vão viajar no voo.
      */
-    void setBilhetes (vector<Passageiro> p);
+    void setPassageiros (vector<Passageiro> p);
     /**
      * Permite editar a informação relativa a um lugar do voo.
      */

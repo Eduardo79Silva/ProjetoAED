@@ -248,7 +248,6 @@ void MainMenu::listaLugares(vector<std::string> lugares) {
     return;
 }
 
-
 void MainMenu::listaServicos() {
 
     TextTable t( '-', '|', '+' );
@@ -295,7 +294,6 @@ void MainMenu::listaServicos() {
     return;
 }
 
-
 void MainMenu::menu() {
     povoarSistema();
     char c;
@@ -319,6 +317,7 @@ void MainMenu::menu() {
                 pagClientes();
                 break;
             case '0':
+                outputDados();
                 return;
             default:
                 std::cout << "Opcao invalida\n";
@@ -401,9 +400,6 @@ void MainMenu::pagClientes() {
         }
     }
 }
-
-
-
 
 void MainMenu::comprarBilhete() {
 
@@ -523,8 +519,8 @@ void MainMenu::comprarBilhete() {
         for (auto it = listaVoo.begin(); it != listaVoo.end(); it++) {
             Voo v = *it;
             if (v.getNrVoo() == nV) {
-                vector<Bilhete> atual = v.getBilhetes();
-                atual.push_back(bil);
+                vector<Passageiro> atual = v.getPassageiro();
+                atual.push_back(p);
                 (*it).setBilhetes(atual);
 
             }
@@ -533,7 +529,6 @@ void MainMenu::comprarBilhete() {
         if (d=='0') {
             return;
         }
-        //criar passageiro, bilhete e atribuir bilhete - done
 
     }
 }
@@ -621,7 +616,6 @@ void MainMenu::povoarAeroporto(list<Aeroporto> &list) {
 
 }
 
-
 void MainMenu::povoarAvioes(list<Aviao> &list) {
     string matricula;
     string tipo;
@@ -658,8 +652,6 @@ void MainMenu::povoarLugares(list<Aviao> &list) {
     }
 }
 
-
-
 void MainMenu::povoarRedes() {
 
     for (auto it = listaAeroporto.begin(); it != listaAeroporto.end(); it++) {
@@ -695,7 +687,6 @@ void MainMenu::povoarServicos() {
     }
     servicos.close();
 }
-
 
 void MainMenu::editarDados() {
     char c;
@@ -981,8 +972,6 @@ void MainMenu::editarDados() {
     }
 }
 
-
-
 void MainMenu::listaTransportes() {
     bool aeroportoEncontrado = false;
     system("CLS");
@@ -1067,6 +1056,64 @@ void MainMenu::listaTransportes() {
 
     return;
 }
+
+void MainMenu::outputDados() {
+    outputVoos();
+    outputAeroportos();
+    outputAvioes();
+}
+
+void MainMenu::outputVoos() {
+    fstream fout;
+    fout.open(VOO_TEMP, ios::out | ios::app);
+    fout << "Number" << "; "
+         << "Origem" << "; "
+         << "Destino" << "; "
+         << "Duracao" << "; "
+         << "Data" << "\n";
+    for(Voo voo :listaVoo){
+        fout << voo.getNrVoo() << "; "
+             << voo.getOrigem().getCidade() << "; "
+             << voo.getDestino().getCidade() << "; "
+             << voo.getDuracao() << "; "
+             << voo.getData() << "\n";
+    }
+    fout.close();
+    remove(VOO);
+    rename(VOO_TEMP, VOO);
+}
+void MainMenu::outputAvioes() {
+    fstream fout;
+    fout.open(AVIOES_TEMP, ios::out | ios::app);
+    fout << "Matricula" << "; "
+         << "Modelo" << "; "
+         << "Capacidade" << "\n";
+    for(Aviao aviao :listaAviao){
+        fout << aviao.getMatricula() << "; "
+             << aviao.getTipo() << "; "
+             << to_string(aviao.getCapacidade()) << "\n";
+    }
+    fout.close();
+    remove(AVIOES);
+    rename(AVIOES_TEMP, AVIOES);
+}
+void MainMenu::outputAeroportos() {
+    fstream fout;
+    fout.open(AEROPORTO_TEMP, ios::out | ios::app);
+    fout << "Aeroportos" << "\n";
+    for(Aeroporto aeroporto :listaAeroporto){
+        fout << aeroporto.getCidade() << "\n";
+    }
+    fout.close();
+    remove(AEROPORTO);
+    rename(AEROPORTO_TEMP, AEROPORTO);
+}
+
+void MainMenu::outputServicos(Aviao aviao) {
+
+
+}
+
 
 
 
