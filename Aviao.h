@@ -53,6 +53,7 @@ public:
        * @param l Lugar a adicionar
        */
     void setLugares(std::string l);
+    void setTipo(std::string t);
 
 };
 

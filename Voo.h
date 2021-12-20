@@ -97,6 +97,7 @@ public:
      * Permite editar a informação relativa a um lugar do voo.
      */
     void editLugar(string l, bool o);
+    void outputDados();
     /**
      * Comparador de datas.
      */
@@ -113,6 +114,7 @@ public:
      * Comparador de números de voo.
      */
     bool sortNumero(Voo &v1, Voo &v2);
+  
 
 };
 

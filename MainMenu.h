@@ -98,6 +98,7 @@ public:
     /**
      * Mostra ao utilizador a rede de transportes existente nas imediações de um aeroporto.
      */
+    void editarDados();
     void listaTransportes();
     /**
      * Lê o ficheiro com todos os dados sobre os serviços a realizar e o respetivo staff.
