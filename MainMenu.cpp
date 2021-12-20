@@ -257,9 +257,11 @@ void MainMenu::listaServicos() {
     t.add( "Tipo de servico" );
     t.add( "Data" );
     t.add( "Funcionario" );
+    t.add("Aviao");
     t.endOfRow();
     t.add("");
     t.add("");
+    t.add( "" );
     t.add( "" );
     t.endOfRow();
 
@@ -272,6 +274,7 @@ void MainMenu::listaServicos() {
         t.add(s.getTipo());
         t.add(s.getData());
         t.add((s.getStaff()).getNome());
+        t.add(s.getAviao());
         t.endOfRow();
         t.setAlignment( 2, TextTable::Alignment::RIGHT );
     }
@@ -521,7 +524,7 @@ void MainMenu::comprarBilhete() {
             if (v.getNrVoo() == nV) {
                 vector<Passageiro> atual = v.getPassageiro();
                 atual.push_back(p);
-                (*it).setBilhetes(atual);
+                //(*it).setPassageiro(atual);
 
             }
         }
@@ -678,12 +681,13 @@ void MainMenu::povoarServicos() {
         getline(servicos, matricula);
         Staff s = Staff(nomefunc);
         Servico servico = Servico(tipo, data, s);
+        servico.setAviao(matricula);
         for (auto it = listaAviao.begin(); it != listaAviao.end(); it++) {
             if ((*it).getMatricula() == matricula) {
                 (*it).addServico(servico);
             }
         }
-        //queueServicos.push(servico);
+        queueServicos.push(servico);
     }
     servicos.close();
 }

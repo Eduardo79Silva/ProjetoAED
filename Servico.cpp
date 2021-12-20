@@ -47,3 +47,11 @@ void Servico::setData(std::string d) {
 void Servico::setStaff(Staff s) {
     this->responsavel = s;
 }
+
+void Servico::setAviao(std::string matricula) {
+    aviao = matricula;
+}
+
+std::string Servico::getAviao () {
+    return this->aviao;
+}

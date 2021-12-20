@@ -20,6 +20,7 @@ class Servico {
     std::string tipo;
     std::string data;
     Staff responsavel;
+    std::string aviao;
 public:
     Servico();
     Servico(std::string t, std::string d, Staff r);
@@ -29,6 +30,8 @@ public:
     void setTipo(std::string t);
     void setData(std::string d);
     void setStaff(Staff s);
+    void setAviao(std::string matricula);
+    std::string getAviao();
 };
 
 
