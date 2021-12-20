@@ -55,6 +55,9 @@ void MainMenu::listaVoos() {
         std::cout << "[Lista de voos]\n" << "\n";
         std::cout << t;
         std::cout << "\n[1] Lugares no voo"
+                  << "\n[2] Ordenar por data"
+                  << "\n[3] Ordenar por duracao"
+                  << "\n[3] Ordenar por numero de voo\n"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
