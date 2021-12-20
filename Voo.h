@@ -8,6 +8,7 @@
 #include "CarrinhoTransporte.h"
 #include <vector>
 #include "Bilhete.h"
+#include "Passageiro.h"
 
 /**
      * Classe que representa um voo da companhia aérea.
@@ -15,13 +16,14 @@
 
 class Voo{
     int nrVoo;
+    int lotacao;
     std::string dataPartida; //Restingir ao tipo: DD/MM/YYYY (ou outros)
     std::string duracao; //restringir: hh:mm
     Aeroporto aeroportoOrigem;
     Aeroporto aeroportoDestino;
     vector<std::string> lugaresVoo;
     CarrinhoTransporte carrinho;
-    vector<Bilhete> bilhetesVoo;
+    vector<Passageiro> passageiroVoo;
 
 public:
     Voo();
@@ -58,6 +60,10 @@ public:
      * @return O carrinho que transporta as bagagens para o avião correspondente ao voo.
      */
     CarrinhoTransporte getCarrinho() const;
+  
+    vector<Passageiro> getPassageiro() const;
+    int getLotacao() const;
+  
     /**
      * Atribui uma data ao voo.
      * @param data A data do voo.
@@ -88,15 +94,18 @@ public:
      * @param carrinho O carrinho de transporte.
      */
     void setCarrinho(CarrinhoTransporte carrinho);
+
     /**
-     * Atribui um vetor de bilhetes adquiridos para o voo.
-     * @param b O vetor de bilhetes adquiridos.
+     * Atribui um vetor de passageiros para o voo.
+     * @param p O vetor de passageiros que vão viajar no voo.
      */
-    void setBilhetes (vector<Bilhete> b);
+    void setBilhetes (vector<Passageiro> p);
     /**
      * Permite editar a informação relativa a um lugar do voo.
      */
     void editLugar(string l, bool o);
+    void setLotacao(int l);
+   
     void outputDados();
     /**
      * Comparador de datas.

@@ -11,7 +11,6 @@
 #include "Servico.h"
 
 class Aviao{
-    Voo voo;
     std::string matricula;
     std::string tipo;
     int capacidade;
@@ -57,6 +56,8 @@ public:
     void setLugares(std::string l);
     void setTipo(std::string t);
     void addServico(Servico s);
+    void addVoo(Voo v);
+    std::list<Voo> getPlanoVoo() const;
 
 };
 

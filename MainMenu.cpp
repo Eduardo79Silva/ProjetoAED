@@ -422,6 +422,7 @@ void MainMenu::comprarBilhete() {
         std::cout << "\nDigite 0 para voltar ao menu\n"
                   << "\n>";
         std::cin >> nv;
+        Voo vooComprar;
         if (nv == "0") {
             return;
         }
@@ -434,8 +435,60 @@ void MainMenu::comprarBilhete() {
             std::cout << "\n\nDigite 0 para voltar ao menu\n"
                       << "\n>";
             std::cin >> nv;
-        }
 
+
+
+        }
+            TextTable t( '-', '|', '+' );
+            int c;
+            int counter =0;
+
+            t.add( " A " );
+            t.add( " B " );
+            t.add( " C " );
+            t.add( "    " );
+            t.add( " D " );
+            t.add( " E " );
+            t.add( " F " );
+            t.endOfRow();
+            t.add( "" );
+            t.add( "" );
+            t.add( "" );
+            t.add( "" );
+            t.add( "" );
+            t.add( "" );
+            t.add( "" );
+            t.endOfRow();
+            for(Voo voo : listaVoo){
+                if (voo.getNrVoo() == stoi(nv)){
+                    vooComprar = voo;
+                }
+            }
+            for(string lugares : vooComprar.getLugaresVoo()){
+                t.add(lugares);
+                counter++;
+                if(counter==3){
+                    t.add(" ");
+                }
+                if(counter ==6){
+                    t.endOfRow();
+                    counter = 0;
+                }
+                t.setAlignment( 2, TextTable::Alignment::RIGHT );
+            }
+            cout<<t;
+        string lugar;
+        std::cout << "\nQual o lugar que deseja? ";
+        std::cin >> lugar;
+        bool found = std::find(vooComprar.getLugaresVoo().begin(), vooComprar.getLugaresVoo().end(), lugar) != vooComprar.getLugaresVoo().end();
+        if(found){
+            for(Voo &voo : this->listaVoo){
+                if (voo.getNrVoo() == stoi(nv)){
+                    voo.editLugar(lugar, true);
+                    voo.setLotacao(voo.getLotacao()-1);
+                }
+            }
+        }
         std::cout << "\nDeseja incluir bagagem? (S/N)";
         std::cin >> b;
         if ((b == 'S') || (b == 's')) {
@@ -449,22 +502,19 @@ void MainMenu::comprarBilhete() {
         std::cout << "\nIntroduza a sua idade:";
         std::cin >> idade;
 
-        std::cout << "\nIntroduza o seu número de identificação:";
+        std::cout << "\nIntroduza o seu numero de identificacao:";
         std::cin >> id;
 
-        char c;
+        char d;
         system("CLS");
         cout<<"\n---------**Obrigado por viajar connosco**----------\n\n";
-        cout << "\nDigite 0 para voltar ao menu\n"
+        cout << "\n[0] Sair\n"
              << "\n>";
-        std::cin >> c;
-        if (c==0) {
-            return;
-        }
+        std::cin >> d;
         Bilhete bil;
         int nV = stoi(nv);
         bil.setNumVoo(nV);
-        bil.setLugar("A1");
+        bil.setLugar(lugar);
         bil.setbagagem(bagagem);
         Passageiro p = Passageiro(nome, idade, id);
         p.setBilhete(bil);
@@ -476,19 +526,23 @@ void MainMenu::comprarBilhete() {
                 vector<Bilhete> atual = v.getBilhetes();
                 atual.push_back(bil);
                 (*it).setBilhetes(atual);
+
             }
         }
 
+        if (d=='0') {
+            return;
+        }
         //criar passageiro, bilhete e atribuir bilhete - done
 
     }
 }
 
 void MainMenu::povoarSistema() {
-    povoarVoo(listaVoo);
-    povoarAeroporto(listaAeroporto);
     povoarAvioes(listaAviao);
     povoarLugares(listaAviao);
+    povoarVoo(listaVoo);
+    povoarAeroporto(listaAeroporto);
     povoarRedes();
     povoarServicos();
 }
@@ -530,6 +584,21 @@ void MainMenu::povoarVoo(list<Voo> &list1) {
         voo.setOrigem(aeroportoOrigem);
         voo.setDestino(aeroportoDestino);
         voo.setCarrinho(carrinho);
+        Aviao minAviao = listaAviao.front();
+        for (Aviao &aviao : listaAviao) {
+            if(aviao.getPlanoVoo().size() < minAviao.getPlanoVoo().size() ){
+                minAviao = aviao;
+            }
+        }
+
+        voo.setLugaresVoo(minAviao.getLugares());
+        voo.setLotacao(minAviao.getCapacidade());
+        minAviao.addVoo(voo);
+        for (Aviao &aviao : listaAviao) {
+            if(aviao.getMatricula() == minAviao.getMatricula() ){
+                aviao = minAviao;
+            }
+        }
         list1.push_back(voo);
 
     }
