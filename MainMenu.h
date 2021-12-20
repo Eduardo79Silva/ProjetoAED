@@ -91,14 +91,15 @@ public:
     /**
      * Função que chama todas as outras que lêem os dados dos ficheiros
      */
-    void povoarSistema();/**
-     * Permite remover dados na aplicação.
+    void povoarSistema();
+    /**
+     * Permite editar e remover dados na aplicação.
      */
-    void removerDados();
+    void editarDados();
+
     /**
      * Mostra ao utilizador a rede de transportes existente nas imediações de um aeroporto.
      */
-    void editarDados();
     void listaTransportes();
     /**
      * Lê o ficheiro com todos os dados sobre os serviços a realizar e o respetivo staff.
@@ -108,7 +109,7 @@ public:
     void outputVoos();
     void outputAvioes();
     void outputAeroportos();
-    void outputServicos(Aviao aviao);
+    void outputServicos();
 };
 
 
