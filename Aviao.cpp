@@ -62,3 +62,7 @@ std::list<Voo> Aviao::getPlanoVoo() const {
     return this->planoVoo;
 }
 
+std::queue<Servico> Aviao::getServicos() const {
+    return this->servicos;
+}
+

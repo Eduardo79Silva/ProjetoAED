@@ -527,7 +527,7 @@ void MainMenu::comprarBilhete() {
             if (v.getNrVoo() == nV) {
                 vector<Passageiro> atual = v.getPassageiro();
                 atual.push_back(p);
-                //(*it).setPassageiro(atual);
+                (*it).setPassageiros(atual);
 
             }
         }
@@ -1089,6 +1089,7 @@ void MainMenu::outputVoos() {
     remove(VOO);
     rename(VOO_TEMP, VOO);
 }
+
 void MainMenu::outputAvioes() {
     fstream fout;
     fout.open(AVIOES_TEMP, ios::out | ios::app);
@@ -1104,6 +1105,7 @@ void MainMenu::outputAvioes() {
     remove(AVIOES);
     rename(AVIOES_TEMP, AVIOES);
 }
+
 void MainMenu::outputAeroportos() {
     fstream fout;
     fout.open(AEROPORTO_TEMP, ios::out | ios::app);
@@ -1116,8 +1118,26 @@ void MainMenu::outputAeroportos() {
     rename(AEROPORTO_TEMP, AEROPORTO);
 }
 
-void MainMenu::outputServicos(Aviao aviao) {
+void MainMenu::outputServicos() {
+    queue<Servico> aux = queueServicos;
+    fstream fout;
+    fout.open(SERVICOS_TEMP, ios::out | ios::app);
+    fout << "Nome do Funcionario" << "; "
+         << "Tipo de Servico" << "; "
+         << "Data" << "; "
+         << "Aviao" << "\n";
+    while (!aux.empty()) {
+        fout << aux.front().getStaff().getNome() << "; "
+             << aux.front().getTipo() << "; "
+             << aux.front().getData() << "; "
+             << "aviaotemp" << "\n";
+        aux.pop();
+    }
+    fout.close();
+    remove(AEROPORTO);
+    rename(AEROPORTO_TEMP, AEROPORTO);
 
+    }
 
 }
 

@@ -58,6 +58,7 @@ public:
     void addServico(Servico s);
     void addVoo(Voo v);
     std::list<Voo> getPlanoVoo() const;
+    std::queue<Servico> getServicos() const;
 
 };
 
