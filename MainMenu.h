@@ -58,6 +58,8 @@ public:
     void editarDados();
     void listaTransportes();
     void povoarServicos();
+    void outputDados();
+    void outputVoos();
 };
 
 

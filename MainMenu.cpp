@@ -248,7 +248,6 @@ void MainMenu::listaLugares(vector<std::string> lugares) {
     return;
 }
 
-
 void MainMenu::listaServicos() {
 
     TextTable t( '-', '|', '+' );
@@ -294,7 +293,6 @@ void MainMenu::listaServicos() {
 
     return;
 }
-
 
 void MainMenu::menu() {
     povoarSistema();
@@ -401,9 +399,6 @@ void MainMenu::pagClientes() {
         }
     }
 }
-
-
-
 
 void MainMenu::comprarBilhete() {
 
@@ -523,8 +518,8 @@ void MainMenu::comprarBilhete() {
         for (auto it = listaVoo.begin(); it != listaVoo.end(); it++) {
             Voo v = *it;
             if (v.getNrVoo() == nV) {
-                vector<Bilhete> atual = v.getBilhetes();
-                atual.push_back(bil);
+                vector<Passageiro> atual = v.getPassageiro();
+                atual.push_back(p);
                 (*it).setBilhetes(atual);
 
             }
@@ -533,7 +528,6 @@ void MainMenu::comprarBilhete() {
         if (d=='0') {
             return;
         }
-        //criar passageiro, bilhete e atribuir bilhete - done
 
     }
 }
@@ -621,7 +615,6 @@ void MainMenu::povoarAeroporto(list<Aeroporto> &list) {
 
 }
 
-
 void MainMenu::povoarAvioes(list<Aviao> &list) {
     string matricula;
     string tipo;
@@ -658,8 +651,6 @@ void MainMenu::povoarLugares(list<Aviao> &list) {
     }
 }
 
-
-
 void MainMenu::povoarRedes() {
 
     for (auto it = listaAeroporto.begin(); it != listaAeroporto.end(); it++) {
@@ -688,7 +679,6 @@ void MainMenu::povoarServicos() {
     }
     servicos.close();
 }
-
 
 void MainMenu::editarDados() {
     char c;
@@ -974,8 +964,6 @@ void MainMenu::editarDados() {
     }
 }
 
-
-
 void MainMenu::listaTransportes() {
     bool aeroportoEncontrado = false;
     system("CLS");
@@ -1060,6 +1048,26 @@ void MainMenu::listaTransportes() {
 
     return;
 }
+
+void MainMenu::outputDados() {
+
+}
+
+void MainMenu::outputVoos() {
+    fstream fout;
+    fout.open(VOO_TEMP, ios::out | ios::app);
+    for(Voo voo :listaVoo){
+        fout << voo.getNrVoo() << "; "
+             << voo.getOrigem().getCidade() << "; "
+             << voo.getDestino().getCidade() << "; "
+             << voo.getDuracao() << "; "
+             << voo.getData() << "\n";
+    }
+    fout.close();
+    remove(VOO);
+    rename(VOO_TEMP, VOO);
+}
+
 
 
 
