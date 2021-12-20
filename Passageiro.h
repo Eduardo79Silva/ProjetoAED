@@ -11,6 +11,10 @@
 
 using namespace std;
 
+/**
+     * Classe que representa um passageiro.
+     */
+
 class Passageiro {
     string nome;
     int idade;

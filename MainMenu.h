@@ -14,15 +14,29 @@
 #include "TextTable.h"
 #include "bst.h"
 #include "Servico.h"
+#include <algorithm>
+
+/**
+     * Classe que representa o menu da aplicação.
+     */
 
 class MainMenu {
     std::list<Voo> listaVoo; //Lista que contém todos os voos realizados pela companhia aérea
     std::list<Aeroporto> listaAeroporto; // Lista que contém todos os aeroportos para os quais a companhia aérea pode realizar as suas viagens
     std::list<Aviao> listaAviao; //Lista que contém todos os aviões pertencentes à companhia aérea
-    queue<Servico> queueServicos;
+    //queue<Servico> queueServicos;
 public:
+    /**
+     * Mostra a página principal do menu.
+     */
     void menu();
+    /**
+     * Mostra a página do menu para funcionários.
+     */
     void pagFuncionarios();
+    /**
+     * Mostra a página do menu para clientes.
+     */
     void pagClientes();
 
     /**
@@ -46,17 +60,49 @@ public:
      */
     void listaAvioes();
     /**
-     *  Mostra a lista de lugares existentes dentro de um avião e caso necessário para um específico voo
+     * Mostra o mapa de lugares disponíveis num voo.
+     * @param lugares O vetor dos lugares de um avião.
      */
     void listaLugares(vector<std::string> lugares);
-    void povoarVoo(std::list<Voo> &list1); //Função que lê o ficheiro com todos os dados sobre os voos existentes e os adiciona à lista de voos
+    /**
+     * Lê o ficheiro com todos os dados sobre os voos existentes e os adiciona à lista de voos.
+     * @param list1 A lista de voos a preencher.
+     */
+    void povoarVoo(std::list<Voo> &list1);
+    /**
+     * Lê o ficheiro com todos os dados sobre os aeroportos existentes e os adiciona à lista de aeroportos.
+     * @param list A lista de aeroportos da compahia aérea.
+     */
     void povoarAeroporto(std::list<Aeroporto> & list);
+    /**
+     * Lê o ficheiro com todos os dados sobre os aviões existentes e os adiciona à lista de aviões.
+     * @param  list
+     */
     void povoarAvioes(std::list<Aviao> &list);
+    /**
+     * Adiciona os lugares a um avião.
+     * @param list A lista de aviões aos quais se vai acrescentar os lugares
+     */
     void povoarLugares(std::list<Aviao> &list);
+    /**
+     * Lê o ficheiro com todos os dados sobre as redes de transportes nas imediações dos aeroportos e adiciona-os às respetivas redes de transportes (BSTs).
+     */
     void povoarRedes();
-    void povoarSistema(); //Função que chama todas as outras que lêem os dados dos ficheiros
+    /**
+     * Função que chama todas as outras que lêem os dados dos ficheiros
+     */
+    void povoarSistema();/**
+     * Permite remover dados na aplicação.
+     */
+    void removerDados();
+    /**
+     * Mostra ao utilizador a rede de transportes existente nas imediações de um aeroporto.
+     */
     void editarDados();
     void listaTransportes();
+    /**
+     * Lê o ficheiro com todos os dados sobre os serviços a realizar e o respetivo staff.
+     */
     void povoarServicos();
 };
 

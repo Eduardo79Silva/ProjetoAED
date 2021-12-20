@@ -13,7 +13,6 @@ using namespace std;
 
 /**
      * Classe que representa o carrinho que transporta as malas até ao avião.
-     * Implementa getters e setters.
      */
 
 class CarrinhoTransporte {
@@ -26,20 +25,20 @@ public:
     CarrinhoTransporte();
     CarrinhoTransporte(int c, int p, int m);
     /**
-     * @return Retorna o número de carruagens num carrinho.
+     * @return O número de carruagens num carrinho.
      */
     int getCarruagens();
     /**
-     * @return Retorna o número de pilhas numa carruagem.
+     * @return O número de pilhas numa carruagem.
      */
     int getPilhas();
     /**
-     * @return Retorna o número de malas numa  pilha.
+     * @return O número de malas numa  pilha.
      */
     int getMalas();
     /**
      *
-     * @return Retorna a capacidade do carrinho.
+     * @return A capacidade do carrinho.
      */
     int getCapacidade();
     /**

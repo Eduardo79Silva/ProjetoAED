@@ -9,7 +9,6 @@
 
 /**
      * Classe que representa a informação de um bilhete para um determinado voo.
-     * Implementa getter e setter.
      */
 
 using namespace std;
@@ -36,6 +35,9 @@ public:
      * @param bagagem Identifica se a bagagem está incluída ou não.
      */
     void setbagagem(bool bagagem);
+    /**
+     * @return O número do voo associado ao bilhete.
+     */
     int getNumVoo();
     /**
      * @return O número de lugar do bilhete.
