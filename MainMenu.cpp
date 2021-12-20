@@ -668,15 +668,22 @@ void MainMenu::povoarServicos() {
     string nomefunc;
     string tipo;
     string data;
+    string matricula;
     ifstream servicos;
     servicos.open(SERVICOS);
     servicos.ignore(1000, '\n');
     while (getline(servicos, nomefunc, ';')) {
         getline(servicos, tipo, ';');
-        getline(servicos, data);
+        getline(servicos, data, ';');
+        getline(servicos, matricula);
         Staff s = Staff(nomefunc);
         Servico servico = Servico(tipo, data, s);
-        queueServicos.push(servico);
+        for (auto it = listaAviao.begin(); it != listaAviao.end(); it++) {
+            if ((*it).getMatricula() == matricula) {
+                (*it).addServico(servico);
+            }
+        }
+        //queueServicos.push(servico);
     }
     servicos.close();
 }

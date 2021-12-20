@@ -8,6 +8,7 @@
 #include <string>
 #include "iostream"
 #include "list"
+#include "Servico.h"
 
 class Aviao{
     std::string matricula;
@@ -15,6 +16,7 @@ class Aviao{
     int capacidade;
     std::vector<std::string> lugares;
     std::list<Voo> planoVoo;
+    std::queue<Servico> servicos;
 public:
     Aviao(std::string m, std::string t);
     /**
@@ -38,11 +40,22 @@ public:
      * @param l: Lugar a remover do avião
      */
     void removerLugar(std::string l);
-  
+    /**
+       * Atribui a capacidade a um avião.
+       * @param c Capacidade do avião
+       */
     void setCapacidade(int c);
+    /**
+       * @return Um vetor de lugares do avião.
+       */
     std::vector<std::string> getLugares() const;
+    /**
+       * Atribui um lugar ao avião.
+       * @param l Lugar a adicionar
+       */
     void setLugares(std::string l);
     void setTipo(std::string t);
+    void addServico(Servico s);
     void addVoo(Voo v);
     std::list<Voo> getPlanoVoo() const;
 

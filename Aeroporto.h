@@ -20,12 +20,21 @@ public:
     Aeroporto();
     Aeroporto(std::string c);
     /**
-     * Retorna a cidade que identifica o aeroporto
-     * @return Cidade do aeroporto
+     * @return A cidade do aeroporto
      */
     std::string getCidade() const;
+    /**
+     * @return A rede de transportes nas imediações do aeroporto.
+     */
     RedeTransportes getRede();
+    /**
+     * Atribui uma rede de transportes ao aeroporto.
+     * @param r A rede de transportes.
+     */
     void setRede(RedeTransportes r);
+    /**
+     * Impementação do operador menor com base na cidade do aeroporto.
+     */
     bool operator<(const Aeroporto &a1);
 };
 
