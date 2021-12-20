@@ -317,6 +317,7 @@ void MainMenu::menu() {
                 pagClientes();
                 break;
             case '0':
+                outputDados();
                 return;
             default:
                 std::cout << "Opcao invalida\n";
@@ -1050,12 +1051,19 @@ void MainMenu::listaTransportes() {
 }
 
 void MainMenu::outputDados() {
-
+    outputVoos();
+    outputAeroportos();
+    outputAvioes();
 }
 
 void MainMenu::outputVoos() {
     fstream fout;
     fout.open(VOO_TEMP, ios::out | ios::app);
+    fout << "Number" << "; "
+         << "Origem" << "; "
+         << "Destino" << "; "
+         << "Duracao" << "; "
+         << "Data" << "\n";
     for(Voo voo :listaVoo){
         fout << voo.getNrVoo() << "; "
              << voo.getOrigem().getCidade() << "; "
@@ -1066,6 +1074,37 @@ void MainMenu::outputVoos() {
     fout.close();
     remove(VOO);
     rename(VOO_TEMP, VOO);
+}
+void MainMenu::outputAvioes() {
+    fstream fout;
+    fout.open(AVIOES_TEMP, ios::out | ios::app);
+    fout << "Matricula" << "; "
+         << "Modelo" << "; "
+         << "Capacidade" << "\n";
+    for(Aviao aviao :listaAviao){
+        fout << aviao.getMatricula() << "; "
+             << aviao.getTipo() << "; "
+             << to_string(aviao.getCapacidade()) << "\n";
+    }
+    fout.close();
+    remove(AVIOES);
+    rename(AVIOES_TEMP, AVIOES);
+}
+void MainMenu::outputAeroportos() {
+    fstream fout;
+    fout.open(AEROPORTO_TEMP, ios::out | ios::app);
+    fout << "Aeroportos" << "\n";
+    for(Aeroporto aeroporto :listaAeroporto){
+        fout << aeroporto.getCidade() << "\n";
+    }
+    fout.close();
+    remove(AEROPORTO);
+    rename(AEROPORTO_TEMP, AEROPORTO);
+}
+
+void MainMenu::outputServicos(Aviao aviao) {
+
+
 }
 
 

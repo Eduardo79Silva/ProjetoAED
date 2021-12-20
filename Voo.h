@@ -39,7 +39,7 @@ public:
     void setDestino(Aeroporto &destino);
     void setLugaresVoo(vector<string> l);
     void setCarrinho(CarrinhoTransporte carrinho);
-    void setBilhetes (vector<Passageiro> p);
+    void setPassageiros (vector<Passageiro> p);
     void setLotacao(int l);
     void editLugar(string l, bool o);
    void outputDados();
