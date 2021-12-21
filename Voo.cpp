@@ -33,7 +33,7 @@ Aeroporto Voo::getDestino() const {
     return this->aeroportoDestino;
 }
 
-CarrinhoTransporte Voo::getCarrinho() const {
+CarrinhoTransporte Voo::getCarrinho() const{
     return this->carrinho;
 }
 
@@ -135,10 +135,6 @@ void Voo::setPassageiros(vector<Passageiro> p) {
 }
 
 
-void Voo::outputDados() {
-
-
-}
 
 int Voo::getLotacao() const {
     return this->lotacao;

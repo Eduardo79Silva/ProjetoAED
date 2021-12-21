@@ -56,10 +56,11 @@ void MainMenu::listaVoos() {
         std::cout << "[Lista de voos]\n" << "\n";
         std::cout << t;
         std::cout << "\n[1] Lugares no voo"
-                  << "\n[2] Ordenar por data"
-                  << "\n[3] Ordenar por duracao"
-                  << "\n[4] Ordenar por numero de voo"
-                  << "\n[5] Pesquisar voo\n"
+                  << "\n[2] Passageiros"
+                  << "\n[3] Ordenar por data"
+                  << "\n[4] Ordenar por duracao"
+                  << "\n[5] Ordenar por numero de voo"
+                  << "\n[6] Pesquisar voo\n"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
@@ -88,7 +89,7 @@ void MainMenu::listaVoos() {
                 break;
             }
         }
-        else if(c==2){
+        else if(c==3){
             listaVoo.sort([](const Voo & v1, const Voo & v2)
                           {
                               return v1.getData() < v2.getData();
@@ -96,7 +97,7 @@ void MainMenu::listaVoos() {
             listaVoos();
             break;
         }
-        else if(c==3){
+        else if(c==4){
             listaVoo.sort([](const Voo & v1, const Voo & v2)
                           {
                               return v1.getDuracao() < v2.getDuracao();
@@ -104,7 +105,7 @@ void MainMenu::listaVoos() {
             listaVoos();
             break;
         }
-        else if(c==4){
+        else if(c==5){
             listaVoo.sort([](const Voo & v1, const Voo & v2)
                           {
                               return v1.getNrVoo() < v2.getNrVoo();
@@ -112,9 +113,59 @@ void MainMenu::listaVoos() {
             listaVoos();
             break;
         }
-        else if(c==5){
+        else if(c==6){
             pesquisaVoos();
         }
+        else if(c==2){
+            system("CLS");
+            std::cout << "[Passageiros]\n" << "\n";
+            std::cout << "Digite a numero do voo que pretende visualizar:\n";
+            cin.sync();
+            string a;
+            bool found = false;
+            getline(cin, a);
+            for (Voo voo :listaVoo){
+                if (voo.getNrVoo() == stoi(a)){
+                    TextTable t( '-', '|', '+' );
+                    t.add( "Passageiro" );
+                    t.add( "ID" );
+                    t.add( "Idade" );
+                    t.add( "Lugar" );
+                    t.endOfRow();
+                    t.add("");
+                    t.add("");
+                    t.add( "" );
+                    t.add( "" );
+                    t.endOfRow();
+                    for(Passageiro p : voo.getPassageiro()){
+                        t.add(p.getNome());
+                        t.add(to_string(p.getId()));
+                        t.add(to_string(p.getIdade()));
+                        for(Bilhete b : p.getBilhete()){
+                            if(b.getNumVoo() == voo.getNrVoo()){
+                                t.add(b.getLugar());
+                                break;
+                            }
+                        }
+                        t.endOfRow();
+                        t.setAlignment( 2, TextTable::Alignment::RIGHT );
+                    }
+                    cout << t;
+                    found = true;
+                }
+            }
+            if(!found){
+                system("CLS");
+                cout<<"\nVoo nao encontrado.";
+            }
+            cout << "\n[0] Sair\n"
+                 << "\n>";
+            std::cin >> c;
+            if (c==0) {
+                break;
+            }
+        }
+
     }
 
     return;
@@ -548,7 +599,15 @@ void MainMenu::comprarBilhete() {
                 std::cout << "\nDeseja incluir bagagem? (S/N)";
                 std::cin >> b;
                 if ((b == 'S') || (b == 's')) {
+                    int m =0;
                     bagagem = true;
+                    std::cout << "\nQuantas malas ira levar consigo?";
+                    std::cin >> m;
+                    Bagagem bagagem1;
+                    bagagem1.setMalas(m);
+                    CarrinhoTransporte carrinhoTransporte = vooComprar.getCarrinho();
+                    carrinhoTransporte.addBagagem(bagagem1);
+                    vooComprar.setCarrinho(carrinhoTransporte);
                 }
 
                 std::cout << "\nIntroduza o seu nome:";
@@ -635,7 +694,15 @@ void MainMenu::comprarBilhete() {
             std::cout << "\nDeseja incluir bagagem? (S/N)";
             std::cin >> b;
             if ((b == 'S') || (b == 's')) {
+                int m =0;
                 bagagem = true;
+                std::cout << "\nQuantas malas ira levar consigo?";
+                std::cin >> m;
+                Bagagem bagagem1;
+                bagagem1.setMalas(m);
+                CarrinhoTransporte carrinhoTransporte = vooComprar.getCarrinho();
+                carrinhoTransporte.addBagagem(bagagem1);
+                vooComprar.setCarrinho(carrinhoTransporte);
             }
 
             std::cout << "\nIntroduza o seu nome:";
@@ -690,6 +757,7 @@ void MainMenu::povoarSistema() {
     povoarAeroporto(listaAeroporto);
     povoarRedes();
     povoarServicos();
+    povoarPassageiros();
 }
 
 void MainMenu::povoarVoo(list<Voo> &list1) {
@@ -701,13 +769,26 @@ void MainMenu::povoarVoo(list<Voo> &list1) {
     string carruagens;
     string pilhas;
     string malas;
+    string lugar;
     ifstream carrinhos;
+    ifstream lugares;
+    ifstream passageiros;
+    ifstream bilhetes;
+    passageiros.open(PASSAGEIROS);
+    bilhetes.open(BILHETES);
     carrinhos.open(CARRINHOS);
     carrinhos.ignore(1000, '\n');
     ifstream voos;
     voos.open(VOO);
     voos.ignore(1000, '\n');
     while (getline(voos, number, ';')) {
+        vector<string> lugaresAux;
+        lugares.open(LUGARESVOO + number + ".csv");
+        lugares.ignore(1000, '\n');
+        while(getline(lugares, lugar)){
+            lugaresAux.push_back(lugar);
+        }
+        lugares.close();
         Voo voo = Voo(stoi(number));
 
         getline(voos, origem, ';');
@@ -729,6 +810,7 @@ void MainMenu::povoarVoo(list<Voo> &list1) {
         voo.setOrigem(aeroportoOrigem);
         voo.setDestino(aeroportoDestino);
         voo.setCarrinho(carrinho);
+        voo.setLugaresVoo(lugaresAux);
         Aviao minAviao = listaAviao.front();
         for (Aviao &aviao : listaAviao) {
             if(aviao.getPlanoVoo().size() < minAviao.getPlanoVoo().size() ){
@@ -1228,7 +1310,8 @@ void MainMenu::outputVoos() {
     outBilhetes.open(BILHETES_TEMP, ios::out | ios::app);
     outPassageiros.open(PASSAGEIROS_TEMP, ios::out | ios::app);
     fout.open(VOO_TEMP, ios::out | ios::app);
-
+    outPassageiros << "Passageiros" << "\n";
+    outBilhetes << "Bilhetes" << "\n";
     fout << "Number" << "; "
          << "Origem" << "; "
          << "Destino" << "; "
@@ -1578,6 +1661,47 @@ void MainMenu::adicionarDados() {
                 std::cout << "Opção inválida\n";}
         }
     }
+}
+
+void MainMenu::povoarPassageiros() {
+    string nVoo;
+    string nVooBilhetes;
+    string id;
+    string lugar;
+    string bagagem;
+    string nome;
+    string idade;
+    ifstream passageiros;
+    ifstream bilhetes;
+    passageiros.open(PASSAGEIROS);
+    passageiros.ignore(1000, '\n');
+    while (getline(passageiros, nVoo, ';')) {
+        getline(passageiros, id, ';');
+        getline(passageiros, nome, ';');
+        getline(passageiros, idade);
+        Passageiro p = Passageiro(nome, stoi(idade), stoi(id));
+        bilhetes.open((BILHETES));
+        bilhetes.ignore(1000, '\n');
+        while (getline(bilhetes, nVooBilhetes, ';')) {
+            getline(bilhetes, lugar, ';');
+            getline(bilhetes, bagagem);
+            bool levaBagagem = stoi(bagagem);
+            Bilhete b = Bilhete(stoi(nVooBilhetes), lugar, levaBagagem);
+            if(nVooBilhetes == nVoo){
+                p.setBilhete(b);
+            }
+        }
+        bilhetes.close();
+
+        for (auto it = listaVoo.begin(); it != listaVoo.end(); it++) {
+            if ((*it).getNrVoo() == stoi(nVoo)) {
+                vector<Passageiro> passageirosAux = (*it).getPassageiro();
+                passageirosAux.push_back(p);
+                (*it).setPassageiros(passageirosAux);
+            }
+        }
+    }
+    passageiros.close();
 }
 
 

@@ -53,10 +53,6 @@ public:
      */
     vector<string> getLugaresVoo() const;
     /**
-     * @return O vetor com os bilhetes do voo.
-     */
-    vector<Bilhete> getBilhetes() const;
-    /**
      * @return O carrinho que transporta as bagagens para o avião correspondente ao voo.
      */
     CarrinhoTransporte getCarrinho() const;
@@ -104,8 +100,7 @@ public:
      */
     void editLugar(string l, bool o);
     void setLotacao(int l);
-   
-    void outputDados();
+
     /**
      * Comparador de datas.
      */
