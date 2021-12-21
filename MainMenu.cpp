@@ -767,7 +767,9 @@ void MainMenu::editarDados() {
         string nome;
         string tipo;
         queue<Servico> novoServicos;
-        TextTable t( '-', '|', '+' );
+         std::list<Aeroporto>::iterator it2;
+        list<list<Voo>::iterator> elim;
+         TextTable t( '-', '|', '+' );
         TextTable t1( '-', '|', '+' );
 
         switch (c) {
@@ -893,15 +895,17 @@ void MainMenu::editarDados() {
                     cin.sync();
                     std::cout << "\n[Aeroporto que pretende remover]:\n";
                     getline(cin, a);
-                    listaAeroporto.erase( std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&a](const Aeroporto& aeroporto){return aeroporto.getCidade() == a;}));
-                    for (Voo voo : listaVoo){
-                        list<Aeroporto>::iterator it2;
+                    for (Voo &voo : listaVoo){
                         it2 = std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&a](const Aeroporto& aeroporto){return aeroporto.getCidade() == a;});
-                        bool found = std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&a](const Aeroporto& aeroporto){return aeroporto.getCidade() == a;}) != listaAeroporto.end();
+                        bool found = std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&a](const Aeroporto& aeroporto){return aeroporto.getCidade() ==a;}) != listaAeroporto.end();
                         if(found && (it2->getCidade() == voo.getOrigem().getCidade() || it2->getCidade()== voo.getDestino().getCidade())){
-                            listaVoo.erase( std::find_if(listaVoo.begin(), listaVoo.end(), [&voo](const Voo& voo1){return voo1.getNrVoo() == voo.getNrVoo();}));
+                            elim.push_back(find_if(listaVoo.begin(), listaVoo.end(), [&voo](const Voo& voo1){return voo1.getNrVoo() == voo.getNrVoo();}));
                         }
                     }
+                    for(auto it : elim){
+                        listaVoo.erase(it);
+                    }
+                    listaAeroporto.erase( std::find_if(listaAeroporto.begin(), listaAeroporto.end(), [&a](const Aeroporto& aeroporto){return aeroporto.getCidade() == a;}));
                 break;
             case '3':
                 std::cout << "\nPretender Editar ou Remover avioes (E/R):\n";
@@ -1120,6 +1124,7 @@ void MainMenu::outputDados() {
     outputVoos();
     outputAeroportos();
     outputAvioes();
+    outputServicos();
 }
 
 void MainMenu::outputVoos() {
@@ -1131,10 +1136,10 @@ void MainMenu::outputVoos() {
          << "Duracao" << "; "
          << "Data" << "\n";
     for(Voo voo :listaVoo){
-        fout << voo.getNrVoo() << "; "
-             << voo.getOrigem().getCidade() << "; "
-             << voo.getDestino().getCidade() << "; "
-             << voo.getDuracao() << "; "
+        fout << voo.getNrVoo() << ";"
+             << voo.getOrigem().getCidade() << ";"
+             << voo.getDestino().getCidade() << ";"
+             << voo.getDuracao() << ";"
              << voo.getData() << "\n";
     }
     fout.close();
@@ -1149,8 +1154,8 @@ void MainMenu::outputAvioes() {
          << "Modelo" << "; "
          << "Capacidade" << "\n";
     for(Aviao aviao :listaAviao){
-        fout << aviao.getMatricula() << "; "
-             << aviao.getTipo() << "; "
+        fout << aviao.getMatricula() << ";"
+             << aviao.getTipo() << ";"
              << to_string(aviao.getCapacidade()) << "\n";
     }
     fout.close();
@@ -1179,15 +1184,15 @@ void MainMenu::outputServicos() {
          << "Data" << "; "
          << "Aviao" << "\n";
     while (!aux.empty()) {
-        fout << aux.front().getStaff().getNome() << "; "
-             << aux.front().getTipo() << "; "
-             << aux.front().getData() << "; "
-             << "aviaotemp" << "\n";
+        fout << aux.front().getStaff().getNome() << ";"
+             << aux.front().getTipo() << ";"
+             << aux.front().getData() << ";"
+             << aux.front().getAviao() << "\n";
         aux.pop();
     }
     fout.close();
-    remove(AEROPORTO);
-    rename(AEROPORTO_TEMP, AEROPORTO);
+    remove(SERVICOS);
+    rename(SERVICOS_TEMP, SERVICOS);
 
     }
 
