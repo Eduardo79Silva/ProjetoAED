@@ -1,41 +1,40 @@
-number;origem;destino;duracao;data
-941;St. Ives;Palencia;10:40;02/01/2022
-30135;Dublin;Colmar;05:00;02/02/2022
-2;Berlin;Belfast;03:00;10/02/2022
-46286;Alva;Bordeaux;05:45;05/03/2022
-90;Cessnock;West Valley City;09:43;18/03/2022
-21;Banchory;Tomsk;08:54;26/03/2022
-962;Gladstone;Ponti;03:15;17/05/2022
-68;Contagem;Castanhal;12:44;04/06/2022
-32;Santa Cruz de Tenerife;Galway;09:57;16/06/2022
-93767;Murray Bridge;Legnica;06:12;06/07/2022
-95;Galway;Dannevirke;11:49;21/08/2022
-7;Banchory;Villahermosa;04:22;28/08/2022
-644;Dublin;Nashville;11:02;29/08/2022
-5;Kapolei;Mount Gambier;05:25;11/09/2022
-7841;Wedel;Essex;08:22;19/09/2022
-3;Santander;Goulburn;12:16;05/10/2022
-73641;Blue Mountains;Cork;04:40;10/10/2022
-30199;Ulsan;Gosnells;01:49;17/10/2022
-54513;Asigliano Veneto;Kalisz;04:34;17/11/2022
-9;Yeosu;Tianjin;10:50;19/11/2022
-28;Palencia;Berlin;08:19;28/11/2022
-4;Colmar;Dublin;01:12;30/12/2022
-1;Belfast;Berlin;10:59;12/02/2023
-86;Bordeaux;Alva;04:25;14/02/2023
-23;West Valley City;Banchory;04:18;19/02/2023
-31;Tomsk;Banchory;07:49;19/02/2023
-79;Ponti;Gladstone;10:49;14/03/2023
-47770;Castanhal;Contagem;07:50;20/04/2023
-43;Galway;Dublin;10:12;02/06/2023
-4712;Legnica;Murray Bridge;12:11;19/06/2023
-176;Dannevirke;Galway;09:56;04/07/2023
-66293;Villahermosa;Madison;10:15;10/07/2023
-91240;Nashville;Dublin;11:08;07/08/2023
-41;Mount Gambier;Alva;01:54;10/08/2023
-2691;Essex;Wedel;10:07;16/10/2023
-774;Goulburn;Castanhal;11:42;01/11/2023
-741;Cork;Blue Mountains;11:37;02/11/2023
-561;Gosnells;Ulsan;11:56;18/11/2023
-812;Kalisz;Villahermosa;08:58;17/12/2023
-48235;Tianjin;Yeosu;10:31;24/12/2023
+Number; Origem; Destino; Duracao; Data
+1;Belfast;Berlin;10:59;2023/02/12
+2;Berlin;Belfast;03:00;2022/02/10
+3;Santander;Goulburn;12:16;2022/10/05
+4;Colmar;Dublin;01:12;2022/12/30
+5;Kapolei;Mount Gambier;05:25;2022/09/11
+7;Banchory;Villahermosa;04:22;2022/08/28
+9;Yeosu;Tianjin;10:50;2022/11/19
+21;Banchory;Tomsk;08:54;2022/03/26
+23;West Valley City;Banchory;04:18;2023/02/19
+28;Palencia;Berlin;08:19;2022/11/28
+31;Tomsk;Banchory;07:49;2023/02/19
+32;Santa Cruz de Tenerife;Galway;09:57;2022/06/16
+41;Mount Gambier;Alva;01:54;2023/08/10
+43;Galway;Cork;10:12;2023/06/02
+68;Contagem;Castanhal;12:44;2022/06/04
+79;Ponti;Gladstone;10:49;2023/03/14
+86;Bordeaux;Alva;04:25;2023/02/14
+90;Cessnock;West Valley City;09:43;2022/03/18
+95;Galway;Dannevirke;11:49;2022/08/21
+176;Dannevirke;Galway;09:56;2023/07/04
+561;Gosnells;Ulsan;11:56;2023/11/18
+644;Dublin;Nashville;11:02;2022/08/29
+741;Cork;Blue Mountains;11:37;2023/11/02
+774;Goulburn;Castanhal;11:42;2023/11/01
+812;Kalisz;Villahermosa;08:58;2023/12/17
+962;Gladstone;Ponti;03:15;2022/05/17
+2691;Essex;Wedel;10:07;2023/10/16
+4712;Legnica;Murray Bridge;12:11;2023/06/19
+7841;Wedel;Essex;08:22;2022/09/19
+30135;Dublin;Colmar;05:00;2022/02/02
+30199;Ulsan;Gosnells;01:49;2022/10/17
+46286;Alva;Bordeaux;05:45;2022/03/05
+47770;Castanhal;Contagem;07:50;2023/04/20
+48235;Tianjin;Yeosu;10:31;2023/12/24
+54513;Asigliano Veneto;Kalisz;04:34;2022/11/17
+66293;Villahermosa;Madison;10:15;2023/07/10
+73641;Blue Mountains;Cork;04:40;2022/10/10
+91240;Nashville;Dublin;11:08;2023/08/07
+93767;Murray Bridge;Legnica;06:12;2022/07/06
