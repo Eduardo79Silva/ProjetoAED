@@ -87,7 +87,11 @@ void MainMenu::listaVoos() {
             }
         }
         else if(c==2){
-            listaVoos();  //sort com getData e datas ao contrario
+            listaVoo.sort([](const Voo & v1, const Voo & v2)
+                          {
+                              return v1.getData() < v2.getData();
+                          });
+            listaVoos();
             break;
         }
         else if(c==3){
