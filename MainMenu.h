@@ -113,6 +113,7 @@ public:
 
     void pesquisaAeroportos();
     void pesquisaVoos();
+    void adicionarDados();
 };
 
 

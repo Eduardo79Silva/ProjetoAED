@@ -392,6 +392,7 @@ void MainMenu::pagFuncionarios() {
                   << "\n[3] Ver lista de avioes"
                   << "\n[4] Ver servicos"
                   << "\n[5] Editar dados"
+                  << "\n[6] Adicionar dados"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
@@ -416,6 +417,9 @@ void MainMenu::pagFuncionarios() {
                 break;
             case '5':
                 editarDados();
+                break;
+            case '6':
+                adicionarDados();
                 break;
             case '0':
                 return;
@@ -1309,7 +1313,147 @@ void MainMenu::pesquisaVoos() {
 
 }
 
+void MainMenu::adicionarDados() {
+    char c;
+    while (true) {
+        system("CLS");
+        std::cout << "[Adicionar Dados]\n"
+                  << "\n[1] Voos"
+                  << "\n[2] Aeroportos"
+                  << "\n[3] Avioes"
+                  << "\n[4] Servicos"
+                  << "\n[0] Sair\n"
+                  << "\n>";
+        std::cin >> c;
+        cin.clear();
+        string a;
+        string b;
+        string d;
+        string e;
+        string f;
 
+        switch (c) {
+            case '1': {
+
+                cin.sync();
+                std::cout << "Numero do voo:\n";
+                cin.sync();
+                getline(cin, a);
+                std::cout << "Aeroporto de origem:\n";
+                cin.sync();
+                getline(cin, b);
+                std::cout << "Aeroporto de destino:\n";
+                cin.sync();
+                getline(cin, d);
+                std::cout << "Duracao(hh:mm):\n";
+                cin.sync();
+                getline(cin, e);
+                std::cout << "Data(aaaa/mm/dd):";
+                cin.sync();
+                getline(cin, f);
+
+                bool vexists = false;
+                for (Voo voo: listaVoo) {
+                    int nv = voo.getNrVoo();
+                    if (to_string(nv) == a) {
+                        vexists = true;
+                    }
+                }
+                if (!vexists) {
+                    Voo v = Voo(stoi(a));
+                    Aeroporto origem = Aeroporto(b);
+                    Aeroporto destino = Aeroporto(d);
+                    v.setOrigem(origem);
+                    v.setDestino(destino);
+                    v.setDuracao(e);
+                    v.setData(f);
+                    listaVoo.push_back(v);
+                } else {
+                    cout << "Já existe um voo com o número que tentou adicionar" << endl;
+                }
+                break;}
+
+                case '2': {
+                cin.sync();
+                std::cout << "\nCidade do aeroporto:\n";
+                getline(cin, a);
+
+                bool aexists = false;
+                for (Aeroporto aeroporto: listaAeroporto) {
+                    if (aeroporto.getCidade() == a) {
+                        aexists = true;
+                    }
+                }
+                if(!aexists) {
+                    Aeroporto aero = Aeroporto(a);
+                    listaAeroporto.push_back(aero);
+                }
+                else {
+                    cout << "Já existe um aeroporto com o nome que tentou adicionar" << endl;
+                }
+                break;}
+
+            case '3': {
+                cin.sync();
+                std::cout << "\nMatricula do aviao:\n";
+                getline(cin, a);
+                std::cout << "Tipo do aviao:\n";
+                cin.sync();
+                getline(cin, b);
+                std::cout << "Capacidade do aviao:\n";
+                cin.sync();
+                getline(cin, d);
+
+                bool pexists = false;
+                for (Aviao aviao: listaAviao) {
+                    if (aviao.getMatricula() == a) {
+                        pexists = true;
+                    }
+                }
+                if(!pexists) {
+                    Aviao plane = Aviao(a,b);
+                    plane.setCapacidade(stoi(d));
+                    listaAviao.push_back(plane);
+                }
+                else {
+                    cout << "Já existe um aviao com a matricula que tentou adicionar" << endl;
+                }
+                break;}
+
+            case '4': {
+                cin.sync();
+                std::cout << "\nTipo de servico:\n";
+                getline(cin, a);
+                std::cout << "Data do servico(aaaadd/mm/aaaa):\n";
+                cin.sync();
+                getline(cin, b);
+                std::cout << "Nome do responsavel:\n";
+                cin.sync();
+                getline(cin, d);
+                std::cout << "Matricula do aviao:\n";
+                cin.sync();
+                getline(cin, e);
+
+                Staff staff = Staff(d);
+                Servico s = Servico(a,b,staff);
+                s.setAviao(e);
+
+                queueServicos.push(s);
+                for (Aviao aviao:listaAviao) {
+                    if (aviao.getMatricula() == e) {
+                        aviao.addServico(s);
+                    }
+                }
+                break;}
+
+            case '0': {
+                return;}
+
+            default: {
+                std::cout << "Opção inválida\n";}
+        }
+    }
+}
 
 
 
