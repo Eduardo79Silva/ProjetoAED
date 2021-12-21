@@ -14,10 +14,14 @@
 #define SERVICOS ("..\\.\\MACROS\\Servicos.csv")
 #define VOO_TEMP ("..\\.\\MACROS\\VoosNovo.csv")
 #define AEROPORTO_TEMP ("..\\.\\MACROS\\AeroportoNovo.csv")
-#define TRANSPORTES_TEMP ("..\\.\\MACROS\\TransportesNovo.csv")
 #define AVIOES_TEMP ("..\\.\\MACROS\\AvioesNovo.csv")
-#define LUGARES_TEMP ("..\\.\\MACROS\\LugaresNovo.csv")
+#define LUGARESVOO ("..\\.\\MACROS\\Lugares\\Lugares_")
+#define LUGARESVOO_TEMP ("..\\.\\MACROS\\Lugares\\LugaresTemp_")
 #define CARRINHOS_TEMP ("..\\.\\MACROS\\CarrinhosTransporteNovo.csv")
 #define SERVICOS_TEMP ("..\\.\\MACROS\\ServicosNovo.csv")
+#define BILHETES ("..\\.\\MACROS\\Bilhetes.csv")
+#define BILHETES_TEMP ("..\\.\\MACROS\\BilhetesNovo.csv")
+#define PASSAGEIROS ("..\\.\\MACROS\\Passageiros.csv")
+#define PASSAGEIROS_TEMP ("..\\.\\MACROS\\PassageirosNovo.csv")
 
 #endif //PROJETOAED_MACROS_H

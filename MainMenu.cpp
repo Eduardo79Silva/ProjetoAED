@@ -4,6 +4,7 @@
 using namespace std;
 #include "fstream"
 #include "algorithm"
+#include "filesystem"
 #include "sstream"
 #include "MainMenu.h"
 #include "Voo.h"
@@ -11,7 +12,7 @@ using namespace std;
 #include "Aviao.h"
 #include "string"
 #include "TextTable.h"
-//#include "MACROS.h"
+#include "MACROS.h"
 #include "iostream"
 #include "MACROS.h"
 #include <cstdio>
@@ -466,132 +467,220 @@ void MainMenu::comprarBilhete() {
 
     std::string nv;
     std::string nome;
+    string g;
     char b;
     bool bagagem = false;
     int idade;
     int id;
 
     while (true) {
+        Voo vooComprar;
         system("CLS");
         std::cout << "[Compra de bilhete]\n";
 
         std::cout << "\nIntroduza o numero do voo ([V] para consultar lista de voos):";
-        std::cout << "\nDigite 0 para voltar ao menu\n"
+        std::cout << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> nv;
-        Voo vooComprar;
         if (nv == "0") {
             return;
         }
-        else if(nv == "V" || nv == "v"){
-            listaVoos();
-            system("CLS");
-            std::cout << "[Compra de bilhete]\n";
 
-            std::cout << "\nIntroduza o numero do voo ([V] para consultar lista de voos):";
-            std::cout << "\n\nDigite 0 para voltar ao menu\n"
+        std::cout << "\nDeseja comprar para grupos? (S/N):"
+                  << "\n>";
+        std::cin >> g;
+        if(g=="S"){
+            std::cout << "\nDe que tamanho sera o grupo: \n"
                       << "\n>";
-            std::cin >> nv;
+            std::cin >> g;
+            for(int i = 0; i< stoi(g); i++){
+                system("CLS");
+                TextTable t( '-', '|', '+' );
+                int c;
+                int counter =0;
 
+                t.add( " A " );
+                t.add( " B " );
+                t.add( " C " );
+                t.add( "    " );
+                t.add( " D " );
+                t.add( " E " );
+                t.add( " F " );
+                t.endOfRow();
+                t.add( "" );
+                t.add( "" );
+                t.add( "" );
+                t.add( "" );
+                t.add( "" );
+                t.add( "" );
+                t.add( "" );
+                t.endOfRow();
+                for(Voo voo : listaVoo){
+                    if (voo.getNrVoo() == stoi(nv)){
+                        vooComprar = voo;
+                    }
+                }
+                for(string lugares : vooComprar.getLugaresVoo()){
+                    t.add(lugares);
+                    counter++;
+                    if(counter==3){
+                        t.add(" ");
+                    }
+                    if(counter ==6){
+                        t.endOfRow();
+                        counter = 0;
+                    }
+                    t.setAlignment( 2, TextTable::Alignment::RIGHT );
+                }
+                cout<<t;
+                string lugar;
+                std::cout << "\nQual o lugar que deseja? ";
+                std::cin >> lugar;
+                bool found = std::find(vooComprar.getLugaresVoo().begin(), vooComprar.getLugaresVoo().end(), lugar) != vooComprar.getLugaresVoo().end();
+                if(found){
+                    for(Voo &voo : this->listaVoo){
+                        if (voo.getNrVoo() == stoi(nv)){
+                            voo.editLugar(lugar, true);
+                            voo.setLotacao(voo.getLotacao()-1);
+                        }
+                    }
+                }
+                std::cout << "\nDeseja incluir bagagem? (S/N)";
+                std::cin >> b;
+                if ((b == 'S') || (b == 's')) {
+                    bagagem = true;
+                }
 
+                std::cout << "\nIntroduza o seu nome:";
+                cin.sync();
+                getline(cin, nome);
 
+                std::cout << "\nIntroduza a sua idade:";
+                std::cin >> idade;
+
+                std::cout << "\nIntroduza o seu numero de identificacao:";
+                std::cin >> id;
+
+                Bilhete bil;
+                int nV = stoi(nv);
+                bil.setNumVoo(nV);
+                bil.setLugar(lugar);
+                bil.setbagagem(bagagem);
+                Passageiro p = Passageiro(nome, idade, id);
+                p.setBilhete(bil);
+
+            }
         }
-            TextTable t( '-', '|', '+' );
-            int c;
-            int counter =0;
 
-            t.add( " A " );
-            t.add( " B " );
-            t.add( " C " );
-            t.add( "    " );
-            t.add( " D " );
-            t.add( " E " );
-            t.add( " F " );
-            t.endOfRow();
-            t.add( "" );
-            t.add( "" );
-            t.add( "" );
-            t.add( "" );
-            t.add( "" );
-            t.add( "" );
-            t.add( "" );
-            t.endOfRow();
-            for(Voo voo : listaVoo){
-                if (voo.getNrVoo() == stoi(nv)){
-                    vooComprar = voo;
+        else if(g == "N"){
+
+            if (nv == "0") {
+                return;
+            }
+            else if(nv == "V" || nv == "v"){
+
+
+
+            }
+                TextTable t( '-', '|', '+' );
+                int c;
+                int counter =0;
+
+                t.add( " A " );
+                t.add( " B " );
+                t.add( " C " );
+                t.add( "    " );
+                t.add( " D " );
+                t.add( " E " );
+                t.add( " F " );
+                t.endOfRow();
+                t.add( "" );
+                t.add( "" );
+                t.add( "" );
+                t.add( "" );
+                t.add( "" );
+                t.add( "" );
+                t.add( "" );
+                t.endOfRow();
+                for(Voo voo : listaVoo){
+                    if (voo.getNrVoo() == stoi(nv)){
+                        vooComprar = voo;
+                    }
+                }
+                for(string lugares : vooComprar.getLugaresVoo()){
+                    t.add(lugares);
+                    counter++;
+                    if(counter==3){
+                        t.add(" ");
+                    }
+                    if(counter ==6){
+                        t.endOfRow();
+                        counter = 0;
+                    }
+                    t.setAlignment( 2, TextTable::Alignment::RIGHT );
+                }
+                cout<<t;
+            string lugar;
+            std::cout << "\nQual o lugar que deseja? ";
+            std::cin >> lugar;
+            bool found = std::find(vooComprar.getLugaresVoo().begin(), vooComprar.getLugaresVoo().end(), lugar) != vooComprar.getLugaresVoo().end();
+            if(found){
+                for(Voo &voo : this->listaVoo){
+                    if (voo.getNrVoo() == stoi(nv)){
+                        voo.editLugar(lugar, true);
+                        voo.setLotacao(voo.getLotacao()-1);
+                    }
                 }
             }
-            for(string lugares : vooComprar.getLugaresVoo()){
-                t.add(lugares);
-                counter++;
-                if(counter==3){
-                    t.add(" ");
-                }
-                if(counter ==6){
-                    t.endOfRow();
-                    counter = 0;
-                }
-                t.setAlignment( 2, TextTable::Alignment::RIGHT );
+            std::cout << "\nDeseja incluir bagagem? (S/N)";
+            std::cin >> b;
+            if ((b == 'S') || (b == 's')) {
+                bagagem = true;
             }
-            cout<<t;
-        string lugar;
-        std::cout << "\nQual o lugar que deseja? ";
-        std::cin >> lugar;
-        bool found = std::find(vooComprar.getLugaresVoo().begin(), vooComprar.getLugaresVoo().end(), lugar) != vooComprar.getLugaresVoo().end();
-        if(found){
-            for(Voo &voo : this->listaVoo){
-                if (voo.getNrVoo() == stoi(nv)){
-                    voo.editLugar(lugar, true);
-                    voo.setLotacao(voo.getLotacao()-1);
+
+            std::cout << "\nIntroduza o seu nome:";
+            cin.sync();
+            getline(cin, nome);
+
+            std::cout << "\nIntroduza a sua idade:";
+            std::cin >> idade;
+
+            std::cout << "\nIntroduza o seu numero de identificacao:";
+            std::cin >> id;
+
+
+            Bilhete bil;
+            int nV = stoi(nv);
+            bil.setNumVoo(nV);
+            bil.setLugar(lugar);
+            bil.setbagagem(bagagem);
+            Passageiro p = Passageiro(nome, idade, id);
+            p.setBilhete(bil);
+
+
+            for (auto it = listaVoo.begin(); it != listaVoo.end(); it++) {
+                Voo v = *it;
+                if (v.getNrVoo() == nV) {
+                    vector<Passageiro> atual = v.getPassageiro();
+                    atual.push_back(p);
+                    (*it).setPassageiros(atual);
+
                 }
             }
         }
-        std::cout << "\nDeseja incluir bagagem? (S/N)";
-        std::cin >> b;
-        if ((b == 'S') || (b == 's')) {
-            bagagem = true;
-        }
-
-        std::cout << "\nIntroduza o seu nome:";
-        cin.sync();
-        getline(cin, nome);
-
-        std::cout << "\nIntroduza a sua idade:";
-        std::cin >> idade;
-
-        std::cout << "\nIntroduza o seu numero de identificacao:";
-        std::cin >> id;
 
         char d;
         system("CLS");
-        cout<<"\n---------**Obrigado por viajar connosco**----------\n\n";
+        cout<<"\n---------**Obrigado por viajar connosco!**----------\n\n";
         cout << "\n[0] Sair\n"
              << "\n>";
         std::cin >> d;
-        Bilhete bil;
-        int nV = stoi(nv);
-        bil.setNumVoo(nV);
-        bil.setLugar(lugar);
-        bil.setbagagem(bagagem);
-        Passageiro p = Passageiro(nome, idade, id);
-        p.setBilhete(bil);
+        if (d=='0')
+            break;
 
-
-        for (auto it = listaVoo.begin(); it != listaVoo.end(); it++) {
-            Voo v = *it;
-            if (v.getNrVoo() == nV) {
-                vector<Passageiro> atual = v.getPassageiro();
-                atual.push_back(p);
-                (*it).setPassageiros(atual);
-
-            }
-        }
-
-        if (d=='0') {
-            return;
-        }
 
     }
+    return;
 }
 
 void MainMenu::povoarSistema() {
@@ -1132,20 +1221,56 @@ void MainMenu::outputDados() {
 
 void MainMenu::outputVoos() {
     fstream fout;
+    fstream outLugares;
+    fstream outBilhetes;
+    fstream outPassageiros;
+
+    outBilhetes.open(BILHETES_TEMP, ios::out | ios::app);
+    outPassageiros.open(PASSAGEIROS_TEMP, ios::out | ios::app);
     fout.open(VOO_TEMP, ios::out | ios::app);
+
     fout << "Number" << "; "
          << "Origem" << "; "
          << "Destino" << "; "
          << "Duracao" << "; "
          << "Data" << "\n";
     for(Voo voo :listaVoo){
+        string nomeFicheiroTemp = LUGARESVOO_TEMP + to_string(voo.getNrVoo()) + ".csv";
+        string nomeFicheiro = LUGARESVOO + to_string(voo.getNrVoo()) + ".csv";
+        outLugares.open(nomeFicheiroTemp, ios::out | ios::app);
+        outLugares << "Lugares\n";
         fout << voo.getNrVoo() << ";"
              << voo.getOrigem().getCidade() << ";"
              << voo.getDestino().getCidade() << ";"
              << voo.getDuracao() << ";"
              << voo.getData() << "\n";
+        for(string lugar : voo.getLugaresVoo()){
+            outLugares << lugar << "\n";
+        }
+        for(Passageiro passageiro : voo.getPassageiro()){
+            for(Bilhete bilhete : passageiro.getBilhete()){
+                outBilhetes << bilhete.getNumVoo() << ";"
+                            << bilhete.getLugar()  << ";"
+                            << bilhete.getBagagem() << "\n";
+            }
+            outPassageiros << voo.getNrVoo() << ";"
+                           << passageiro.getId() << ";"
+                           << passageiro.getNome() << ";"
+                           << passageiro.getIdade() << "\n";
+        }
+        //for(int carrinho : voo.getCarrinho())
+        outLugares.close();
+
+        remove(nomeFicheiro.c_str());
+        rename(nomeFicheiroTemp.c_str(), nomeFicheiro.c_str());
     }
     fout.close();
+    outBilhetes.close();
+    outPassageiros.close();
+    remove(PASSAGEIROS);
+    rename(PASSAGEIROS_TEMP, PASSAGEIROS);
+    remove(BILHETES);
+    rename(BILHETES_TEMP, BILHETES);
     remove(VOO);
     rename(VOO_TEMP, VOO);
 }

@@ -147,3 +147,4 @@ int Voo::getLotacao() const {
 void Voo::setLotacao(int l) {
     this->lotacao = l;
 }
+
