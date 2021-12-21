@@ -57,7 +57,7 @@ void MainMenu::listaVoos() {
         std::cout << "\n[1] Lugares no voo"
                   << "\n[2] Ordenar por data"
                   << "\n[3] Ordenar por duracao"
-                  << "\n[4] Ordenar por numero de voo\n"
+                  << "\n[4] Ordenar por numero de voo"
                   << "\n[5] Pesquisar voo\n"
                   << "\n[0] Sair\n"
                   << "\n>";
@@ -113,7 +113,6 @@ void MainMenu::listaVoos() {
         }
         else if(c==5){
             pesquisaVoos();
-            break;
         }
     }
 
@@ -1308,7 +1307,6 @@ void MainMenu::pesquisaVoos() {
         }
     }
 
-    return;
 }
 
 
