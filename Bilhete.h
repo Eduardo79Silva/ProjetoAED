@@ -18,7 +18,16 @@ class Bilhete {
     std::string lugar;
     bool bagagem;
 public:
+    /**
+     * Contrutor predefinido do Bilhete
+     */
     Bilhete();
+    /**
+     * Contrutor do Bilhete
+     * @param numVoo para o qual o bilhete foi comprado
+     * @param lugar que o bilhete ocupa
+     * @param bagagem boleano que diz se o proprietário quer levar bagagem
+     */
     Bilhete(int numVoo, string lugar, bool bagagem);
     /**
      * Atribui o número de voo ao bilhete.

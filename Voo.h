@@ -26,7 +26,14 @@ class Voo{
     vector<Passageiro> passageiroVoo;
 
 public:
+    /**
+     * Construtor predefinido do Voo
+     */
     Voo();
+    /**
+     * Construtor de Voo
+     * @param nrVoo que é o número único de cada voo
+     */
     Voo(int nrVoo);
     /**
      * @return O número do voo.
@@ -56,8 +63,17 @@ public:
      * @return O carrinho que transporta as bagagens para o avião correspondente ao voo.
      */
     CarrinhoTransporte getCarrinho() const;
+    /**
+     * Função que permite obter uma versão read-only do vector de passageiros do voo
+     * @return  Vector com todos os passageiros do voo (read-only)
+     */
   
     vector<Passageiro> getPassageiro() const;
+    /**
+     * Função que permite saber qual a lotação máxima do voo
+     * @return Lotação do voo
+     */
+
     int getLotacao() const;
   
     /**
@@ -99,6 +115,10 @@ public:
      * Permite editar a informação relativa a um lugar do voo.
      */
     void editLugar(string l, bool o);
+    /**
+     * Permite definir uma nova lotação máxima para o voo
+     * @param l = lotação
+     */
     void setLotacao(int l);
 
     /**
