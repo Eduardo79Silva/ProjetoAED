@@ -33,7 +33,7 @@ list<Transporte> RedeTransportes::lerFicheiro(string cidade) {
     float dist;
     list<string> horarios;
     ifstream transportes;
-    transportes.open("..\\.\\RedesTransportes\\" + cidade + ".csv");
+    transportes.open("..\\.\\MACROS\\RedesTransportes\\" + cidade + ".csv");
     transportes.ignore(1000, '\n');
     list<Transporte> listTransportes;
     while (getline(transportes, tipo, ';')) {

@@ -1200,6 +1200,7 @@ void MainMenu::outputVoos() {
                            << passageiro.getNome() << ";"
                            << passageiro.getIdade() << "\n";
         }
+        //for(int carrinho : voo.getCarrinho())
         outLugares.close();
 
         remove(nomeFicheiro.c_str());
