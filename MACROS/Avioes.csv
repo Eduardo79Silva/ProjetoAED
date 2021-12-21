@@ -1,11 +1,11 @@
 Matricula; Modelo; Capacidade
+CS-HBV;airbus 320;120
 CS-UTS;airbus 380;120
-CS-UMT;embraer 190;150
-CS-UPN;embraer 190;150
-EC-GSP;boeing 777;180
 CS-HDO;airbus 380;120
 CS-DIW;airbus 380;120
+EC-GSP;boeing 777;180
 EC-HDD;boeing 777;180
 CS-AYW;boeing 777;180
+CS-UMT;embraer 190;150
+CS-UPN;embraer 190;150
 CS-HGB;embraer 190;150
-CS-HBV;airbus 320;120
