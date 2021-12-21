@@ -58,6 +58,7 @@ void MainMenu::listaVoos() {
                   << "\n[2] Ordenar por data"
                   << "\n[3] Ordenar por duracao"
                   << "\n[4] Ordenar por numero de voo\n"
+                  << "\n[5] Pesquisar voo\n"
                   << "\n[0] Sair\n"
                   << "\n>";
         std::cin >> c;
@@ -110,6 +111,10 @@ void MainMenu::listaVoos() {
             listaVoos();
             break;
         }
+        else if(c==5){
+            pesquisaVoos();
+            break;
+        }
     }
 
     return;
@@ -142,6 +147,7 @@ void MainMenu::listaAeroportos()
         std::cout << t;
         std::cout << "\n[1] Lista de Voos"
                   << "\n[2] Rede de Transportes perto do Aeroporto"
+                  << "\n[3] Pesquisa de Aeroporto"
                   << "\n[0] Sair\n";
         std::cin >> c;
         if (c==0) {
@@ -152,6 +158,10 @@ void MainMenu::listaAeroportos()
         }else if(c==2){
             listaTransportes();
         }
+        else if(c==3){
+            pesquisaAeroportos();
+        }
+
     }
 
     return;
@@ -1180,6 +1190,122 @@ void MainMenu::outputServicos() {
     rename(AEROPORTO_TEMP, AEROPORTO);
 
     }
+
+void MainMenu::pesquisaAeroportos() {
+    system("CLS");
+    string pesquisa;
+    cout << "\nTermo de pesquisa:" << endl;
+    cin.sync();
+    getline(cin, pesquisa);
+    TextTable ta;
+    ta.add("Cidade/Nome do Aeroporto");
+    ta.endOfRow();
+    ta.add("");
+    ta.endOfRow();
+    bool found = false;
+    char c;
+
+    system("CLS");
+    for (auto it = listaAeroporto.begin(); it != listaAeroporto.end(); it++) {
+        if ((*it).getCidade() == pesquisa) {
+            found = true;
+            ta.add((*it).getCidade());
+            ta.endOfRow();
+            std::cout << "[Resultados da pesquisa]\n" << "\n";
+            cout << ta;
+            cout << "\n[0] Sair\n";
+            std::cin >> c;
+            if (c == 0) {
+                break;
+            }
+            break;
+        }
+    }
+    if (!found) {
+        cout << "Aeroporto nao encontrado" << endl;
+        cout << "\n[0] Sair\n"
+             << "\n>";
+        std::cin >> c;
+        if (c == 0) {
+            return;
+        }
+    }
+
+    return;
+}
+
+void MainMenu::pesquisaVoos() {
+    system("CLS");
+    string pesquisa;
+    char c;
+    cout << "\nTermo de pesquisa (numero, aeroporto de origem ou destino):" << endl;
+    cin.sync();
+    getline(cin, pesquisa);
+    bool isnumber = false;
+    std::string::const_iterator it = pesquisa.begin();
+    while (it != pesquisa.end() && std::isdigit(*it)) ++it;
+    if (!pesquisa.empty() && it == pesquisa.end()) {
+        isnumber = true;
+    };
+    list<Voo> aux;
+    TextTable ta;
+    ta.add( "NumeroVoo" );
+    ta.add( "Origem" );
+    ta.add( "Destino" );
+    ta.add( "Duracao" );
+    ta.add( "Data" );
+    ta.endOfRow();
+    ta.add("");
+    ta.add("");
+    ta.add( "" );
+    ta.add( "" );
+    ta.add( "" );
+    ta.endOfRow();
+
+    for (Voo voo:listaVoo) {
+        if (isnumber) {
+            if (voo.getNrVoo() == stoi(pesquisa)) {
+                aux.push_back((voo));
+            }
+        }
+        if ((voo.getOrigem().getCidade() == pesquisa) || (voo.getDestino().getCidade() == pesquisa)) {
+            aux.push_back((voo));
+        }
+    }
+
+    if (aux.size() == 0) {
+        cout << "Nao foram encontrados resultados" << endl;
+        cout << "\n[0] Sair\n"
+             << "\n>";
+        std::cin >> c;
+        if (c == 0) {
+            return;
+        }
+    }
+
+    else {
+        for (Voo voo:aux) {
+            ta.add(to_string(voo.getNrVoo()));
+            ta.add(voo.getOrigem().getCidade());
+            ta.add( voo.getDestino().getCidade());
+            ta.add( voo.getDuracao());
+            ta.add( voo.getData());
+            ta.endOfRow();
+            ta.setAlignment( 2, TextTable::Alignment::RIGHT );
+        }
+        system("CLS");
+        std::cout << "[Resultados da pesquisa]\n" << "\n";
+        cout << ta;
+        cout << "\n[0] Sair\n";
+        std::cin >> c;
+        if (c == 0) {
+            return;
+        }
+    }
+
+    return;
+}
+
 
 
 

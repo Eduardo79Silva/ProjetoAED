@@ -110,6 +110,9 @@ public:
     void outputAvioes();
     void outputAeroportos();
     void outputServicos();
+
+    void pesquisaAeroportos();
+    void pesquisaVoos();
 };
 
 
