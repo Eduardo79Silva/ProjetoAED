@@ -105,15 +105,41 @@ public:
      * Lê o ficheiro com todos os dados sobre os serviços a realizar e o respetivo staff.
      */
     void povoarServicos();
+    /**
+     * Lê os ficheiros sobre passageiros e bilhetes e adiciona-os aos respetivos voos
+     */
     void povoarPassageiros();
+    /**
+     * Chama todas as outras funções de output
+     */
     void outputDados();
+    /**
+     * Função que lê o ficheiro dos voos e os adiciona à lista de voos
+     */
     void outputVoos();
+    /**
+    * Função que lê o ficheiro dos aviões e os adiciona à lista de aviões
+    */
     void outputAvioes();
+    /**
+    * Função que lê o ficheiro dos aeroportos e os adiciona à lista de aeroportos
+    */
     void outputAeroportos();
+    /**
+    * Função que lê o ficheiro dos serviços e os adiciona à lista de serviços
+    */
     void outputServicos();
-
+    /**
+     * Função que permite realizar uma pesquisa e apresentar a lista parcial de aeroportos correspondentes
+     */
     void pesquisaAeroportos();
+    /**
+     * Função que permite realizar uma pesquisa e apresentar a lista parcial de voos correspondentes
+     */
     void pesquisaVoos();
+    /**
+     * Função que permite ao utilizador adicionar dados como voos, aeroportos, aviões e serviços
+     */
     void adicionarDados();
 };
 

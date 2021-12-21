@@ -19,6 +19,11 @@ class Transporte {
     float distancia;
     std::list<std::string> horarios;
 public:
+    /**
+     * Construtor do transporte
+     * @param tipo
+     * @param dist
+     */
     Transporte(std::string tipo, float dist) {
         tipoTransporte = tipo;
         distancia = dist;

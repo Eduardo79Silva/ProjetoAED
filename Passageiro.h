@@ -21,6 +21,12 @@ class Passageiro {
     int id;
     std::list<Bilhete> bilhetes;
 public:
+    /**
+     * Construtor do Passageiro
+     * @param nome do passageiro
+     * @param idade do passageiro
+     * @param id do passageiro
+     */
     Passageiro(string nome, int idade, int id);
     /**
      * Atribui o nome ao passageiro.
